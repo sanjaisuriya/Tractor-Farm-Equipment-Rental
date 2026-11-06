@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farmer Login & Registration - AgroRent</title>
+  <meta name="description" content="Sign in or register for an AgroRent farmer account to manage farm machinery bookings, view active rentals, and download invoices." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            forest: '#173D2B',
+            agri: '#347A45',
+            fresh: '#78A85A',
+            cream: '#F5F3E9',
+            earth: '#8B6746',
+            charcoal: '#202820',
+            gold: '#E6AD43',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Manrope', 'sans-serif'],
+            primary: ['Poppins', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/dark-mode.css" />
+  <link rel="stylesheet" href="css/rtl.css" />
+  <link rel="stylesheet" href="css/pages/login-register.css" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+
+</head>
+<body class="bg-slate-50 dark:bg-[#121813] text-charcoal dark:text-gray-100 flex flex-col min-h-screen">
+
+  <!-- MINIMAL AUTH HEADER (ONLY BRAND + THEME & RTL CONTROLS) -->
+  <header class="site-header sticky top-0 z-50 bg-white/95 dark:bg-[#121813]/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-all duration-300">
+    <div class="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group shrink-0" title="AgroRent - Tractor & Farm Equipment">
+        <div class="w-11 h-11 rounded-xl bg-forest flex items-center justify-center text-white text-xl shadow-md group-hover:scale-105 transition-transform shrink-0 border border-agri/20 dark:border-white/10">
+          <i class="fa-solid fa-tractor text-gold"></i>
+        </div>
+        <div class="shrink-0 flex flex-col justify-center">
+          <span class="text-2xl font-black tracking-tight text-forest dark:text-white font-heading block leading-none whitespace-nowrap">
+            AGRO<span class="text-agri dark:text-fresh">RENT</span>
+          </span>
+          <span class="block text-[10px] tracking-widest uppercase font-semibold text-muted dark:text-cream/70 leading-tight mt-1 whitespace-nowrap">Tractor & Farm Equipment</span>
+        </div>
+      </a>
+
+      <!-- Controls: Back to Home + Dark/Light Mode + RTL/LTR -->
+      <div class="flex items-center gap-2 sm:gap-4 shrink-0">
+        <a href="index.html" class="text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-agri dark:hover:text-fresh flex items-center gap-1.5 py-1.5 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i class="fa-solid fa-arrow-left text-[11px]"></i>
+          <span>Back to Home</span>
+        </a>
+
+        <div class="flex items-center gap-1 pl-2 border-l border-gray-200 dark:border-gray-700">
+          <!-- Dark / Light Mode Toggle -->
+          <button class="theme-toggle-btn w-9 h-9 rounded-lg text-slate-700 dark:text-slate-200 hover:text-agri hover:bg-slate-100 dark:hover:bg-slate-800 transition text-sm flex items-center justify-center" title="Toggle Theme (Dark / Light)" aria-label="Toggle theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <!-- RTL / LTR Toggle -->
+          <button class="rtl-toggle-btn w-9 h-9 rounded-lg text-slate-700 dark:text-slate-200 hover:text-agri hover:bg-slate-100 dark:hover:bg-slate-800 transition text-sm flex items-center justify-center" title="Toggle RTL/LTR" aria-label="Toggle RTL/LTR">
+            <i class="fa-solid fa-globe"></i>
+            <span class="sr-only dir-label">RTL</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT: AUTH -->
+  <main class="flex-1 py-14 flex items-center justify-center">
+    <div class="container-custom max-w-lg">
+
+      <!-- One-Click Quick Demo Login Pill -->
+      <div class="mb-6 p-4 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-center">
+        <span class="text-xs font-bold text-amber-800 dark:text-amber-300 block mb-1">
+          <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Instant Demo Testing
+        </span>
+        <p class="text-xs text-amber-700 dark:text-amber-400 mb-2.5">
+          Skip typing credentials and test the farmer dashboard right away.
+        </p>
+        <button id="quickDemoLoginBtn" class="btn-gold text-xs py-2 px-4 shadow-sm font-bold">
+          <i class="fa-solid fa-arrow-right-to-bracket mr-1"></i> 1-Click Login as Rajesh Kumar (Demo Farmer)
+        </button>
+      </div>
+
+      <div class="auth-container">
+        <!-- Auth Tabs Toggle -->
+        <div class="flex border-b border-slate-200 dark:border-slate-700 mb-6">
+          <button id="tabLogin" class="auth-tab-btn active">
+            <i class="fa-solid fa-right-to-bracket mr-1.5"></i> Farmer Login
+          </button>
+          <button id="tabRegister" class="auth-tab-btn">
+            <i class="fa-solid fa-user-plus mr-1.5"></i> New Registration
+          </button>
+        </div>
+
+        <!-- SECTION 1: LOGIN FORM -->
+        <div id="loginSection">
+          <div class="mb-5 text-center">
+            <h2 class="text-2xl font-black font-heading text-slate-900 dark:text-white">Farmer Sign In</h2>
+            <p class="text-xs text-muted mt-1">Access your active tractor bookings and bills</p>
+          </div>
+
+          <form id="farmerLoginForm" class="space-y-4">
+            <div>
+              <label class="form-label">Email or Mobile Number</label>
+              <div class="relative">
+                <input type="text" id="loginIdentifier" required value="farmer@agrorent.in" placeholder="e.g. 9876543210 or farmer@agrorent.in" class="form-input text-sm" />
+              </div>
+            </div>
+
+            <div>
+              <label class="form-label">Password</label>
+              <div class="relative">
+                <input type="password" id="loginPassword" required value="farmer123" placeholder="Enter your password" class="form-input text-sm pr-10" />
+                <button type="button" class="password-toggle-btn" aria-label="Toggle password visibility">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs text-slate-600 dark:text-slate-300">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" checked class="w-4 h-4 text-agri rounded focus:ring-agri accent-[#347A45]" />
+                <span>Remember me</span>
+              </label>
+              <a href="#" onclick="alert('Demo notice: Use email farmer@agrorent.in and password farmer123'); return false;" class="text-agri font-semibold hover:underline">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn-primary w-full py-3.5 text-sm font-bold justify-center shadow-lg mt-2">
+              <i class="fa-solid fa-right-to-bracket"></i> Login to Farmer Portal
+            </button>
+          </form>
+        </div>
+
+        <!-- SECTION 2: REGISTER FORM -->
+        <div id="registerSection" class="hidden">
+          <div class="mb-5 text-center">
+            <h2 class="text-2xl font-black font-heading text-slate-900 dark:text-white">Register as Farmer</h2>
+            <p class="text-xs text-muted mt-1">Join 5,200+ farmers mechanizing their lands</p>
+          </div>
+
+          <form id="farmerRegisterForm" class="space-y-3.5">
+            <div>
+              <label class="form-label">Farmer Full Name *</label>
+              <input type="text" id="regName" required placeholder="e.g. Rajesh Kumar" class="form-input text-sm" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="form-label">Mobile Number *</label>
+                <input type="tel" id="regMobile" required placeholder="e.g. 9876543210" class="form-input text-sm" />
+              </div>
+              <div>
+                <label class="form-label">Email Address</label>
+                <input type="email" id="regEmail" placeholder="farmer@agrorent.in" class="form-input text-sm" />
+              </div>
+            </div>
+
+            <div>
+              <label class="form-label">Village & District Location *</label>
+              <input type="text" id="regVillage" required placeholder="e.g. Rampur, Ludhiana, Punjab" class="form-input text-sm" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="form-label">Password *</label>
+                <div class="relative">
+                  <input type="password" id="regPassword" required placeholder="Min. 6 characters" class="form-input text-sm pr-10" />
+                  <button type="button" class="password-toggle-btn" aria-label="Toggle password visibility">
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+              <div>
+                <label class="form-label">Confirm Password *</label>
+                <div class="relative">
+                  <input type="password" id="regConfirmPassword" required placeholder="Re-type password" class="form-input text-sm pr-10" />
+                  <button type="button" class="password-toggle-btn" aria-label="Toggle password visibility">
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary w-full py-3.5 text-sm font-bold justify-center shadow-lg mt-2">
+              <i class="fa-solid fa-user-plus"></i> Create Farmer Account
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  
+
+  <button id="backToTopBtn" class="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-agri text-white shadow-xl flex items-center justify-center text-lg z-40 opacity-0 invisible translate-y-4 transition-all duration-300 hover:bg-forest" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/theme.js"></script>
+  <script src="js/rtl.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

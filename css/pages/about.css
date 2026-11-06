@@ -1,0 +1,60 @@
+/* About Us Custom Styling - Tractor & Agricultural Machinery Rental */
+
+.story-image-wrap {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.story-badge {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: rgba(23, 61, 43, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-lg);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[dir="rtl"] .story-badge {
+  right: auto;
+  left: 1.5rem;
+}
+
+/* Feature & Equipment Card Hover Effects */
+.about-feature-card,
+.equipment-cat-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.about-feature-card:hover,
+.equipment-cat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(23, 61, 43, 0.12);
+}
+
+.dark .about-feature-card:hover,
+.dark .equipment-cat-card:hover {
+  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.4);
+}
+
+/* Testimonial Card Styling */
+.testimonial-card {
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: #2D6A4F;
+  box-shadow: 0 12px 28px -6px rgba(45, 106, 79, 0.15);
+}
+
+/* Smooth reveal animation */
+.reveal-on-scroll {
+  opacity: 1;
+  transform: translateY(0);
+}
+

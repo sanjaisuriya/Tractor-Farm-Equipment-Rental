@@ -1,0 +1,92 @@
+/* ==========================================================================
+   TRACTOR & FARM EQUIPMENT RENTAL - RTL LAYOUT SUPPORT
+   (Arabic / Hebrew / Urdu bidirectional formatting)
+   ========================================================================== */
+
+[dir="rtl"] {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] .dropdown-menu {
+  left: auto !important;
+  right: 0 !important;
+}
+
+[dir="rtl"] .mobile-nav-drawer {
+  left: auto;
+  right: 0;
+  transform: translateX(100%);
+}
+
+[dir="rtl"] .mobile-nav-drawer.open {
+  transform: translateX(0);
+}
+
+[dir="rtl"] .dashboard-sidebar {
+  border-right: none;
+  border-left: 1px solid var(--border-color);
+}
+
+@media (max-width: 1024px) {
+  [dir="rtl"] .dashboard-sidebar {
+    left: auto;
+    right: 0;
+    transform: translateX(100%);
+  }
+  [dir="rtl"] .dashboard-sidebar.active {
+    transform: translateX(0);
+  }
+}
+
+/* Flip arrow icons in RTL */
+[dir="rtl"] .fa-arrow-right,
+[dir="rtl"] .fa-chevron-right {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .fa-arrow-left,
+[dir="rtl"] .fa-chevron-left {
+  transform: scaleX(-1);
+}
+
+/* Margins & Paddings direction flip */
+[dir="rtl"] .mr-2, [dir="rtl"] .mr-3, [dir="rtl"] .mr-4 {
+  margin-right: 0 !important;
+  margin-left: 0.5rem !important;
+}
+
+[dir="rtl"] .ml-2, [dir="rtl"] .ml-3, [dir="rtl"] .ml-4 {
+  margin-left: 0 !important;
+  margin-right: 0.5rem !important;
+}
+
+[dir="rtl"] .toast-container {
+  right: auto;
+  left: 2rem;
+}
+
+[dir="rtl"] .toast {
+  animation-name: slideInLeft;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+[dir="rtl"] .toast.success {
+  border-left: none;
+  border-right: 4px solid var(--color-fresh);
+}
+
+[dir="rtl"] .toast.error {
+  border-left: none;
+  border-right: 4px solid #EF4444;
+}

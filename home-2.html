@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroRent - Seasonal Offers & Popular Agricultural Machinery</title>
+  <meta name="description" content="Explore special seasonal tractor rental packages, most-rented agricultural implements, and flexible hourly, daily, and weekly machinery leasing plans." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            forest: '#173D2B',
+            agri: '#347A45',
+            fresh: '#78A85A',
+            cream: '#F5F3E9',
+            earth: '#8B6746',
+            charcoal: '#202820',
+            gold: '#E6AD43',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Manrope', 'sans-serif'],
+            primary: ['Poppins', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/dark-mode.css" />
+  <link rel="stylesheet" href="css/rtl.css" />
+  <link rel="stylesheet" href="css/pages/home-2.css" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+
+</head>
+<body class="bg-white dark:bg-[#121813] text-charcoal dark:text-gray-100 flex flex-col min-h-screen">
+
+  <!-- SITE HEADER / NAVBAR -->
+  <header class="site-header sticky top-0 z-50 bg-white/95 dark:bg-[#121813]/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-all duration-300">
+    <div class="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group shrink-0" title="AgroRent - Tractor & Farm Equipment">
+        <div class="w-11 h-11 rounded-xl bg-forest flex items-center justify-center text-white text-xl shadow-md group-hover:scale-105 transition-transform shrink-0 border border-agri/20 dark:border-white/10">
+          <i class="fa-solid fa-tractor text-gold"></i>
+        </div>
+        <div class="shrink-0 flex flex-col justify-center">
+          <span class="text-2xl font-black tracking-tight text-forest dark:text-white font-heading block leading-none whitespace-nowrap">
+            AGRO<span class="text-agri dark:text-fresh">RENT</span>
+          </span>
+          <span class="block text-[10px] tracking-widest uppercase font-semibold text-muted dark:text-cream/70 leading-tight mt-1 whitespace-nowrap">Tractor & Farm Equipment</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-5 shrink-0">
+        <!-- Home Dropdown -->
+        <div class="dropdown-container relative group py-2">
+          <button class="nav-link flex items-center gap-1 text-xs xl:text-sm font-semibold text-agri font-bold hover:text-agri whitespace-nowrap">
+            <span>Home</span>
+            <i class="fa-solid fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div class="dropdown-menu absolute top-full left-0 w-52 bg-white dark:bg-[#1D2A20] rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 p-2 z-50">
+            <a href="index.html" class="block px-3 py-2 rounded-lg text-sm font-medium hover:bg-cream dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200">
+              <i class="fa-solid fa-house-chimney text-xs mr-2"></i> Home 1 (Main Landing)
+            </a>
+            <a href="home-2.html" class="block px-3 py-2 rounded-lg text-sm font-medium hover:bg-cream dark:hover:bg-slate-800 text-agri font-bold">
+              <i class="fa-solid fa-tags text-xs mr-2"></i> Home 2 (Offers & Popular)
+            </a>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav-link text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap">About Us</a>
+        <a href="equipment.html" class="nav-link text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap">Equipment</a>
+        <a href="rates-pricing.html" class="nav-link text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap"><span class="hidden xl:inline">Rates & </span>Pricing</a>
+        <a href="booking.html" class="nav-link text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap">Booking</a>
+        <a href="contact.html" class="nav-link text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap">Contact Us</a>
+        <div class="nav-auth-item">
+          <a href="login-register.html" class="nav-link flex items-center gap-1.5 text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap" title="Login / Register">
+            <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
+            <span>Login</span>
+          </a>
+        </div>
+        <a href="farmer-dashboard.html" class="nav-link text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap"><span class="hidden 2xl:inline">Farmer </span>Dashboard</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="flex items-center gap-2 lg:gap-2.5 xl:gap-3 shrink-0">
+        <div class="flex items-center gap-1 border-r border-gray-200 dark:border-gray-700 pr-2 lg:pr-2.5 xl:pr-3">
+          <button class="theme-toggle-btn w-9 h-9 rounded-lg text-slate-700 dark:text-slate-200 hover:text-agri hover:bg-slate-100 dark:hover:bg-slate-800 transition text-sm flex items-center justify-center" title="Toggle Theme (Dark / Light)" aria-label="Toggle theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          <button class="rtl-toggle-btn w-9 h-9 rounded-lg text-slate-700 dark:text-slate-200 hover:text-agri hover:bg-slate-100 dark:hover:bg-slate-800 transition text-sm flex items-center justify-center" title="Toggle RTL/LTR" aria-label="Toggle RTL/LTR">
+            <i class="fa-solid fa-globe"></i>
+            <span class="sr-only dir-label">RTL</span>
+          </button>
+        </div>
+        <a href="booking.html" class="hidden sm:inline-flex btn-primary text-xs xl:text-sm py-2 xl:py-2.5 px-3.5 xl:px-5 whitespace-nowrap items-center gap-2 animate-pulse-glow">
+          <i class="fa-solid fa-calendar-check"></i> <span><span class="hidden xl:inline">Book Equipment</span><span class="xl:hidden">Book Now</span></span>
+        </a>
+      </div>
+
+      <button id="mobileMenuToggle" class="lg:hidden p-2 text-slate-700 dark:text-slate-200 hover:text-agri focus:outline-none" aria-label="Open Mobile Menu">
+        <i class="fa-solid fa-bars text-2xl"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV DRAWER -->
+  <div id="mobileNavBackdrop" class="mobile-nav-backdrop"></div>
+  <aside id="mobileNavDrawer" class="mobile-nav-drawer p-6">
+    <div class="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-gray-700 mb-6">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-xl bg-forest flex items-center justify-center text-white text-xl shadow-md shrink-0">
+          <i class="fa-solid fa-tractor text-gold"></i>
+        </div>
+        <div class="flex flex-col justify-center">
+          <span class="text-2xl font-black tracking-tight text-forest dark:text-white font-heading leading-none whitespace-nowrap">
+            AGRO<span class="text-agri dark:text-fresh">RENT</span>
+          </span>
+          <span class="block text-[10px] tracking-widest uppercase font-semibold text-muted dark:text-cream/70 leading-tight mt-1 whitespace-nowrap">Tractor & Farm Equipment</span>
+        </div>
+      </div>
+      <button id="closeMobileMenu" class="text-slate-500 hover:text-slate-800 dark:hover:text-white p-2">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-3 flex-1">
+      <div>
+        <button id="mobileHomeToggle" class="w-full flex items-center justify-between py-2 text-base font-semibold text-agri font-bold">
+          <span>Home Pages</span>
+          <i class="arrow-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
+        </button>
+        <div id="mobileHomeSubmenu" class="hidden pl-4 py-2 space-y-2 border-l-2 border-agri/30 my-1">
+          <a href="index.html" class="block py-1 text-sm font-medium text-slate-600 dark:text-slate-300">Home 1 (Main Landing)</a>
+          <a href="home-2.html" class="block py-1 text-sm font-medium text-agri font-bold">Home 2 (Offers & Popular)</a>
+        </div>
+      </div>
+
+      <a href="about.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">About Us</a>
+      <a href="equipment.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">Equipment</a>
+      <a href="rates-pricing.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">Rates & Pricing</a>
+      <a href="booking.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">Booking</a>
+      <a href="contact.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">Contact Us</a>
+      <a href="login-register.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri flex items-center gap-2">
+        <i class="fa-solid fa-arrow-right-to-bracket text-agri text-sm"></i>
+        <span>Login</span>
+      </a>
+      <a href="farmer-dashboard.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri flex items-center gap-2">
+        <i class="fa-solid fa-gauge-high text-agri text-sm"></i>
+        <span>Farmer Dashboard</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT: HOME 2 -->
+  <main class="flex-1">
+    <!-- ========================================================
+         HERO SECTION: HOME PAGE 2 (RENTAL OFFERS & POPULAR FLEET)
+         ======================================================== -->
+    <section class="relative py-14 lg:py-20 bg-forest text-white overflow-hidden" style="background-image: linear-gradient(135deg, rgba(23, 61, 43, 0.95) 0%, rgba(23, 61, 43, 0.84) 55%, rgba(52, 122, 69, 0.78) 100%), url('assets/images/home-2/agricultural-field.jpg'); background-size: cover; background-position: center;">
+      <div class="container-custom relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          <div class="lg:col-span-7 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold/20 text-gold text-xs font-bold uppercase tracking-wider border border-gold/30">
+              <i class="fa-solid fa-tags"></i>
+              <span>Special Agricultural Machinery Rental Offers</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black font-heading tracking-tight leading-tight">
+              Affordable Tractor & Farm Equipment <span class="text-gold underline decoration-gold/50 decoration-wavy decoration-2">Rental Offers</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-cream/90 leading-relaxed font-normal">
+              Power your seasonal cultivation with top-tier agricultural tractors, rotary tillers, and combine harvesters. Access flexible hourly, daily, and weekly rental rates with guaranteed doorstep farm delivery.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-3.5 pt-2">
+              <a href="booking.html" class="btn-primary py-3 px-6 rounded-xl font-bold flex items-center gap-2 shadow-xl bg-gold text-forest hover:bg-white hover:text-forest transition-all">
+                <i class="fa-solid fa-calendar-check text-agri"></i>
+                <span>Book Equipment Now</span>
+              </a>
+              <a href="#rentalOffers" class="btn-secondary py-3 px-6 rounded-xl font-bold flex items-center gap-2 bg-white/10 text-white border-white/20 hover:bg-white/20 transition-all">
+                <i class="fa-solid fa-percent text-gold"></i>
+                <span>View Rental Offers</span>
+              </a>
+            </div>
+
+            <!-- Stats Ribbon -->
+            <div class="grid grid-cols-3 gap-4 pt-4 border-t border-white/15 text-xs sm:text-sm">
+              <div>
+                <span class="block text-xl sm:text-2xl font-black text-gold font-heading">20+</span>
+                <span class="text-cream/70 text-[11px]">Farm Machines Ready</span>
+              </div>
+              <div>
+                <span class="block text-xl sm:text-2xl font-black text-gold font-heading">120+</span>
+                <span class="text-cream/70 text-[11px]">Rural Service Hubs</span>
+              </div>
+              <div>
+                <span class="block text-xl sm:text-2xl font-black text-gold font-heading">100%</span>
+                <span class="text-cream/70 text-[11px]">On-Time Field Dispatch</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Image Showcase Card -->
+          <div class="lg:col-span-5">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 group">
+              <img src="assets/images/home-2/equipment-rental.jpg" alt="Agricultural Equipment Fleet Ready for Field Dispatch" class="w-full h-80 sm:h-96 object-cover object-center group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/95 dark:bg-slate-900/95 text-slate-800 dark:text-white backdrop-blur-md border border-white/20 shadow-lg">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-[10px] uppercase font-bold text-agri dark:text-fresh tracking-wider block">Featured Power Deal</span>
+                    <h4 class="text-sm font-bold font-heading">John Deere 5310 (55 HP 4WD)</h4>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs text-muted block line-through">₹5,500/day</span>
+                    <span class="text-sm font-black text-agri dark:text-fresh">₹4,800 / day</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 1 – FEATURED RENTAL OFFERS
+         ======================================================== -->
+    <section id="rentalOffers" class="py-12 sm:py-16 bg-slate-50 dark:bg-[#151D16] border-b border-gray-200 dark:border-gray-800">
+      <div class="container-custom">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="section-subtitle">Affordable Machinery Packages</span>
+          <h2 class="section-title">Affordable Tractor Rental Offers</h2>
+          <p class="section-desc">
+            Get reliable agricultural tractors and machinery at affordable rental prices.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          
+          <!-- Offer 1: Hourly Offer -->
+          <div class="rounded-2xl bg-white dark:bg-[#1A261D] border-2 border-agri/30 hover:border-agri shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+            <div class="relative h-52 overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <img src="assets/images/home-2/rental-offers.jpg" alt="Hourly Tractor Rotavator Rental Offer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-forest text-gold text-xs font-bold shadow-md">
+                <i class="fa-solid fa-clock mr-1"></i> Hourly Special
+              </div>
+              <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-white/95 dark:bg-slate-900/95 text-agri font-black text-xs shadow-md">
+                Save 25%
+              </div>
+            </div>
+            <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <span class="text-[11px] font-bold text-agri dark:text-fresh uppercase tracking-wider block mb-1">Rotary Soil Tillage Deal</span>
+                <h3 class="text-lg font-bold font-heading text-forest dark:text-white mb-2">
+                  45 HP Tractor + 6ft Rotavator
+                </h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                  Ideal for quick seedbed pulverization, clod crushing, and green manure mixing on 2 to 5 acre farm holdings.
+                </p>
+                <div class="space-y-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4">
+                  <p><i class="fa-solid fa-check text-agri mr-1.5"></i> 540 RPM PTO Spline Calibrated</p>
+                  <p><i class="fa-solid fa-check text-agri mr-1.5"></i> Fuel-Efficient MDI Diesel Engine</p>
+                </div>
+              </div>
+              <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <div>
+                  <span class="text-[11px] text-muted block line-through">₹600 / hr</span>
+                  <span class="text-lg font-black text-forest dark:text-white">₹450 <span class="text-xs font-normal text-muted">/ hr</span></span>
+                </div>
+                <a href="booking.html?id=rot-48&plan=hourly" class="btn-primary text-xs py-2.5 px-4 rounded-xl font-bold">
+                  Book Hourly
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Offer 2: Daily Offer (Featured) -->
+          <div class="rounded-2xl bg-white dark:bg-[#1A261D] border-2 border-gold shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden group relative">
+            <div class="absolute -top-3 right-5 z-20 px-3 py-0.5 rounded-full bg-gold text-forest text-[10px] font-black uppercase tracking-wider shadow-md">
+              Most Popular Daily Pass
+            </div>
+            <div class="relative h-52 overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <img src="assets/images/about/company-tractor.jpg" alt="Daily Heavy Plowing Tractor Offer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-agri text-white text-xs font-bold shadow-md">
+                <i class="fa-solid fa-calendar-day mr-1"></i> Full Day 10-Hr Pass
+              </div>
+              <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-white/95 dark:bg-slate-900/95 text-forest font-black text-xs shadow-md">
+                Save ₹800/Day
+              </div>
+            </div>
+            <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <span class="text-[11px] font-bold text-gold uppercase tracking-wider block mb-1">Heavy Plowing Package</span>
+                <h3 class="text-lg font-bold font-heading text-forest dark:text-white mb-2">
+                  55 HP 4WD Tractor + Reversible Plough
+                </h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                  Full day heavy soil inversion, deep subsoiling, and wet puddling. Perfect for black cotton and clay farm soils.
+                </p>
+                <div class="space-y-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4">
+                  <p><i class="fa-solid fa-check text-agri mr-1.5"></i> Dual-acting power steering</p>
+                  <p><i class="fa-solid fa-check text-agri mr-1.5"></i> Hydraulic trailer transport included</p>
+                </div>
+              </div>
+              <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <div>
+                  <span class="text-[11px] text-muted block line-through">₹4,000 / day</span>
+                  <span class="text-lg font-black text-forest dark:text-white">₹3,200 <span class="text-xs font-normal text-muted">/ day</span></span>
+                </div>
+                <a href="booking.html?id=tr-johndeere&plan=daily" class="btn-primary text-xs py-2.5 px-4 rounded-xl font-bold bg-gold text-forest hover:bg-forest hover:text-white">
+                  Claim Daily Pass
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Offer 3: Weekly Offer -->
+          <div class="rounded-2xl bg-white dark:bg-[#1A261D] border-2 border-agri/30 hover:border-agri shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+            <div class="relative h-52 overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <img src="assets/images/about/story-tractor.jpg" alt="Weekly Sowing & Harvesting Bundle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-forest text-gold text-xs font-bold shadow-md">
+                <i class="fa-solid fa-calendar-week mr-1"></i> 7-Day Seasonal Pass
+              </div>
+              <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-white/95 dark:bg-slate-900/95 text-agri font-black text-xs shadow-md">
+                Save ₹4,500/Week
+              </div>
+            </div>
+            <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <span class="text-[11px] font-bold text-agri dark:text-fresh uppercase tracking-wider block mb-1">Direct Sowing Bundle</span>
+                <h3 class="text-lg font-bold font-heading text-forest dark:text-white mb-2">
+                  50 HP Tractor + Happy Seeder + Sprayer
+                </h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                  Dedicated 7-day machinery access during peak sowing or harvesting. Guarantees machine availability at your farm gate.
+                </p>
+                <div class="space-y-1.5 text-xs text-slate-500 dark:text-slate-400 mb-4">
+                  <p><i class="fa-solid fa-check text-agri mr-1.5"></i> Priority replacement guarantee</p>
+                  <p><i class="fa-solid fa-check text-agri mr-1.5"></i> Optional certified operator included</p>
+                </div>
+              </div>
+              <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <div>
+                  <span class="text-[11px] text-muted block line-through">₹23,000 / week</span>
+                  <span class="text-lg font-black text-forest dark:text-white">₹18,500 <span class="text-xs font-normal text-muted">/ wk</span></span>
+                </div>
+                <a href="booking.html?id=tr-swaraj855&plan=weekly" class="btn-primary text-xs py-2.5 px-4 rounded-xl font-bold">
+                  Book Weekly Pack
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 2 – POPULAR TRACTORS
+         ======================================================== -->
+    <section class="py-12 sm:py-16 bg-white dark:bg-[#121813]">
+      <div class="container-custom">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="section-subtitle">Core Machinery Fleet</span>
+          <h2 class="section-title">Popular Tractors</h2>
+          <p class="section-desc">
+            High-efficiency agricultural tractors engineered for exceptional fuel economy, robust hydraulics, and deep soil pulling power.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- 1. Mini Tractor -->
+          <div class="rounded-2xl bg-slate-50 dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="relative h-48 overflow-hidden bg-slate-200 dark:bg-slate-700">
+                <img src="assets/images/equipment/mini-tractor.jpg" alt="Mini Tractor for Orchards and Sugarcane" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-forest text-gold text-xs font-bold">22 HP</span>
+              </div>
+              <div class="p-5">
+                <span class="text-[10px] font-bold text-agri dark:text-fresh uppercase tracking-wider block mb-1">Compact Model</span>
+                <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5">Mini Tractor</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                  Agile, narrow chassis tractor perfect for orchard tilling, vineyard maintenance, and inter-row sugarcane weeding.
+                </p>
+                <div class="text-xs text-slate-500 dark:text-slate-400 space-y-1">
+                  <p><strong>Capacity:</strong> 1-3 Acres / day</p>
+                  <p><strong>Fuel Type:</strong> Ultra-Low Diesel</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-5 pt-0">
+              <div class="pt-3 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between">
+                <span class="text-sm font-black text-forest dark:text-white">₹450 <span class="text-xs font-normal text-muted">/ hr</span></span>
+                <a href="booking.html?id=mini-245" class="btn-primary text-xs py-2 px-3.5 rounded-lg font-bold">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Utility Tractor -->
+          <div class="rounded-2xl bg-slate-50 dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="relative h-48 overflow-hidden bg-slate-200 dark:bg-slate-700">
+                <img src="assets/images/equipment/tractor.jpg" alt="Utility Tractor for All-Round Farm Work" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-forest text-gold text-xs font-bold">45 HP</span>
+              </div>
+              <div class="p-5">
+                <span class="text-[10px] font-bold text-agri dark:text-fresh uppercase tracking-wider block mb-1">Multi-Purpose</span>
+                <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5">Utility Tractor</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                  India's favorite 45 HP farm workhorse for cultivator tilling, rotavating, grain haulage, and seasonal sowing.
+                </p>
+                <div class="text-xs text-slate-500 dark:text-slate-400 space-y-1">
+                  <p><strong>Capacity:</strong> 5-8 Acres / day</p>
+                  <p><strong>Hydraulics:</strong> 1,600 kg Lift</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-5 pt-0">
+              <div class="pt-3 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between">
+                <span class="text-sm font-black text-forest dark:text-white">₹550 <span class="text-xs font-normal text-muted">/ hr</span></span>
+                <a href="booking.html?id=tr-575" class="btn-primary text-xs py-2 px-3.5 rounded-lg font-bold">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. 4WD Tractor -->
+          <div class="rounded-2xl bg-slate-50 dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="relative h-48 overflow-hidden bg-slate-200 dark:bg-slate-700">
+                <img src="assets/images/home-2/popular-tractor.jpg" alt="4WD Tractor for Deep Traction" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-forest text-gold text-xs font-bold">55 HP 4WD</span>
+              </div>
+              <div class="p-5">
+                <span class="text-[10px] font-bold text-agri dark:text-fresh uppercase tracking-wider block mb-1">High Traction</span>
+                <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5">4WD Tractor</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                  Four-wheel drive traction preventing tire slippage in wet paddy fields, slippery slopes, and hard clay soil.
+                </p>
+                <div class="text-xs text-slate-500 dark:text-slate-400 space-y-1">
+                  <p><strong>Capacity:</strong> 8-12 Acres / day</p>
+                  <p><strong>Steering:</strong> Dual-Acting Power</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-5 pt-0">
+              <div class="pt-3 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between">
+                <span class="text-sm font-black text-forest dark:text-white">₹750 <span class="text-xs font-normal text-muted">/ hr</span></span>
+                <a href="booking.html?id=tr-johndeere" class="btn-primary text-xs py-2 px-3.5 rounded-lg font-bold">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Heavy-Duty Tractor -->
+          <div class="rounded-2xl bg-slate-50 dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="relative h-48 overflow-hidden bg-slate-200 dark:bg-slate-700">
+                <img src="assets/images/home-2/heavy-tractor.jpg" alt="Heavy-Duty Agricultural Tractor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-forest text-gold text-xs font-bold">60 HP</span>
+              </div>
+              <div class="p-5">
+                <span class="text-[10px] font-bold text-agri dark:text-fresh uppercase tracking-wider block mb-1">Heavy Soil Master</span>
+                <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5">Heavy-Duty Tractor</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                  High-drawbar horsepower engineered for subsoiling, deep trenching, laser leveling, and heavy mandi trailer haulage.
+                </p>
+                <div class="text-xs text-slate-500 dark:text-slate-400 space-y-1">
+                  <p><strong>Capacity:</strong> 12-16 Acres / day</p>
+                  <p><strong>Gears:</strong> Multi-Speed Dual Clutch</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-5 pt-0">
+              <div class="pt-3 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between">
+                <span class="text-sm font-black text-forest dark:text-white">₹850 <span class="text-xs font-normal text-muted">/ hr</span></span>
+                <a href="booking.html?id=tr-swaraj855" class="btn-primary text-xs py-2 px-3.5 rounded-lg font-bold">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 3 – POPULAR FARM EQUIPMENT
+         ======================================================== -->
+    <section class="py-12 sm:py-16 bg-slate-50 dark:bg-[#151D16] border-y border-gray-200 dark:border-gray-800">
+      <div class="container-custom">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="section-subtitle">Tractor Implements & Attachments</span>
+          <h2 class="section-title">Popular Farm Equipment</h2>
+          <p class="section-desc">
+            Standardized Category I & II 3-point hitch implements engineered for precision tillage, seeding, spraying, and grain transport.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- 1. Rotavator -->
+          <div class="p-5 rounded-2xl bg-white dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="relative h-44 rounded-xl overflow-hidden mb-4 bg-slate-100 dark:bg-slate-800">
+                <img src="assets/images/equipment/rotavator.jpg" alt="Agricultural Rotavator" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-forest text-gold text-xs font-bold">6 Feet</span>
+              </div>
+              <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5 flex items-center justify-between">
+                <span>Rotavator</span>
+                <i class="fa-solid fa-gear text-agri text-sm"></i>
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                Multi-speed rotary tiller with boron steel blades producing fine, weed-free seedbeds in a single pass.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 dark:border-slate-700/70 flex items-center justify-between">
+              <span class="text-xs font-bold text-agri dark:text-fresh">From ₹350 / hr</span>
+              <a href="booking.html?id=rot-48" class="text-xs font-bold text-forest dark:text-white hover:text-agri flex items-center gap-1">
+                Rent Rotavator <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 2. Cultivator -->
+          <div class="p-5 rounded-2xl bg-white dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="relative h-44 rounded-xl overflow-hidden mb-4 bg-slate-100 dark:bg-slate-800">
+                <img src="assets/images/equipment/cultivator.jpg" alt="Spring-Loaded Field Cultivator" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-forest text-gold text-xs font-bold">9 Tynes</span>
+              </div>
+              <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5 flex items-center justify-between">
+                <span>Cultivator</span>
+                <i class="fa-solid fa-bars-staggered text-agri text-sm"></i>
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                Spring-loaded tyne cultivator for secondary aeration, soil root-loosening, and weed root extraction.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 dark:border-slate-700/70 flex items-center justify-between">
+              <span class="text-xs font-bold text-agri dark:text-fresh">From ₹300 / hr</span>
+              <a href="booking.html?id=cult-9" class="text-xs font-bold text-forest dark:text-white hover:text-agri flex items-center gap-1">
+                Rent Cultivator <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 3. Seed Drill -->
+          <div class="p-5 rounded-2xl bg-white dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="relative h-44 rounded-xl overflow-hidden mb-4 bg-slate-100 dark:bg-slate-800">
+                <img src="assets/images/equipment/seed-drill.jpg" alt="Zero-Till Seed Drill" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-forest text-gold text-xs font-bold">Zero-Till</span>
+              </div>
+              <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5 flex items-center justify-between">
+                <span>Seed Drill</span>
+                <i class="fa-solid fa-seedling text-agri text-sm"></i>
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                Precision seed-cum-fertilizer drill placing seeds at calibrated depth with uniform row spacing.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 dark:border-slate-700/70 flex items-center justify-between">
+              <span class="text-xs font-bold text-agri dark:text-fresh">From ₹400 / hr</span>
+              <a href="booking.html?id=seed-super" class="text-xs font-bold text-forest dark:text-white hover:text-agri flex items-center gap-1">
+                Rent Seed Drill <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 4. Tractor Trailer -->
+          <div class="p-5 rounded-2xl bg-white dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="relative h-44 rounded-xl overflow-hidden mb-4 bg-slate-100 dark:bg-slate-800">
+                <img src="assets/images/equipment/trailer.jpg" alt="Hydraulic Tipping Tractor Trailer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-forest text-gold text-xs font-bold">8 Tonnes</span>
+              </div>
+              <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5 flex items-center justify-between">
+                <span>Tractor Trailer</span>
+                <i class="fa-solid fa-trailer text-agri text-sm"></i>
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                Heavy-duty hydraulic tipping trailer with reinforced leaf springs for grain haulage and mandi transport.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 dark:border-slate-700/70 flex items-center justify-between">
+              <span class="text-xs font-bold text-agri dark:text-fresh">From ₹300 / hr</span>
+              <a href="booking.html?id=trail-8t" class="text-xs font-bold text-forest dark:text-white hover:text-agri flex items-center gap-1">
+                Rent Trailer <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 5. Power Sprayer -->
+          <div class="p-5 rounded-2xl bg-white dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="relative h-44 rounded-xl overflow-hidden mb-4 bg-slate-100 dark:bg-slate-800">
+                <img src="assets/images/equipment/sprayer.jpg" alt="Tractor-Mounted Power Sprayer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-forest text-gold text-xs font-bold">500 Liters</span>
+              </div>
+              <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5 flex items-center justify-between">
+                <span>Power Sprayer</span>
+                <i class="fa-solid fa-spray-can text-agri text-sm"></i>
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                High-pressure PTO-driven boom sprayer delivering fine droplet misting for crop protection and foliar feed.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 dark:border-slate-700/70 flex items-center justify-between">
+              <span class="text-xs font-bold text-agri dark:text-fresh">From ₹350 / hr</span>
+              <a href="booking.html?id=spray-500" class="text-xs font-bold text-forest dark:text-white hover:text-agri flex items-center gap-1">
+                Rent Sprayer <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 6. Disc Harrow -->
+          <div class="p-5 rounded-2xl bg-white dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="relative h-44 rounded-xl overflow-hidden mb-4 bg-slate-100 dark:bg-slate-800">
+                <img src="assets/images/equipment/disc-harrow.jpg" alt="Heavy-Duty Disc Harrow" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-forest text-gold text-xs font-bold">16 Discs</span>
+              </div>
+              <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5 flex items-center justify-between">
+                <span>Disc Harrow</span>
+                <i class="fa-solid fa-compact-disc text-agri text-sm"></i>
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                Trailed offset disc harrow with high-carbon notched steel discs for heavy stubble cutting and clod breaking.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 dark:border-slate-700/70 flex items-center justify-between">
+              <span class="text-xs font-bold text-agri dark:text-fresh">From ₹350 / hr</span>
+              <a href="booking.html?id=harrow-disc" class="text-xs font-bold text-forest dark:text-white hover:text-agri flex items-center gap-1">
+                Rent Disc Harrow <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 4 – COMPLETE FARMING SOLUTIONS
+         ======================================================== -->
+    <section class="py-12 sm:py-16 bg-white dark:bg-[#121813]">
+      <div class="container-custom">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="section-subtitle">End-to-End Farm Mechanization</span>
+          <h2 class="section-title">Complete Farming Solutions</h2>
+          <p class="section-desc">
+            Tailored machinery packages designed around every critical phase of your seasonal crop cycle.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          
+          <!-- 1. Land Preparation -->
+          <div class="rounded-2xl bg-cream/40 dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="relative h-44 overflow-hidden bg-slate-200 dark:bg-slate-700">
+                <img src="assets/images/home-2/land-preparation.jpg" alt="Land Preparation Machinery" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-forest text-gold text-xs font-bold">Step 1</span>
+              </div>
+              <div class="p-4">
+                <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5">Land Preparation</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                  Deep tillage, hardpan inversion, and precision laser leveling with 50-75 HP 4WD tractors and reversible MB ploughs.
+                </p>
+              </div>
+            </div>
+            <div class="p-4 pt-0">
+              <span class="text-[11px] font-bold text-agri dark:text-fresh flex items-center gap-1">
+                <i class="fa-solid fa-check"></i> 50-75 HP 4WD Tractors
+              </span>
+            </div>
+          </div>
+
+          <!-- 2. Soil Cultivation -->
+          <div class="rounded-2xl bg-cream/40 dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="relative h-44 overflow-hidden bg-slate-200 dark:bg-slate-700">
+                <img src="assets/images/about/hero-tractor.jpg" alt="Soil Cultivation Rotavator" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-forest text-gold text-xs font-bold">Step 2</span>
+              </div>
+              <div class="p-4">
+                <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5">Soil Cultivation</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                  Secondary clod pulverization and weed mixing using multi-speed rotavators and 9-tyne spring cultivators.
+                </p>
+              </div>
+            </div>
+            <div class="p-4 pt-0">
+              <span class="text-[11px] font-bold text-agri dark:text-fresh flex items-center gap-1">
+                <i class="fa-solid fa-check"></i> Rotavators & Cultivators
+              </span>
+            </div>
+          </div>
+
+          <!-- 3. Seed Sowing -->
+          <div class="rounded-2xl bg-cream/40 dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="relative h-44 overflow-hidden bg-slate-200 dark:bg-slate-700">
+                <img src="assets/images/about/mission-rotavator.jpg" alt="Seed Sowing Machine" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-forest text-gold text-xs font-bold">Step 3</span>
+              </div>
+              <div class="p-4">
+                <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5">Seed Sowing</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                  Direct zero-till sowing and automatic seed-cum-fertilizer drilling ensuring calibrated spacing and zero stubble burn.
+                </p>
+              </div>
+            </div>
+            <div class="p-4 pt-0">
+              <span class="text-[11px] font-bold text-agri dark:text-fresh flex items-center gap-1">
+                <i class="fa-solid fa-check"></i> Happy Seeders & Drills
+              </span>
+            </div>
+          </div>
+
+          <!-- 4. Crop Spraying -->
+          <div class="rounded-2xl bg-cream/40 dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="relative h-44 overflow-hidden bg-slate-200 dark:bg-slate-700">
+                <img src="assets/images/home-2/crop-spraying.jpg" alt="Tractor Crop Spraying in Agricultural Field" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-forest text-gold text-xs font-bold">Step 4</span>
+              </div>
+              <div class="p-4">
+                <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5">Crop Spraying</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                  12-meter hydraulic boom sprayers delivering uniform nutrient and pesticide misting without crop trampling.
+                </p>
+              </div>
+            </div>
+            <div class="p-4 pt-0">
+              <span class="text-[11px] font-bold text-agri dark:text-fresh flex items-center gap-1">
+                <i class="fa-solid fa-check"></i> 500L Boom Sprayers
+              </span>
+            </div>
+          </div>
+
+          <!-- 5. Harvesting Support -->
+          <div class="rounded-2xl bg-cream/40 dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="relative h-44 overflow-hidden bg-slate-200 dark:bg-slate-700">
+                <img src="assets/images/home-2/harvesting-solution.jpg" alt="Harvesting Support Machinery" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-forest text-gold text-xs font-bold">Step 5</span>
+              </div>
+              <div class="p-4">
+                <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5">Harvesting Support</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                  Multi-crop combine harvesting with under 1% grain loss and fast hydraulic trailer haulage directly to market.
+                </p>
+              </div>
+            </div>
+            <div class="p-4 pt-0">
+              <span class="text-[11px] font-bold text-agri dark:text-fresh flex items-center gap-1">
+                <i class="fa-solid fa-check"></i> Harvesters & Trailers
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 5 – WHY CHOOSE OUR RENTAL SERVICE?
+         ======================================================== -->
+    <section class="py-12 sm:py-16 bg-slate-50 dark:bg-[#151D16] border-y border-gray-200 dark:border-gray-800">
+      <div class="container-custom">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="section-subtitle">Rental Benefits</span>
+          <h2 class="section-title">Why Choose Our Rental Service?</h2>
+          <p class="section-desc">
+            Purpose-built agricultural machinery rentals designed around real farming seasons, tight weather windows, and farmer affordability.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          
+          <!-- 1. Affordable Rental Prices -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center">
+            <div class="w-14 h-14 rounded-2xl bg-agri/10 text-agri dark:text-fresh flex items-center justify-center text-2xl mb-4 shadow-sm">
+              <i class="fa-solid fa-indian-rupee-sign"></i>
+            </div>
+            <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-2">
+              Affordable Rental Prices
+            </h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Transparent, pocket-friendly rates starting from ₹450/hr with zero hidden fuel or maintenance surcharges.
+            </p>
+          </div>
+
+          <!-- 2. Well-Maintained Tractors -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center">
+            <div class="w-14 h-14 rounded-2xl bg-agri/10 text-agri dark:text-fresh flex items-center justify-center text-2xl mb-4 shadow-sm">
+              <i class="fa-solid fa-screwdriver-wrench"></i>
+            </div>
+            <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-2">
+              Well-Maintained Tractors
+            </h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Every tractor undergoes a strict 50-point mechanical check—hydraulics, oils, tyres, and PTO splines.
+            </p>
+          </div>
+
+          <!-- 3. Flexible Rental Periods -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center">
+            <div class="w-14 h-14 rounded-2xl bg-agri/10 text-agri dark:text-fresh flex items-center justify-center text-2xl mb-4 shadow-sm">
+              <i class="fa-solid fa-calendar-days"></i>
+            </div>
+            <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-2">
+              Flexible Rental Periods
+            </h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Hourly tilling, daily sowing, or weekly seasonal harvest blocks tailored to your field schedules.
+            </p>
+          </div>
+
+          <!-- 4. Easy Online Booking -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center">
+            <div class="w-14 h-14 rounded-2xl bg-agri/10 text-agri dark:text-fresh flex items-center justify-center text-2xl mb-4 shadow-sm">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+            <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-2">
+              Easy Online Booking
+            </h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Reserve equipment in under 2 minutes online or place a single voice call to our toll-free farmer desk.
+            </p>
+          </div>
+
+          <!-- 5. Reliable Equipment Support -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center">
+            <div class="w-14 h-14 rounded-2xl bg-agri/10 text-agri dark:text-fresh flex items-center justify-center text-2xl mb-4 shadow-sm">
+              <i class="fa-solid fa-truck-medical"></i>
+            </div>
+            <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-2">
+              Reliable Equipment Support
+            </h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              24/7 on-call farm assistance with emergency mobile mechanic vans reaching your field within 2 hours.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 6 – HOW IT WORKS
+         ======================================================== -->
+    <section class="py-12 sm:py-16 bg-white dark:bg-[#121813]">
+      <div class="container-custom">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="section-subtitle">Simple 4-Step Process</span>
+          <h2 class="section-title">How It Works</h2>
+          <p class="section-desc">
+            A fast, hassle-free process to get high-performance farm machinery working on your fields.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          
+          <!-- Step 1 -->
+          <div class="p-6 rounded-2xl bg-cream/40 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 rounded-2xl bg-agri text-white flex items-center justify-center text-2xl mb-4 shadow-md shadow-forest/20">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <span class="text-xs font-bold text-agri dark:text-fresh uppercase tracking-widest mb-1">Step 01</span>
+            <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5">Browse Equipment</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Browse our catalog of 20+ verified tractors, implements, and combine harvesters.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="p-6 rounded-2xl bg-cream/40 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 rounded-2xl bg-agri text-white flex items-center justify-center text-2xl mb-4 shadow-md shadow-forest/20">
+              <i class="fa-solid fa-tractor"></i>
+            </div>
+            <span class="text-xs font-bold text-agri dark:text-fresh uppercase tracking-widest mb-1">Step 02</span>
+            <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5">Select Your Tractor</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Choose the exact horsepower and matching implement needed for your acreage and soil type.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="p-6 rounded-2xl bg-cream/40 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 rounded-2xl bg-agri text-white flex items-center justify-center text-2xl mb-4 shadow-md shadow-forest/20">
+              <i class="fa-solid fa-calendar-check"></i>
+            </div>
+            <span class="text-xs font-bold text-agri dark:text-fresh uppercase tracking-widest mb-1">Step 03</span>
+            <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5">Choose Rental Date</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Pick your rental schedule—hourly, daily, or weekly—and choose self-drive or certified driver.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="p-6 rounded-2xl bg-cream/40 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center hover:shadow-xl transition-all duration-300">
+            <div class="w-16 h-16 rounded-2xl bg-agri text-white flex items-center justify-center text-2xl mb-4 shadow-md shadow-forest/20">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <span class="text-xs font-bold text-agri dark:text-fresh uppercase tracking-widest mb-1">Step 04</span>
+            <h3 class="text-base font-bold font-heading text-forest dark:text-white mb-1.5">Confirm Your Booking</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Confirm your booking instantly and receive doorstep delivery on a hydraulic trailer carrier.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 7 – FARMER TESTIMONIALS
+         ======================================================== -->
+    <section class="py-12 sm:py-16 bg-slate-50 dark:bg-[#151D16] border-y border-gray-200 dark:border-gray-800">
+      <div class="container-custom">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="section-subtitle">Trusted by Farmers</span>
+          <h2 class="section-title">Farmer Testimonials</h2>
+          <p class="section-desc">
+            Real feedback from progressive farmers who power their seasonal cultivation with AgroRent machinery.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Review 1 -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-1 text-gold text-xs mb-3">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic mb-4">
+                "Renting the John Deere 5310 4WD tractor for our paddy puddling season was the best decision. The machine had immense pull in deep water and zero breakdown. Delivered to my field gate right at 6 AM."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+              <img src="assets/images/about/farmer-1.jpg" alt="Sardar Harpreet Singh" class="w-10 h-10 rounded-full object-cover border-2 border-agri" />
+              <div>
+                <h4 class="text-xs font-bold text-forest dark:text-white">Harpreet Singh</h4>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">Amritsar, Punjab</p>
+                <span class="text-[10px] text-agri font-semibold">30 Acres Wheat & Paddy</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-1 text-gold text-xs mb-3">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic mb-4">
+                "We rented a Sonalika mini tractor and 4-foot rotavator for sugarcane inter-row weeding. Booking online took only 2 minutes, and the affordable daily rates saved us ₹25,000 compared to manual labor."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+              <img src="assets/images/about/farmer-2.jpg" alt="Devendra Rao" class="w-10 h-10 rounded-full object-cover border-2 border-agri" />
+              <div>
+                <h4 class="text-xs font-bold text-forest dark:text-white">Devendra Rao</h4>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">Kolhapur, Maharashtra</p>
+                <span class="text-[10px] text-agri font-semibold">15 Acres Sugarcane</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-[#1A261D] border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-1 text-gold text-xs mb-3">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic mb-4">
+                "The Dasmesh zero-till seed drill was in pristine mechanical condition. Seed placement and fertilizer banding were 100% uniform. Their 24/7 customer support gave us complete confidence."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+              <img src="assets/images/about/farmer-3.jpg" alt="Jagdish Chander" class="w-10 h-10 rounded-full object-cover border-2 border-agri" />
+              <div>
+                <h4 class="text-xs font-bold text-forest dark:text-white">Jagdish Chander</h4>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">Hisar, Haryana</p>
+                <span class="text-[10px] text-agri font-semibold">22 Acres Mustard & Cotton</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 8 – FINAL BOOKING CTA
+         ======================================================== -->
+    <section class="relative py-14 lg:py-20 overflow-hidden">
+      <img src="assets/images/about/cta-tractor.jpg" alt="Agricultural field with modern tractor" class="absolute inset-0 w-full h-full object-cover object-center" />
+      <div class="absolute inset-0 bg-gradient-to-r from-forest/95 via-forest/90 to-forest/80 dark:from-[#0b140e]/95 dark:via-[#0b140e]/90 dark:to-[#0b140e]/80"></div>
+
+      <div class="container-custom relative z-10 text-center max-w-3xl mx-auto text-white">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold/20 text-gold text-xs font-bold mb-4 border border-gold/30">
+          <i class="fa-solid fa-tractor"></i>
+          <span>Seasonal Machinery Readiness</span>
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black font-heading text-white leading-tight mb-3">
+          Make Your Farming Easier with the Right Equipment
+        </h2>
+
+        <p class="text-sm sm:text-base text-cream/90 leading-relaxed font-normal mb-6 max-w-2xl mx-auto">
+          Rent quality tractors and agricultural machinery for your farming needs at affordable prices.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-3.5">
+          <a href="booking.html" class="btn-primary py-3 px-7 rounded-xl font-bold flex items-center gap-2.5 shadow-xl bg-gold text-forest hover:bg-white hover:text-forest transition-all text-sm">
+            <i class="fa-solid fa-calendar-check text-agri"></i>
+            <span>Book Equipment Now</span>
+          </a>
+          <a href="equipment.html" class="py-3 px-7 rounded-xl font-bold flex items-center gap-2.5 bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-all text-sm">
+            <i class="fa-solid fa-list-check text-gold"></i>
+            <span>Explore Full Catalog</span>
+          </a>
+        </div>
+
+        <div class="mt-6 inline-flex items-center gap-2 text-xs text-cream/80 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm border border-white/15">
+          <i class="fa-solid fa-phone text-gold"></i>
+          <span>Toll-Free Farmer Booking Helpline: <a href="tel:18004567890" class="font-bold text-white hover:text-gold underline ml-1">1800 456 7890</a></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+    <!-- FOOTER -->
+  <footer class="bg-forest text-white pt-16 pb-8 border-t border-white/10">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        <!-- Col 1: Brand & Socials -->
+        <div class="lg:col-span-2">
+          <!-- Brand Logo -->
+          <a href="index.html" class="flex items-center gap-3 mb-4 group inline-flex" title="AgroRent - Tractor & Farm Equipment">
+            <div class="w-11 h-11 rounded-xl bg-forest border border-white/20 flex items-center justify-center text-white text-xl shadow-md group-hover:scale-105 transition-transform shrink-0">
+              <i class="fa-solid fa-tractor text-gold"></i>
+            </div>
+            <div class="shrink-0 flex flex-col justify-center">
+              <span class="text-2xl font-black font-heading text-white tracking-tight leading-none whitespace-nowrap">
+                AGRO<span class="text-fresh">RENT</span>
+              </span>
+              <span class="block text-[10px] tracking-widest uppercase font-semibold text-cream/70 leading-tight mt-1 whitespace-nowrap">Tractor & Farm Equipment</span>
+            </div>
+          </a>
+          <p class="text-sm text-cream/70 mb-6 max-w-sm leading-relaxed">
+            India's dedicated agricultural equipment and tractor rental marketplace. Providing farmers with reliable, fuel-efficient machinery and expert drivers.
+          </p>
+          <div class="flex items-center gap-3 text-gold text-lg">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-forest transition" title="Follow AgroRent on Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://wa.me/911800456789" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-forest transition" title="Chat on WhatsApp (+91 1800 456 7890)" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-forest transition" title="Watch Machinery Videos on YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-forest transition" title="Follow AgroRent on Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation -->
+        <div>
+          <h4 class="font-bold text-white uppercase tracking-wider text-xs font-heading mb-4">Navigation</h4>
+          <ul class="space-y-2.5 text-sm text-cream/80">
+            <li><a href="index.html" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[10px] text-fresh"></i> Home Page 1</a></li>
+            <li><a href="home-2.html" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[10px] text-fresh"></i> Home Page 2 (Offers)</a></li>
+            <li><a href="about.html" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[10px] text-fresh"></i> About Us</a></li>
+            <li><a href="equipment.html" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[10px] text-fresh"></i> Equipment Catalog</a></li>
+            <li><a href="rates-pricing.html" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[10px] text-fresh"></i> Rates & Pricing</a></li>
+            <li><a href="booking.html" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[10px] text-fresh"></i> Book Equipment</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Fleet Categories -->
+        <div>
+          <h4 class="font-bold text-white uppercase tracking-wider text-xs font-heading mb-4">Fleet Categories</h4>
+          <ul class="space-y-2.5 text-sm text-cream/80">
+            <li><a href="equipment.html?cat=Tractors" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-tractor text-[10px] text-gold"></i> Heavy Tractors</a></li>
+            <li><a href="equipment.html?cat=Mini%20Tractors" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-tractor text-[10px] text-gold"></i> Mini Tractors</a></li>
+            <li><a href="equipment.html?cat=Combine%20Harvesters" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-wheat-awn text-[10px] text-gold"></i> Combine Harvesters</a></li>
+            <li><a href="equipment.html?cat=Rotavators" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-gear text-[10px] text-gold"></i> Rotavators & Tillers</a></li>
+            <li><a href="equipment.html?cat=Seed%20Drills" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-seedling text-[10px] text-gold"></i> Happy Seeders</a></li>
+            <li><a href="equipment.html?cat=Agricultural%20Sprayers" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-spray-can text-[10px] text-gold"></i> Boom Sprayers</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Farmer Support Links & Icons -->
+        <div>
+          <h4 class="font-bold text-white uppercase tracking-wider text-xs font-heading mb-4">Farmer Support</h4>
+          <div class="space-y-3 text-sm text-cream/80">
+            <a href="tel:18004567890" class="flex items-start gap-2.5 hover:text-gold transition group block" title="Call Toll-free Helpline: 1800 456 7890">
+              <i class="fa-solid fa-phone text-gold mt-1 group-hover:scale-110 transition-transform"></i>
+              <span><strong class="text-white block group-hover:text-gold transition">1800 456 7890</strong><span class="text-xs text-cream/60">Toll-free 24/7 Helpline</span></span>
+            </a>
+            <a href="mailto:support@agrorent.in" class="flex items-start gap-2.5 hover:text-gold transition group block" title="Email Us: support@agrorent.in">
+              <i class="fa-solid fa-envelope text-gold mt-1 group-hover:scale-110 transition-transform"></i>
+              <span><strong class="text-white block group-hover:text-gold transition">support@agrorent.in</strong><span class="text-xs text-cream/60">Online Assistance Desk</span></span>
+            </a>
+            <a href="contact.html#businessHours" class="flex items-start gap-2.5 hover:text-gold transition group block" title="View Business Operating Hours">
+              <i class="fa-solid fa-clock text-gold mt-1 group-hover:scale-110 transition-transform"></i>
+              <span><strong class="text-white block group-hover:text-gold transition">Mon - Sun: 6:00 AM - 9:00 PM</strong><span class="text-xs text-cream/60">Hub Operating Hours</span></span>
+            </a>
+            <a href="contact.html#mapLocation" class="flex items-start gap-2.5 hover:text-gold transition group block" title="View Hub Location on Map">
+              <i class="fa-solid fa-location-dot text-gold mt-1 group-hover:scale-110 transition-transform"></i>
+              <span><strong class="text-white block group-hover:text-gold transition">Kisan Vikas Hub, Ludhiana</strong><span class="text-xs text-cream/60">Punjab 141004 (View Map)</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-cream/60 gap-4">
+        <p>? 2026 AgroRent Equipment Technologies Pvt. Ltd. All rights reserved.</p>
+        <div class="flex flex-wrap items-center gap-4 sm:gap-6">
+          <a href="farmer-dashboard.html" class="hover:text-gold transition flex items-center gap-1"><i class="fa-solid fa-gauge-high text-[10px]"></i> Farmer Portal</a>
+          <a href="login-register.html" class="hover:text-gold transition flex items-center gap-1"><i class="fa-solid fa-arrow-right-to-bracket text-[10px]"></i> Account Login</a>
+          <a href="contact.html" class="hover:text-gold transition flex items-center gap-1"><i class="fa-solid fa-headset text-[10px]"></i> Contact Us</a>
+          <a href="rates-pricing.html#faq" class="hover:text-gold transition flex items-center gap-1"><i class="fa-solid fa-circle-question text-[10px]"></i> Rental FAQ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTopBtn" class="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-agri text-white shadow-xl flex items-center justify-center text-lg z-40 opacity-0 invisible translate-y-4 transition-all duration-300 hover:bg-forest" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/theme.js"></script>
+  <script src="js/rtl.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/equipment.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

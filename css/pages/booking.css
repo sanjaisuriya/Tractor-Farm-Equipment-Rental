@@ -1,0 +1,44 @@
+/* Booking Page Custom Styling */
+.booking-summary-card {
+  position: sticky;
+  top: 90px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.625rem 0;
+  border-bottom: 1px dashed var(--border-color);
+  font-size: 0.95rem;
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.summary-total {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-agri);
+}
+
+/* Booking FAQ Accordion */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary {
+  user-select: none;
+}
+
+details[open] summary .fa-chevron-down {
+  transform: rotate(180deg);
+  transition: transform 0.25s ease;
+}
+

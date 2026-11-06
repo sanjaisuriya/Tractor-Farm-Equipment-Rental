@@ -1,0 +1,154 @@
+/* ==========================================================================
+   TRACTOR & FARM EQUIPMENT RENTAL - DARK MODE
+   High-contrast, eye-friendly agricultural dark palette
+   ========================================================================== */
+
+html.dark {
+  --bg-primary: #121813;
+  --bg-secondary: #17221A;
+  --bg-card: #1D2A20;
+  --bg-subtle: #243528;
+  --text-main: #E8F0E8;
+  --text-muted: #A3B7A4;
+  --border-color: #2D3E31;
+  --color-cream: #223225;
+  --color-forest: #A3D89E; /* Highlighted for dark bg */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 20px 30px -10px rgba(0, 0, 0, 0.7);
+}
+
+html.dark body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+}
+
+html.dark .site-header {
+  background-color: rgba(18, 24, 19, 0.96);
+  border-color: #2D3E31;
+}
+
+html.dark .nav-link {
+  color: #E2E8F0;
+}
+
+html.dark .nav-link:hover {
+  color: var(--color-fresh);
+}
+
+html.dark .section-title {
+  color: #E8F0E8;
+}
+
+html.dark .equipment-card,
+html.dark .feature-box,
+html.dark .modal-content,
+html.dark .dashboard-sidebar,
+html.dark .mobile-nav-drawer {
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+html.dark .form-input,
+html.dark .form-select,
+html.dark .form-textarea {
+  background-color: #17221A;
+  border-color: #2D3E31;
+  color: #E8F0E8;
+}
+
+html.dark .form-input:focus,
+html.dark .form-select:focus,
+html.dark .form-textarea:focus {
+  border-color: var(--color-fresh);
+  box-shadow: 0 0 0 3px rgba(120, 168, 90, 0.25);
+}
+
+html.dark .form-label {
+  color: #C8DEC9;
+}
+
+html.dark .btn-secondary {
+  background-color: #1D2A20;
+  color: #E8F0E8;
+  border-color: #2D3E31;
+}
+
+html.dark .btn-secondary:hover {
+  background-color: #243528;
+  border-color: var(--color-fresh);
+  color: #FFFFFF;
+}
+
+html.dark .table thead th {
+  background-color: #17221A;
+  color: #A3B7A4;
+  border-bottom: 2px solid #2D3E31;
+}
+
+html.dark .table tbody td {
+  border-color: #2D3E31;
+  color: #E8F0E8;
+}
+
+html.dark .badge-available {
+  background-color: rgba(46, 125, 50, 0.25);
+  color: #81C784;
+  border-color: rgba(76, 175, 80, 0.4);
+}
+
+html.dark .badge-booked {
+  background-color: rgba(198, 40, 40, 0.25);
+  color: #E57373;
+  border-color: rgba(239, 83, 80, 0.4);
+}
+
+html.dark .badge-gold {
+  background-color: rgba(230, 173, 67, 0.2);
+  color: #FFD54F;
+}
+
+html.dark .icon-box-agri {
+  background: rgba(120, 168, 90, 0.15);
+  color: #A3D89E;
+}
+
+html.dark .bg-white {
+  background-color: var(--bg-card) !important;
+}
+
+html.dark .bg-gray-50,
+html.dark .bg-slate-50 {
+  background-color: var(--bg-secondary) !important;
+}
+
+html.dark .text-gray-900,
+html.dark .text-slate-900 {
+  color: #E8F0E8 !important;
+}
+
+html.dark .text-gray-600,
+html.dark .text-slate-600,
+html.dark .text-gray-500 {
+  color: #A3B7A4 !important;
+}
+
+html.dark .border-gray-200,
+html.dark .border-slate-200,
+html.dark .border-gray-100 {
+  border-color: #2D3E31 !important;
+}
+
+html.dark .equipment-img-wrapper {
+  background-color: #17221A;
+}
+
+/* Smooth transition for theme change */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+  transition-delay: 0 !important;
+}

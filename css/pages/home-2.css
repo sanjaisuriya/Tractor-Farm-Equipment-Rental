@@ -1,0 +1,72 @@
+/* Home Page 2 Custom Styling - Rental Offers & Popular Machinery */
+.hero-home-2 {
+  position: relative;
+  background: linear-gradient(135deg, #12281D 0%, #173D2B 50%, #204B32 100%);
+  padding: 5rem 0 4rem;
+  color: #FFFFFF;
+  overflow: hidden;
+}
+
+.hero-home-2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: var(--bg-primary);
+  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+}
+
+[dir="rtl"] .hero-home-2::after {
+  clip-path: polygon(0 100%, 100% 100%, 0 0);
+}
+
+.special-offer-card {
+  background: linear-gradient(135deg, rgba(230, 173, 67, 0.15) 0%, rgba(230, 173, 67, 0.05) 100%);
+  border: 1.5px dashed var(--color-gold);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  position: relative;
+  transition: var(--transition);
+}
+
+.special-offer-card:hover {
+  transform: translateY(-4px);
+  background: linear-gradient(135deg, rgba(230, 173, 67, 0.25) 0%, rgba(230, 173, 67, 0.1) 100%);
+}
+
+.offer-tag {
+  background: #E6AD43;
+  color: #173D2B;
+  font-weight: 800;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-transform: uppercase;
+}
+
+.rental-highlight-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.rental-highlight-card:hover {
+  border-color: var(--color-agri);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px);
+}
+
+.comparison-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}

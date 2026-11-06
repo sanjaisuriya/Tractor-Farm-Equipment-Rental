@@ -1,0 +1,154 @@
+/* Equipment Page Custom Styling */
+
+/* Filter Pills */
+.filter-pill {
+  padding: 0.5rem 1.15rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.filter-pill:hover {
+  border-color: var(--color-agri);
+  color: var(--color-agri);
+  transform: translateY(-1px);
+}
+
+.filter-pill.active {
+  background: var(--color-forest);
+  color: #FFFFFF;
+  border-color: var(--color-forest);
+  box-shadow: 0 4px 12px rgba(23, 61, 43, 0.25);
+}
+
+html.dark .filter-pill.active {
+  background: var(--color-agri);
+  border-color: var(--color-agri);
+}
+
+/* Search Bar Wrapper */
+.search-bar-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.search-bar-wrap input {
+  padding-left: 2.75rem;
+}
+
+[dir="rtl"] .search-bar-wrap input {
+  padding-left: 1rem;
+  padding-right: 2.75rem;
+}
+
+.search-bar-wrap .search-icon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+[dir="rtl"] .search-bar-wrap .search-icon {
+  left: auto;
+  right: 1rem;
+}
+
+/* Category Showcase Cards */
+.category-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(23, 61, 43, 0.12);
+  border-color: var(--color-agri);
+}
+
+.category-card .category-bg {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.category-card:hover .category-bg {
+  transform: scale(1.08);
+}
+
+/* Details Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background-color: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-container {
+  background-color: var(--bg-card);
+  border-radius: 1.5rem;
+  max-width: 56rem;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-color);
+  transform: scale(0.95) translateY(10px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-backdrop.active .modal-container {
+  transform: scale(1) translateY(0);
+}
+
+/* Equipment Card image container */
+.equipment-card {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.equipment-card:hover {
+  transform: translateY(-4px) !important;
+}
+
+/* FAQ Accordion in Equipment Page */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary {
+  user-select: none;
+}
+
+details[open] summary .fa-chevron-down {
+  transform: rotate(180deg);
+  transition: transform 0.25s ease;
+}
+

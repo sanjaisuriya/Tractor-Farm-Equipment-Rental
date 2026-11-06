@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equipment Details - AgroRent</title>
+  <meta name="description" content="View complete specifications, horsepower, hourly/daily rental rates, and book agricultural equipment directly." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            forest: '#173D2B',
+            agri: '#347A45',
+            fresh: '#78A85A',
+            cream: '#F5F3E9',
+            earth: '#8B6746',
+            charcoal: '#202820',
+            gold: '#E6AD43',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Manrope', 'sans-serif'],
+            primary: ['Poppins', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/dark-mode.css" />
+  <link rel="stylesheet" href="css/rtl.css" />
+  <link rel="stylesheet" href="css/pages/equipment-details.css" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+
+</head>
+<body class="bg-white dark:bg-[#121813] text-charcoal dark:text-gray-100 flex flex-col min-h-screen">
+
+  <!-- SITE HEADER / NAVBAR -->
+  <header class="site-header sticky top-0 z-50 bg-white/95 dark:bg-[#121813]/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-all duration-300">
+    <div class="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group shrink-0" title="AgroRent - Tractor & Farm Equipment">
+        <div class="w-11 h-11 rounded-xl bg-forest flex items-center justify-center text-white text-xl shadow-md group-hover:scale-105 transition-transform shrink-0 border border-agri/20 dark:border-white/10">
+          <i class="fa-solid fa-tractor text-gold"></i>
+        </div>
+        <div class="shrink-0 flex flex-col justify-center">
+          <span class="text-2xl font-black tracking-tight text-forest dark:text-white font-heading block leading-none whitespace-nowrap">
+            AGRO<span class="text-agri dark:text-fresh">RENT</span>
+          </span>
+          <span class="block text-[10px] tracking-widest uppercase font-semibold text-muted dark:text-cream/70 leading-tight mt-1 whitespace-nowrap">Tractor & Farm Equipment</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-5 shrink-0">
+        <!-- Home Dropdown -->
+        <div class="dropdown-container relative group py-2">
+          <button class="nav-link flex items-center gap-1 text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap">
+            <span>Home</span>
+            <i class="fa-solid fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div class="dropdown-menu absolute top-full left-0 w-52 bg-white dark:bg-[#1D2A20] rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 p-2 z-50">
+            <a href="index.html" class="block px-3 py-2 rounded-lg text-sm font-medium hover:bg-cream dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200">
+              <i class="fa-solid fa-house-chimney text-xs mr-2"></i> Home 1 (Main Landing)
+            </a>
+            <a href="home-2.html" class="block px-3 py-2 rounded-lg text-sm font-medium hover:bg-cream dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200">
+              <i class="fa-solid fa-tags text-xs mr-2"></i> Home 2 (Offers & Popular)
+            </a>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav-link text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap">About Us</a>
+        <a href="equipment.html" class="nav-link text-xs xl:text-sm font-semibold text-agri font-bold hover:text-agri whitespace-nowrap">Equipment</a>
+        <a href="rates-pricing.html" class="nav-link text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap"><span class="hidden xl:inline">Rates & </span>Pricing</a>
+        <a href="booking.html" class="nav-link text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap">Booking</a>
+        <a href="contact.html" class="nav-link text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap">Contact Us</a>
+        <div class="nav-auth-item">
+          <a href="login-register.html" class="nav-link flex items-center gap-1.5 text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap" title="Login / Register">
+            <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
+            <span>Login</span>
+          </a>
+        </div>
+        <a href="farmer-dashboard.html" class="nav-link text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap"><span class="hidden 2xl:inline">Farmer </span>Dashboard</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="flex items-center gap-2 lg:gap-2.5 xl:gap-3 shrink-0">
+        <div class="flex items-center gap-1 border-r border-gray-200 dark:border-gray-700 pr-2 lg:pr-2.5 xl:pr-3">
+          <button class="theme-toggle-btn w-9 h-9 rounded-lg text-slate-700 dark:text-slate-200 hover:text-agri hover:bg-slate-100 dark:hover:bg-slate-800 transition text-sm flex items-center justify-center" title="Toggle Theme (Dark / Light)" aria-label="Toggle theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          <button class="rtl-toggle-btn w-9 h-9 rounded-lg text-slate-700 dark:text-slate-200 hover:text-agri hover:bg-slate-100 dark:hover:bg-slate-800 transition text-sm flex items-center justify-center" title="Toggle RTL/LTR" aria-label="Toggle RTL/LTR">
+            <i class="fa-solid fa-globe"></i>
+            <span class="sr-only dir-label">RTL</span>
+          </button>
+        </div>
+        <a href="booking.html" class="hidden sm:inline-flex btn-primary text-xs xl:text-sm py-2 xl:py-2.5 px-3.5 xl:px-5 whitespace-nowrap items-center gap-2 animate-pulse-glow">
+          <i class="fa-solid fa-calendar-check"></i> <span><span class="hidden xl:inline">Book Equipment</span><span class="xl:hidden">Book Now</span></span>
+        </a>
+      </div>
+
+      <button id="mobileMenuToggle" class="lg:hidden p-2 text-slate-700 dark:text-slate-200 hover:text-agri focus:outline-none" aria-label="Open Mobile Menu">
+        <i class="fa-solid fa-bars text-2xl"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV DRAWER -->
+  <div id="mobileNavBackdrop" class="mobile-nav-backdrop"></div>
+  <aside id="mobileNavDrawer" class="mobile-nav-drawer p-6">
+    <div class="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-gray-700 mb-6">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-xl bg-forest flex items-center justify-center text-white text-xl shadow-md shrink-0">
+          <i class="fa-solid fa-tractor text-gold"></i>
+        </div>
+        <div class="flex flex-col justify-center">
+          <span class="text-2xl font-black tracking-tight text-forest dark:text-white font-heading leading-none whitespace-nowrap">
+            AGRO<span class="text-agri dark:text-fresh">RENT</span>
+          </span>
+          <span class="block text-[10px] tracking-widest uppercase font-semibold text-muted dark:text-cream/70 leading-tight mt-1 whitespace-nowrap">Tractor & Farm Equipment</span>
+        </div>
+      </div>
+      <button id="closeMobileMenu" class="text-slate-500 hover:text-slate-800 dark:hover:text-white p-2">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-3 flex-1">
+      <div>
+        <button id="mobileHomeToggle" class="w-full flex items-center justify-between py-2 text-base font-semibold text-slate-800 dark:text-white">
+          <span>Home Pages</span>
+          <i class="arrow-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
+        </button>
+        <div id="mobileHomeSubmenu" class="hidden pl-4 py-2 space-y-2 border-l-2 border-agri/30 my-1">
+          <a href="index.html" class="block py-1 text-sm font-medium text-slate-600 dark:text-slate-300">Home 1 (Main Landing)</a>
+          <a href="home-2.html" class="block py-1 text-sm font-medium text-slate-600 dark:text-slate-300">Home 2 (Offers & Popular)</a>
+        </div>
+      </div>
+
+      <a href="about.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">About Us</a>
+      <a href="equipment.html" class="py-2 text-base font-semibold text-agri font-bold hover:text-agri">Equipment</a>
+      <a href="rates-pricing.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">Rates & Pricing</a>
+      <a href="booking.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">Booking</a>
+      <a href="contact.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">Contact Us</a>
+      <a href="login-register.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri flex items-center gap-2">
+        <i class="fa-solid fa-arrow-right-to-bracket text-agri text-sm"></i>
+        <span>Login</span>
+      </a>
+      <a href="farmer-dashboard.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri flex items-center gap-2">
+        <i class="fa-solid fa-gauge-high text-agri text-sm"></i>
+        <span>Farmer Dashboard</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT: EQUIPMENT DETAILS -->
+  <main class="flex-1 py-10 bg-slate-50 dark:bg-[#17221A]">
+    <div class="container-custom">
+
+      <!-- Breadcrumbs -->
+      <nav class="text-xs text-muted mb-6 flex items-center gap-2">
+        <a href="index.html" class="hover:text-agri">Home</a>
+        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+        <a href="equipment.html" class="hover:text-agri">Equipment</a>
+        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+        <span id="detailsBreadcrumb" class="text-slate-800 dark:text-white font-bold">Mahindra 575 DI</span>
+      </nav>
+
+      <!-- Main Details Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+        <!-- Left: Image Gallery (Col 7) -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+            <img id="mainGalleryImg" src="assets/images/equipment/tractor.jpg" alt="Machinery Gallery Preview" class="gallery-main-img" />
+            <div class="absolute top-4 left-4 flex gap-2">
+              <span id="detailsAvailability" class="badge-agri badge-available">
+                <i class="fa-solid fa-circle-check"></i> Available
+              </span>
+            </div>
+          </div>
+
+          <!-- Thumbnails -->
+          <div id="galleryThumbnails" class="grid grid-cols-4 gap-3">
+            <!-- Dynamically populated -->
+          </div>
+
+          <!-- Detailed Technical Description -->
+          <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 md:p-8 mt-8">
+            <h3 class="text-xl font-bold font-heading text-slate-900 dark:text-white mb-4">
+              Machinery Field Overview & Agricultural Performance
+            </h3>
+            <p id="detailsLongDesc" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+              The Mahindra 575 DI is renowned among Indian farmers for fuel-efficient power, rugged build quality, and unmatched field versatility. Perfectly paired with 7-9 tine cultivators, rotavators, and heavy-duty trailers.
+            </p>
+
+            <h4 class="font-bold text-slate-900 dark:text-white text-base mb-3">Key Implement & Functional Features:</h4>
+            <ul id="detailsFeatures" class="space-y-2.5 mb-6">
+              <!-- Dynamically populated -->
+            </ul>
+
+            <h4 class="font-bold text-slate-900 dark:text-white text-base mb-3">Rental Conditions & Safety Terms:</h4>
+            <div class="p-4 bg-cream/40 dark:bg-slate-900/40 rounded-xl text-xs text-slate-600 dark:text-slate-300 space-y-2 border border-slate-200 dark:border-slate-700">
+              <p><i class="fa-solid fa-circle-info text-agri mr-1.5"></i> Daily rental period is calculated on 8 operational engine hours.</p>
+              <p><i class="fa-solid fa-circle-info text-agri mr-1.5"></i> Delivered with full tank diesel; return with matching level or pay actual fuel consumed.</p>
+              <p><i class="fa-solid fa-circle-info text-agri mr-1.5"></i> 100% comprehensive breakdown coverage: mobile mechanic arrives in 2 hours.</p>
+              <p><i class="fa-solid fa-circle-info text-agri mr-1.5"></i> Security deposit refunded instantly via UPI / Bank upon machinery pickup.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Specs & Booking Card (Col 5) -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 md:p-8 shadow-sm">
+            <div class="flex items-center gap-2 mb-2">
+              <span id="detailsCategory" class="badge-agri">Tractors</span>
+              <span id="detailsHpBadge" class="badge-agri bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold">
+                <i class="fa-solid fa-gauge-high mr-1"></i> 45 HP
+              </span>
+            </div>
+
+            <h1 id="detailsTitle" class="text-2xl sm:text-3xl font-extrabold font-heading text-slate-900 dark:text-white mb-2 leading-tight">
+              Mahindra 575 DI High-Power Tractor
+            </h1>
+
+            <div class="flex items-center gap-2 text-xs mb-4">
+              <div class="flex items-center text-amber-500 font-bold">
+                <i class="fa-solid fa-star text-xs mr-1"></i>
+                <span id="detailsRating">4.9</span>
+              </div>
+              <span id="detailsReviewsCount" class="text-muted">(142 verified farmer reviews)</span>
+            </div>
+
+            <p id="detailsShortDesc" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+              Workhorse 45 HP multi-purpose tractor engineered for heavy ploughing, puddling, and haulage across all soil types.
+            </p>
+
+            <!-- Pricing Breakdown Box -->
+            <div class="pricing-box-detail mb-6">
+              <span class="text-xs font-bold uppercase tracking-wider text-agri block mb-2">Transparent Rental Tariffs</span>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <span class="text-xs text-muted block">Hourly Rate:</span>
+                  <span id="rateHourly" class="text-xl font-bold text-slate-800 dark:text-white">₹500</span>
+                  <span class="text-[10px] text-muted block">(Min. 3 hrs)</span>
+                </div>
+                <div>
+                  <span class="text-xs text-muted block">Daily Rate:</span>
+                  <span id="rateDaily" class="text-2xl font-black text-forest dark:text-fresh">₹3,500</span>
+                  <span class="text-[10px] text-muted block">(8 operating hrs)</span>
+                </div>
+                <div>
+                  <span class="text-xs text-muted block">Weekly Rate:</span>
+                  <span id="rateWeekly" class="text-lg font-bold text-slate-800 dark:text-white">₹21,000</span>
+                  <span class="text-[10px] text-muted block">(Save 15%)</span>
+                </div>
+                <div>
+                  <span class="text-xs text-muted block">Monthly Rate:</span>
+                  <span id="rateMonthly" class="text-lg font-bold text-slate-800 dark:text-white">₹75,000</span>
+                  <span class="text-[10px] text-muted block">(Harvest Season)</span>
+                </div>
+              </div>
+
+              <div class="pt-3 mt-3 border-t border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between text-xs">
+                <span class="text-muted">Operator Charge:</span>
+                <strong id="rateOperator" class="text-slate-800 dark:text-slate-200">₹700 / day</strong>
+              </div>
+              <div class="pt-1 flex items-center justify-between text-xs">
+                <span class="text-muted">Delivery Rate:</span>
+                <strong id="rateTransport" class="text-slate-800 dark:text-slate-200">₹30 / km</strong>
+              </div>
+            </div>
+
+            <!-- Direct Book Button -->
+            <a id="btnBookThisEquipment" href="booking.html?id=tr-575" class="btn-primary w-full py-4 text-base font-bold justify-center shadow-lg">
+              <i class="fa-solid fa-calendar-check"></i> Book This Equipment Now
+            </a>
+
+            <div class="flex items-center justify-center gap-4 text-xs text-muted mt-3">
+              <span><i class="fa-solid fa-bolt text-gold mr-1"></i> Instant Confirmation</span>
+              <span><i class="fa-solid fa-rotate-left text-gold mr-1"></i> Free Cancellation</span>
+            </div>
+          </div>
+
+          <!-- Technical Specifications Table Box -->
+          <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 text-sm">
+            <h3 class="font-bold text-base text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-100 dark:border-slate-700">
+              Technical Specifications
+            </h3>
+            <div id="detailsSpecs" class="space-y-1">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Helpline Card -->
+          <div class="p-5 rounded-2xl bg-forest text-white flex items-center justify-between">
+            <div>
+              <p class="text-xs text-cream/80">Need expert advice on equipment suitability?</p>
+              <h4 class="text-lg font-black text-gold">1800 456 7890</h4>
+            </div>
+            <a href="tel:18004567890" class="btn-gold text-xs py-2 px-3">Call Desk</a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Related Equipment Section -->
+      <section class="mt-20 pt-12 border-t border-slate-200 dark:border-slate-700">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <span class="section-subtitle">Compatible Fleet</span>
+            <h2 class="text-2xl font-bold font-heading text-slate-900 dark:text-white">Related Agricultural Equipment</h2>
+          </div>
+          <a href="equipment.html" class="btn-secondary text-xs py-2 px-3">View All Machinery</a>
+        </div>
+
+        <div id="relatedEquipmentGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+    <!-- FOOTER -->
+  <footer class="bg-forest text-white pt-16 pb-8 border-t border-white/10">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        <!-- Col 1: Brand & Socials -->
+        <div class="lg:col-span-2">
+          <!-- Brand Logo -->
+          <a href="index.html" class="flex items-center gap-3 mb-4 group inline-flex" title="AgroRent - Tractor & Farm Equipment">
+            <div class="w-11 h-11 rounded-xl bg-forest border border-white/20 flex items-center justify-center text-white text-xl shadow-md group-hover:scale-105 transition-transform shrink-0">
+              <i class="fa-solid fa-tractor text-gold"></i>
+            </div>
+            <div class="shrink-0 flex flex-col justify-center">
+              <span class="text-2xl font-black font-heading text-white tracking-tight leading-none whitespace-nowrap">
+                AGRO<span class="text-fresh">RENT</span>
+              </span>
+              <span class="block text-[10px] tracking-widest uppercase font-semibold text-cream/70 leading-tight mt-1 whitespace-nowrap">Tractor & Farm Equipment</span>
+            </div>
+          </a>
+          <p class="text-sm text-cream/70 mb-6 max-w-sm leading-relaxed">
+            India's dedicated agricultural equipment and tractor rental marketplace. Providing farmers with reliable, fuel-efficient machinery and expert drivers.
+          </p>
+          <div class="flex items-center gap-3 text-gold text-lg">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-forest transition" title="Follow AgroRent on Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://wa.me/911800456789" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-forest transition" title="Chat on WhatsApp (+91 1800 456 7890)" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-forest transition" title="Watch Machinery Videos on YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-forest transition" title="Follow AgroRent on Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation -->
+        <div>
+          <h4 class="font-bold text-white uppercase tracking-wider text-xs font-heading mb-4">Navigation</h4>
+          <ul class="space-y-2.5 text-sm text-cream/80">
+            <li><a href="index.html" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[10px] text-fresh"></i> Home Page 1</a></li>
+            <li><a href="home-2.html" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[10px] text-fresh"></i> Home Page 2 (Offers)</a></li>
+            <li><a href="about.html" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[10px] text-fresh"></i> About Us</a></li>
+            <li><a href="equipment.html" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[10px] text-fresh"></i> Equipment Catalog</a></li>
+            <li><a href="rates-pricing.html" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[10px] text-fresh"></i> Rates & Pricing</a></li>
+            <li><a href="booking.html" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-[10px] text-fresh"></i> Book Equipment</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Fleet Categories -->
+        <div>
+          <h4 class="font-bold text-white uppercase tracking-wider text-xs font-heading mb-4">Fleet Categories</h4>
+          <ul class="space-y-2.5 text-sm text-cream/80">
+            <li><a href="equipment.html?cat=Tractors" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-tractor text-[10px] text-gold"></i> Heavy Tractors</a></li>
+            <li><a href="equipment.html?cat=Mini%20Tractors" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-tractor text-[10px] text-gold"></i> Mini Tractors</a></li>
+            <li><a href="equipment.html?cat=Combine%20Harvesters" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-wheat-awn text-[10px] text-gold"></i> Combine Harvesters</a></li>
+            <li><a href="equipment.html?cat=Rotavators" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-gear text-[10px] text-gold"></i> Rotavators & Tillers</a></li>
+            <li><a href="equipment.html?cat=Seed%20Drills" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-seedling text-[10px] text-gold"></i> Happy Seeders</a></li>
+            <li><a href="equipment.html?cat=Agricultural%20Sprayers" class="hover:text-gold transition flex items-center gap-1.5"><i class="fa-solid fa-spray-can text-[10px] text-gold"></i> Boom Sprayers</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Farmer Support Links & Icons -->
+        <div>
+          <h4 class="font-bold text-white uppercase tracking-wider text-xs font-heading mb-4">Farmer Support</h4>
+          <div class="space-y-3 text-sm text-cream/80">
+            <a href="tel:18004567890" class="flex items-start gap-2.5 hover:text-gold transition group block" title="Call Toll-free Helpline: 1800 456 7890">
+              <i class="fa-solid fa-phone text-gold mt-1 group-hover:scale-110 transition-transform"></i>
+              <span><strong class="text-white block group-hover:text-gold transition">1800 456 7890</strong><span class="text-xs text-cream/60">Toll-free 24/7 Helpline</span></span>
+            </a>
+            <a href="mailto:support@agrorent.in" class="flex items-start gap-2.5 hover:text-gold transition group block" title="Email Us: support@agrorent.in">
+              <i class="fa-solid fa-envelope text-gold mt-1 group-hover:scale-110 transition-transform"></i>
+              <span><strong class="text-white block group-hover:text-gold transition">support@agrorent.in</strong><span class="text-xs text-cream/60">Online Assistance Desk</span></span>
+            </a>
+            <a href="contact.html#businessHours" class="flex items-start gap-2.5 hover:text-gold transition group block" title="View Business Operating Hours">
+              <i class="fa-solid fa-clock text-gold mt-1 group-hover:scale-110 transition-transform"></i>
+              <span><strong class="text-white block group-hover:text-gold transition">Mon - Sun: 6:00 AM - 9:00 PM</strong><span class="text-xs text-cream/60">Hub Operating Hours</span></span>
+            </a>
+            <a href="contact.html#mapLocation" class="flex items-start gap-2.5 hover:text-gold transition group block" title="View Hub Location on Map">
+              <i class="fa-solid fa-location-dot text-gold mt-1 group-hover:scale-110 transition-transform"></i>
+              <span><strong class="text-white block group-hover:text-gold transition">Kisan Vikas Hub, Ludhiana</strong><span class="text-xs text-cream/60">Punjab 141004 (View Map)</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-cream/60 gap-4">
+        <p>? 2026 AgroRent Equipment Technologies Pvt. Ltd. All rights reserved.</p>
+        <div class="flex flex-wrap items-center gap-4 sm:gap-6">
+          <a href="farmer-dashboard.html" class="hover:text-gold transition flex items-center gap-1"><i class="fa-solid fa-gauge-high text-[10px]"></i> Farmer Portal</a>
+          <a href="login-register.html" class="hover:text-gold transition flex items-center gap-1"><i class="fa-solid fa-arrow-right-to-bracket text-[10px]"></i> Account Login</a>
+          <a href="contact.html" class="hover:text-gold transition flex items-center gap-1"><i class="fa-solid fa-headset text-[10px]"></i> Contact Us</a>
+          <a href="rates-pricing.html#faq" class="hover:text-gold transition flex items-center gap-1"><i class="fa-solid fa-circle-question text-[10px]"></i> Rental FAQ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTopBtn" class="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-agri text-white shadow-xl flex items-center justify-center text-lg z-40 opacity-0 invisible translate-y-4 transition-all duration-300 hover:bg-forest" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/theme.js"></script>
+  <script src="js/rtl.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/equipment.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/equipment-details.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
