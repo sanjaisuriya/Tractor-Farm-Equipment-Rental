@@ -53,16 +53,15 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
   <link rel="shortcut icon" href="favicon.ico" />
-
 </head>
 <body class="bg-slate-50 dark:bg-[#121813] text-charcoal dark:text-gray-100 flex flex-col min-h-screen">
 
   <!-- TOP DASHBOARD BAR -->
-  <header class="bg-forest text-white h-16 border-b border-white/10 sticky top-0 z-40">
-    <div class="px-4 sm:px-6 h-full flex items-center justify-between">
-      <div class="flex items-center gap-4">
-        <!-- Sidebar Toggle for Mobile -->
-        <button id="dashboardSidebarToggle" class="lg:hidden p-2 text-white hover:text-gold" aria-label="Toggle Dashboard Menu">
+  <header class="bg-forest text-white h-20 border-b border-white/10 sticky top-0 z-40">
+    <div class="px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+      <div class="flex items-center gap-3 sm:gap-4">
+        <!-- Sidebar Toggle for Mobile / Tablet -->
+        <button id="dashboardSidebarToggle" class="lg:hidden p-2 text-white hover:text-gold rounded-lg hover:bg-white/10 transition" aria-label="Toggle Dashboard Menu">
           <i class="fa-solid fa-bars text-xl"></i>
         </button>
         <a href="index.html" class="flex items-center gap-3 group shrink-0" title="AgroRent - Tractor & Farm Equipment">
@@ -74,60 +73,80 @@
             <span class="block text-[9px] tracking-widest uppercase font-semibold text-cream/70 leading-tight mt-0.5 whitespace-nowrap">Tractor & Farm Equipment</span>
           </div>
         </a>
-        <span class="hidden md:inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-white/10 text-gold border border-white/10">
-          Farmer Portal
+        <span class="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-white/10 text-gold border border-white/15">
+          <i class="fa-solid fa-wheat-awn text-[11px]"></i> Farmer Portal
         </span>
       </div>
 
-      <!-- Quick Actions -->
-      <div class="flex items-center gap-4 text-xs">
-        <a href="booking.html" class="btn-gold hidden sm:inline-flex py-1.5 px-3 text-xs font-bold">
-          <i class="fa-solid fa-plus mr-1"></i> Book Equipment
+      <!-- Quick Actions & Controls -->
+      <div class="flex items-center gap-2 sm:gap-3 text-xs">
+        <a href="booking.html" class="btn-gold hidden md:inline-flex py-2 px-3.5 text-xs font-bold shadow-md">
+          <i class="fa-solid fa-plus mr-1"></i> Book Machinery
         </a>
 
-        <!-- Theme Toggle -->
-        <button class="theme-toggle-btn w-8 h-8 rounded-lg hover:bg-white/10 text-white hover:text-gold transition flex items-center justify-center text-sm" title="Toggle Theme (Dark / Light)" aria-label="Toggle theme">
+        <!-- Dark / Light Theme Toggle -->
+        <button class="theme-toggle-btn w-9 h-9 rounded-lg hover:bg-white/10 text-white hover:text-gold transition flex items-center justify-center text-sm border border-white/20" title="Toggle Theme (Dark / Light)" aria-label="Toggle theme">
           <i class="fa-solid fa-moon"></i>
         </button>
 
-        <!-- RTL Toggle -->
-        <button class="rtl-toggle-btn w-8 h-8 rounded-lg hover:bg-white/10 text-white hover:text-gold transition flex items-center justify-center text-sm" title="Toggle RTL/LTR" aria-label="Toggle RTL/LTR">
-          <i class="fa-solid fa-globe"></i>
-          <span class="sr-only dir-label">RTL</span>
+        <!-- RTL / LTR Direction Toggle -->
+        <button class="rtl-toggle-btn w-9 h-9 rounded-lg hover:bg-white/10 text-white hover:text-gold transition flex items-center justify-center text-sm border border-white/20" title="Toggle Text Direction (LTR / RTL)" aria-label="Toggle text direction">
+          <i class="fa-solid fa-right-left text-xs"></i>
         </button>
 
         <!-- User Profile Pill -->
-        <div class="flex items-center gap-2 border-l border-white/20 pl-3">
-          <img src="assets/images/dashboard/farmer-avatar.jpg" alt="Farmer Avatar" class="w-8 h-8 rounded-full object-cover border border-gold" />
+        <div class="flex items-center gap-2.5 border-l border-white/20 pl-2 sm:pl-3">
+          <div class="w-9 h-9 rounded-full bg-agri/40 border border-gold flex items-center justify-center text-white font-bold text-xs shadow-inner">
+            <i class="fa-solid fa-user"></i>
+          </div>
           <div class="hidden sm:block text-left">
             <span class="font-bold block user-name-display leading-tight text-xs text-white">Rajesh Kumar</span>
             <span class="text-[10px] text-cream/70 block user-village-display">Rampur, Punjab</span>
           </div>
+          <button onclick="if(window.Auth) Auth.logout(); else window.location.href='index.html';" class="p-2 text-white/80 hover:text-red-400 rounded-lg transition" title="Exit Dashboard" aria-label="Exit Dashboard">
+            <i class="fa-solid fa-right-from-bracket text-sm"></i>
+          </button>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- DASHBOARD MAIN BODY -->
+  <!-- MOBILE SIDEBAR BACKDROP -->
+  <div id="dashboardBackdrop" class="dashboard-backdrop fixed inset-0 bg-black/60 z-40 lg:hidden opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+  <!-- DASHBOARD LAYOUT -->
   <div class="dashboard-layout">
 
     <!-- DASHBOARD SIDEBAR -->
-    <aside id="dashboardSidebar" class="dashboard-sidebar p-6 flex flex-col justify-between">
+    <aside id="dashboardSidebar" class="dashboard-sidebar p-5 flex flex-col justify-between">
       <div>
-        <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800 mb-6 lg:hidden">
-          <span class="font-bold text-sm text-slate-800 dark:text-white">Dashboard Menu</span>
-          <button id="dashboardSidebarClose" class="text-slate-400 hover:text-slate-700 dark:hover:text-white p-1">
+        <!-- Mobile Sidebar Close Header -->
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 mb-5 lg:hidden">
+          <span class="font-bold text-sm text-slate-800 dark:text-white flex items-center gap-2">
+            <i class="fa-solid fa-bars-staggered text-agri"></i> Farmer Navigation
+          </span>
+          <button id="dashboardSidebarClose" class="text-slate-400 hover:text-slate-700 dark:hover:text-white p-1" aria-label="Close menu">
             <i class="fa-solid fa-xmark text-lg"></i>
           </button>
         </div>
 
         <!-- Farmer Profile Card Small -->
-        <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 mb-6">
-          <img src="assets/images/dashboard/farmer-avatar.jpg" alt="Farmer Avatar" class="w-11 h-11 rounded-full object-cover border border-agri" />
-          <div class="overflow-hidden">
-            <h4 class="font-bold text-xs text-slate-900 dark:text-white truncate user-name-display">Rajesh Kumar</h4>
-            <p class="text-[11px] text-agri font-semibold truncate"><i class="fa-solid fa-certificate text-[9px] mr-1"></i>Verified Farmer</p>
-            <p class="text-[10px] text-muted truncate user-village-display">Rampur, Punjab</p>
+        <div class="p-3.5 rounded-2xl bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 mb-6">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-xl bg-forest text-gold flex items-center justify-center text-lg font-black flex-shrink-0 shadow-sm border border-gold/30">
+              <i class="fa-solid fa-tractor"></i>
+            </div>
+            <div class="overflow-hidden min-w-0">
+              <h4 class="font-bold text-xs text-slate-900 dark:text-white truncate user-name-display">Rajesh Kumar</h4>
+              <p class="text-[11px] text-agri dark:text-fresh font-bold truncate flex items-center gap-1">
+                <i class="fa-solid fa-certificate text-[9px]"></i> Verified Progressive Farmer
+              </p>
+              <p class="text-[10px] text-muted truncate user-village-display">Rampur, Ludhiana</p>
+            </div>
+          </div>
+          <div class="mt-2.5 pt-2 border-t border-slate-200 dark:border-slate-700 flex justify-between text-[11px] text-slate-600 dark:text-slate-400">
+            <span>Land: <strong class="text-slate-800 dark:text-slate-200 user-farmsize-display">12 Acres</strong></span>
+            <span class="text-agri font-semibold">Active Member</span>
           </div>
         </div>
 
@@ -140,34 +159,29 @@
 
           <div class="sidebar-link" data-tab="my-bookings">
             <i class="sidebar-icon fa-solid fa-calendar-check text-base"></i>
-            <span>My Bookings</span>
+            <span>My Equipment Bookings</span>
           </div>
 
-          <div class="sidebar-link" data-tab="active-rentals">
-            <i class="sidebar-icon fa-solid fa-tractor text-base"></i>
-            <span>Active Rentals</span>
+          <div class="sidebar-link" data-tab="rental-tracking">
+            <i class="sidebar-icon fa-solid fa-location-dot text-base"></i>
+            <span>Rental Tracking</span>
           </div>
 
-          <div class="sidebar-link" data-tab="history">
-            <i class="sidebar-icon fa-solid fa-clock-rotate-left text-base"></i>
-            <span>Booking History</span>
-          </div>
-
-          <div class="sidebar-link" data-tab="bills">
-            <i class="sidebar-icon fa-solid fa-file-invoice text-base"></i>
-            <span>Bills & Payments</span>
+          <div class="sidebar-link" data-tab="payment-details">
+            <i class="sidebar-icon fa-solid fa-indian-rupee-sign text-base"></i>
+            <span>Payment Details & Bills</span>
           </div>
 
           <div class="sidebar-link" data-tab="profile">
-            <i class="sidebar-icon fa-solid fa-id-card text-base"></i>
-            <span>Profile Settings</span>
+            <i class="sidebar-icon fa-solid fa-user-pen text-base"></i>
+            <span>Edit Farmer Profile</span>
           </div>
         </nav>
       </div>
 
-      <!-- Bottom / Logout -->
-      <div class="pt-6 border-t border-slate-100 dark:border-slate-800">
-        <a href="index.html" class="sidebar-link mb-1">
+      <!-- Bottom Actions -->
+      <div class="pt-5 border-t border-slate-200 dark:border-slate-800 space-y-1">
+        <a href="index.html" class="sidebar-link text-slate-600 dark:text-slate-300">
           <i class="sidebar-icon fa-solid fa-house text-base"></i>
           <span>Back to Main Site</span>
         </a>
@@ -181,213 +195,439 @@
     <!-- DASHBOARD MAIN CONTENT AREA -->
     <main class="dashboard-main">
 
+      <!-- ========================================== -->
       <!-- TAB 1: OVERVIEW -->
+      <!-- ========================================== -->
       <div id="tab-overview" class="tab-content-panel active space-y-8">
 
         <!-- Welcome Banner -->
-        <div class="bg-gradient-to-r from-forest to-agri rounded-2xl p-6 sm:p-8 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-md">
+        <div class="bg-gradient-to-r from-forest via-[#1F4E37] to-agri rounded-2xl p-6 sm:p-8 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-md border border-agri/20">
           <div>
-            <span class="text-xs font-bold uppercase tracking-wider text-gold block mb-1">Kisan Dashboard</span>
-            <h2 class="text-2xl sm:text-3xl font-black font-heading mb-2">Welcome Back, <span class="user-name-display">Rajesh Kumar</span>!</h2>
-            <p class="text-xs sm:text-sm text-cream/80 max-w-xl">
-              You have active machinery deployed in your fields. Track fuel status, remaining lease hours, or book implements for the upcoming crop rotation.
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-gold bg-black/20 px-2.5 py-0.5 rounded-full">
+                <i class="fa-solid fa-seedling mr-1"></i> Kisan Dashboard
+              </span>
+              <span class="text-xs text-cream/80">Kharif & Rabi Season 2026</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black font-heading mb-2">
+              Welcome Back, <span class="user-name-display">Rajesh Kumar</span>!
+            </h2>
+            <p class="text-xs sm:text-sm text-cream/90 max-w-xl leading-relaxed">
+              You currently have <strong class="text-gold">3 active machinery units</strong> deployed in your Rampur fields. Track live engine telemetry, review scheduled implements, or download GST rental receipts.
             </p>
           </div>
-          <a href="booking.html" class="btn-gold py-3 px-6 text-xs font-bold whitespace-nowrap shadow-lg">
-            <i class="fa-solid fa-plus mr-1"></i> Rent New Machinery
-          </a>
+          <div class="flex flex-col sm:flex-row gap-2.5 w-full md:w-auto">
+            <button onclick="document.querySelector('[data-tab=\'rental-tracking\']').click()" class="btn-secondary bg-white/10 text-white border-white/20 hover:bg-white/20 py-2.5 px-4 text-xs font-bold text-center">
+              <i class="fa-solid fa-location-dot mr-1 text-gold"></i> Live Tracking
+            </button>
+            <a href="booking.html" class="btn-gold py-2.5 px-5 text-xs font-bold whitespace-nowrap shadow-lg text-center">
+              <i class="fa-solid fa-plus mr-1"></i> Rent Machinery
+            </a>
+          </div>
         </div>
 
-        <!-- 5 Key Metric Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          <!-- Card 1: Total Bookings -->
+        <!-- 4 KPI CARDS (Explicit user specs: Total: 12, Active: 3, Completed: 8, Pending: ₹8,500) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- KPI Card 1: Total Bookings (12) -->
           <div class="stat-card">
-            <div class="stat-icon bg-emerald-100 dark:bg-emerald-900/30 text-agri dark:text-fresh">
+            <div class="stat-icon bg-emerald-100 dark:bg-emerald-950/50 text-agri dark:text-fresh border border-emerald-200 dark:border-emerald-800">
               <i class="fa-solid fa-list-check"></i>
             </div>
             <div>
-              <span class="text-xs text-muted block font-medium">Total Bookings</span>
-              <strong id="metricTotalBookings" class="text-2xl font-black text-slate-900 dark:text-white">3</strong>
+              <span class="text-xs text-muted block font-semibold">Total Bookings</span>
+              <strong id="kpiTotalBookings" class="text-3xl font-black text-slate-900 dark:text-white">12</strong>
+              <span class="text-[11px] text-slate-500 block mt-0.5">All seasonal reservations</span>
             </div>
           </div>
 
-          <!-- Card 2: Active Rentals -->
+          <!-- KPI Card 2: Active Rentals (3) -->
           <div class="stat-card">
-            <div class="stat-icon bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">
+            <div class="stat-icon bg-green-100 dark:bg-green-950/50 text-green-600 dark:text-green-400 border border-green-200 dark:border-green-800">
               <i class="fa-solid fa-tractor"></i>
             </div>
             <div>
-              <span class="text-xs text-muted block font-medium">Active Rentals</span>
-              <strong id="metricActiveRentals" class="text-2xl font-black text-slate-900 dark:text-white">1</strong>
+              <span class="text-xs text-muted block font-semibold">Active Rentals</span>
+              <strong id="kpiActiveRentals" class="text-3xl font-black text-green-600 dark:text-green-400">3</strong>
+              <span class="text-[11px] text-slate-500 block mt-0.5">Currently working in fields</span>
             </div>
           </div>
 
-          <!-- Card 3: Upcoming Bookings -->
+          <!-- KPI Card 3: Completed Rentals (8) -->
           <div class="stat-card">
-            <div class="stat-icon bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
-              <i class="fa-solid fa-calendar-days"></i>
-            </div>
-            <div>
-              <span class="text-xs text-muted block font-medium">Upcoming</span>
-              <strong id="metricUpcomingBookings" class="text-2xl font-black text-slate-900 dark:text-white">1</strong>
-            </div>
-          </div>
-
-          <!-- Card 4: Completed Rentals -->
-          <div class="stat-card">
-            <div class="stat-icon bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+            <div class="stat-icon bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800">
               <i class="fa-solid fa-circle-check"></i>
             </div>
             <div>
-              <span class="text-xs text-muted block font-medium">Completed</span>
-              <strong id="metricCompletedRentals" class="text-2xl font-black text-slate-900 dark:text-white">1</strong>
+              <span class="text-xs text-muted block font-semibold">Completed Rentals</span>
+              <strong id="kpiCompletedRentals" class="text-3xl font-black text-slate-900 dark:text-white">8</strong>
+              <span class="text-[11px] text-slate-500 block mt-0.5">Returned & deposit cleared</span>
             </div>
           </div>
 
-          <!-- Card 5: Total Rental Expenses -->
+          <!-- KPI Card 4: Pending Payments (₹8,500) -->
           <div class="stat-card">
-            <div class="stat-icon bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400">
+            <div class="stat-icon bg-amber-100 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
               <i class="fa-solid fa-indian-rupee-sign"></i>
             </div>
             <div>
-              <span class="text-xs text-muted block font-medium">Total Expenses</span>
-              <strong id="metricTotalExpenses" class="text-xl font-black text-forest dark:text-fresh">₹75,790</strong>
+              <span class="text-xs text-muted block font-semibold">Pending Payments</span>
+              <strong id="kpiPendingPayments" class="text-2xl sm:text-3xl font-black text-amber-600 dark:text-amber-400">₹8,500</strong>
+              <span class="text-[11px] text-slate-500 block mt-0.5">Due on return inspection</span>
             </div>
           </div>
         </div>
 
-        <!-- Recent Machinery Bookings Preview -->
+        <!-- RECENT BOOKINGS SECTION (Explicit sample equipment: Preet Harvester, Dasmesh Seeder, Shaktiman Rotavator, John Deere) -->
         <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm">
-          <div class="flex items-center justify-between mb-6">
-            <h3 class="font-bold text-lg text-slate-900 dark:text-white flex items-center gap-2">
-              <i class="fa-solid fa-clock text-agri"></i> Recent Machinery Deployments
-            </h3>
-            <button onclick="document.querySelector('[data-tab=\'my-bookings\']').click()" class="text-xs text-agri font-bold hover:underline">
-              View All Bookings <i class="fa-solid fa-arrow-right ml-1"></i>
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700">
+            <div>
+              <h3 class="font-bold text-lg text-slate-900 dark:text-white flex items-center gap-2">
+                <i class="fa-solid fa-clock-rotate-left text-agri"></i> Recent Farm Machinery Bookings
+              </h3>
+              <p class="text-xs text-muted mt-0.5">Featuring your prime tractor, harvester, seeder, and tillage deployments</p>
+            </div>
+            <button onclick="document.querySelector('[data-tab=\'my-bookings\']').click()" class="text-xs text-agri dark:text-fresh font-bold hover:underline flex items-center gap-1">
+              View All 12 Bookings <i class="fa-solid fa-arrow-right"></i>
             </button>
           </div>
 
-          <div id="overviewBookingsList" class="space-y-4">
-            <!-- Dynamically populated from LocalStorage -->
+          <div id="recentBookingsList" class="space-y-3.5">
+            <!-- Dynamically populated with Preet Harvester, Dasmesh Happy Seeder, John Deere Tractor, Shaktiman Rotavator -->
+          </div>
+        </div>
+
+        <!-- LIVE FIELD STATUS & TELEMETRY WIDGET -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2">
+                <i class="fa-solid fa-tower-broadcast text-agri"></i> Live Machinery GPS & Field Work
+              </h4>
+              <span class="text-xs font-bold text-green-600 dark:text-green-400 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-ping"></span> 3 Units Active
+              </span>
+            </div>
+            <div class="space-y-3 text-xs">
+              <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 flex items-center justify-between">
+                <div>
+                  <strong class="text-slate-900 dark:text-white block font-bold text-sm">Preet 987 Combine Harvester</strong>
+                  <span class="text-muted">Rampur Sector 4 | Operator: Gurpreet Singh</span>
+                </div>
+                <div class="text-right">
+                  <span class="font-bold text-forest dark:text-fresh">34 hrs logged</span>
+                  <span class="block text-[10px] text-green-600">Paddy Threshing Active</span>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 flex items-center justify-between">
+                <div>
+                  <strong class="text-slate-900 dark:text-white block font-bold text-sm">Dasmesh 912 Happy Seeder</strong>
+                  <span class="text-muted">Rampur Sector 3 | Self-Operated</span>
+                </div>
+                <div class="text-right">
+                  <span class="font-bold text-forest dark:text-fresh">18 hrs logged</span>
+                  <span class="block text-[10px] text-green-600">Direct Wheat Sowing</span>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 flex items-center justify-between">
+                <div>
+                  <strong class="text-slate-900 dark:text-white block font-bold text-sm">John Deere 5310 4WD Tractor</strong>
+                  <span class="text-muted">Rampur Sector 5 | Operator: Balwinder Singh</span>
+                </div>
+                <div class="text-right">
+                  <span class="font-bold text-forest dark:text-fresh">12 hrs logged</span>
+                  <span class="block text-[10px] text-green-600">Laser Leveling Field</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-cream/80 to-emerald-50 dark:from-slate-800 dark:to-slate-800/80 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 flex flex-col justify-between shadow-sm">
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-agri block mb-1">Assistance & Support</span>
+              <h4 class="font-bold text-base text-slate-900 dark:text-white mb-2">Need Field Mechanic or Implement Adjustment?</h4>
+              <p class="text-xs text-muted mb-4 leading-relaxed">
+                AgroRent provides 24/7 on-field technician service across Ludhiana district with guaranteed 45-minute arrival.
+              </p>
+            </div>
+            <div class="space-y-2">
+              <button onclick="requestFieldAssistance('HELP-RAMPUR')" class="btn-primary w-full text-xs py-2.5 font-bold justify-center">
+                <i class="fa-solid fa-phone mr-1.5"></i> Call Emergency Dispatch
+              </button>
+              <button onclick="document.querySelector('[data-tab=\'payment-details\']').click()" class="btn-secondary w-full text-xs py-2 justify-center">
+                <i class="fa-solid fa-file-invoice mr-1 text-agri"></i> View Outstanding Bills
+              </button>
+            </div>
           </div>
         </div>
 
       </div>
 
-      <!-- TAB 2: MY BOOKINGS -->
+      <!-- ========================================== -->
+      <!-- TAB 2: MY EQUIPMENT BOOKINGS (All 12 Bookings) -->
+      <!-- ========================================== -->
       <div id="tab-my-bookings" class="tab-content-panel space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h2 class="text-2xl font-black font-heading text-slate-900 dark:text-white">My Machinery Bookings</h2>
-            <p class="text-xs text-muted">Complete ledger of your farm machinery reservations.</p>
+            <h2 class="text-2xl font-black font-heading text-slate-900 dark:text-white">My Equipment Bookings</h2>
+            <p id="myBookingsCount" class="text-xs text-muted mt-0.5">Showing 12 of 12 Bookings across all farming seasons.</p>
           </div>
-          <a href="booking.html" class="btn-primary text-xs py-2 px-4 self-start">
+          <a href="booking.html" class="btn-primary text-xs py-2.5 px-4 self-start shadow-sm font-bold">
             <i class="fa-solid fa-plus mr-1"></i> Book New Equipment
           </a>
         </div>
 
+        <!-- Filter Chips & Search Bar -->
+        <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+          <div class="flex flex-wrap items-center gap-2">
+            <button type="button" data-filter="all" class="booking-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-agri text-white transition">
+              All (12)
+            </button>
+            <button type="button" data-filter="active" class="booking-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-agri transition">
+              Active (3)
+            </button>
+            <button type="button" data-filter="upcoming" class="booking-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-agri transition">
+              Upcoming (1)
+            </button>
+            <button type="button" data-filter="completed" class="booking-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-agri transition">
+              Completed (8)
+            </button>
+          </div>
+
+          <div class="relative w-full sm:w-64">
+            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input
+              type="text"
+              id="bookingSearchInput"
+              placeholder="Search by equipment or ID..."
+              class="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-agri"
+            />
+          </div>
+        </div>
+
+        <!-- Table of Bookings -->
         <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
           <div class="table-responsive">
             <table class="w-full text-left text-sm">
-              <thead class="bg-slate-50 dark:bg-slate-900/50 text-slate-600 dark:text-slate-400 text-xs uppercase font-bold border-b border-slate-200 dark:border-slate-700">
+              <thead class="bg-slate-50 dark:bg-slate-900/60 text-slate-600 dark:text-slate-400 text-xs uppercase font-bold border-b border-slate-200 dark:border-slate-700">
                 <tr>
+                  <th class="p-4">Equipment Name</th>
                   <th class="p-4">Booking ID</th>
-                  <th class="p-4">Equipment & Model</th>
-                  <th class="p-4">Booked On</th>
-                  <th class="p-4">Start Date</th>
-                  <th class="p-4">End Date</th>
-                  <th class="p-4">Status</th>
-                  <th class="p-4 text-right">Invoice</th>
+                  <th class="p-4">Booking Date</th>
+                  <th class="p-4">Rental Duration</th>
+                  <th class="p-4">Total Amount</th>
+                  <th class="p-4">Booking Status</th>
+                  <th class="p-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody id="myBookingsTableBody" class="divide-y divide-slate-100 dark:divide-slate-700">
-                <!-- Dynamically populated -->
+              <tbody id="myBookingsTableBody" class="divide-y divide-slate-100 dark:divide-slate-700/60">
+                <!-- Dynamically populated with all 12 bookings -->
               </tbody>
             </table>
           </div>
         </div>
       </div>
 
-      <!-- TAB 3: ACTIVE RENTALS -->
-      <div id="tab-active-rentals" class="tab-content-panel space-y-6">
+      <!-- ========================================== -->
+      <!-- TAB 3: RENTAL TRACKING HUB -->
+      <!-- ========================================== -->
+      <div id="tab-rental-tracking" class="tab-content-panel space-y-8">
         <div>
-          <h2 class="text-2xl font-black font-heading text-slate-900 dark:text-white">Currently Rented Farm Machinery</h2>
-          <p class="text-xs text-muted">Equipment deployed in your fields right now.</p>
+          <h2 class="text-2xl font-black font-heading text-slate-900 dark:text-white">Rental Tracking Hub</h2>
+          <p class="text-xs text-muted mt-0.5">Live monitoring of your currently rented machinery, upcoming dispatches, and returned units.</p>
         </div>
 
-        <div id="activeRentalsContainer" class="space-y-6">
-          <!-- Dynamically populated -->
+        <!-- Section 1: Currently Rented Equipment (3 Active) -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-700">
+            <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-ping"></span> Currently Rented Equipment (3 Active)
+            </h3>
+            <span class="text-xs font-semibold text-muted">Field operations ongoing</span>
+          </div>
+          <div id="activeRentalsTrackingContainer" class="space-y-4">
+            <!-- Dynamically populated with the 3 active units -->
+          </div>
+        </div>
+
+        <!-- Section 2: Upcoming Rentals (1 Upcoming) -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-700">
+            <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+              <i class="fa-solid fa-calendar-days text-blue-500"></i> Upcoming Rentals (1 Scheduled)
+            </h3>
+            <span class="text-xs font-semibold text-muted">Prepared at AgroRent depot</span>
+          </div>
+          <div id="upcomingRentalsTrackingContainer">
+            <!-- Dynamically populated with upcoming units -->
+          </div>
+        </div>
+
+        <!-- Section 3: Completed Rentals (8 Completed) -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-700">
+            <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+              <i class="fa-solid fa-clock-rotate-left text-slate-400"></i> Completed Rentals History (8 Past Deployments)
+            </h3>
+            <span class="text-xs font-semibold text-muted">All deposits refunded</span>
+          </div>
+          <div id="completedRentalsTrackingContainer" class="space-y-3">
+            <!-- Dynamically populated with the 8 past completed deployments -->
+          </div>
         </div>
       </div>
 
-      <!-- TAB 4: BOOKING HISTORY -->
-      <div id="tab-history" class="tab-content-panel space-y-6">
-        <div>
-          <h2 class="text-2xl font-black font-heading text-slate-900 dark:text-white">Completed Rental History</h2>
-          <p class="text-xs text-muted">Past machinery deployments and harvest returns.</p>
+      <!-- ========================================== -->
+      <!-- TAB 4: PAYMENT DETAILS & BILLS -->
+      <!-- ========================================== -->
+      <div id="tab-payment-details" class="tab-content-panel space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-black font-heading text-slate-900 dark:text-white">Rental Bills & Payment Details</h2>
+            <p class="text-xs text-muted mt-0.5">GST-compliant tax invoices, payment reconciliation, and security deposit settlements.</p>
+          </div>
+          <button onclick="settlePendingPayment()" class="btn-primary text-xs py-2.5 px-4 font-bold self-start shadow-sm">
+            <i class="fa-solid fa-credit-card mr-1.5"></i> Settle Pending Balance (Demo)
+          </button>
         </div>
 
-        <div id="bookingHistoryContainer" class="space-y-4">
-          <!-- Dynamically populated -->
+        <!-- Financial KPI Cards (Total Cost, Paid Amount, Pending Amount, Payment Status) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Total Rental Cost -->
+          <div class="stat-card">
+            <div class="stat-icon bg-emerald-100 dark:bg-emerald-950/50 text-agri dark:text-fresh border border-emerald-200 dark:border-emerald-800">
+              <i class="fa-solid fa-receipt"></i>
+            </div>
+            <div>
+              <span class="text-xs text-muted block font-semibold">Total Rental Cost</span>
+              <strong id="finTotalCost" class="text-2xl font-black text-slate-900 dark:text-white">₹1,81,900</strong>
+              <span class="text-[11px] text-slate-500 block mt-0.5">Across all 12 bookings</span>
+            </div>
+          </div>
+
+          <!-- Paid Amount -->
+          <div class="stat-card">
+            <div class="stat-icon bg-green-100 dark:bg-green-950/50 text-green-600 dark:text-green-400 border border-green-200 dark:border-green-800">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div>
+              <span class="text-xs text-muted block font-semibold">Paid Amount</span>
+              <strong id="finPaidAmount" class="text-2xl font-black text-green-600 dark:text-green-400">₹1,73,400</strong>
+              <span class="text-[11px] text-slate-500 block mt-0.5">UPI & Bank cleared</span>
+            </div>
+          </div>
+
+          <!-- Pending Amount (Explicit: ₹8,500) -->
+          <div class="stat-card">
+            <div class="stat-icon bg-amber-100 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+            <div>
+              <span class="text-xs text-muted block font-semibold">Pending Amount</span>
+              <strong id="finPendingAmount" class="text-2xl font-black text-amber-600 dark:text-amber-400">₹8,500</strong>
+              <span class="text-[11px] text-slate-500 block mt-0.5">Active field rentals</span>
+            </div>
+          </div>
+
+          <!-- Payment Status -->
+          <div class="stat-card flex-col items-start justify-center gap-1.5">
+            <span class="text-xs text-muted block font-semibold">Account Payment Status</span>
+            <div id="finPaymentStatus" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300 border border-amber-300">
+              <i class="fa-solid fa-clock"></i> Pending Settlement: ₹8,500
+            </div>
+            <span class="text-[10px] text-slate-500 block mt-1">Due after machine hour audit</span>
+          </div>
+        </div>
+
+        <!-- Invoices Table -->
+        <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
+          <div class="p-5 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
+            <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+              <i class="fa-solid fa-file-invoice-dollar text-agri"></i> GST Invoices Ledger
+            </h3>
+            <span class="text-xs text-muted">GSTIN: 03AABCA1234F1Z6</span>
+          </div>
+          <div class="table-responsive">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-slate-50 dark:bg-slate-900/60 text-slate-600 dark:text-slate-400 text-xs uppercase font-bold border-b border-slate-200 dark:border-slate-700">
+                <tr>
+                  <th class="p-4">Invoice #</th>
+                  <th class="p-4">Date</th>
+                  <th class="p-4">Machinery Details</th>
+                  <th class="p-4">Total Cost</th>
+                  <th class="p-4">Paid</th>
+                  <th class="p-4">Status</th>
+                  <th class="p-4 text-right">Download / Print</th>
+                </tr>
+              </thead>
+              <tbody id="paymentInvoicesTableBody" class="divide-y divide-slate-100 dark:divide-slate-700/60">
+                <!-- Dynamically populated invoices -->
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
-      <!-- TAB 5: BILLS & PAYMENTS -->
-      <div id="tab-bills" class="tab-content-panel space-y-6">
-        <div>
-          <h2 class="text-2xl font-black font-heading text-slate-900 dark:text-white">Rental Bills & Payment Invoices</h2>
-          <p class="text-xs text-muted">View, download, or print official GST tax invoices for agricultural accounting.</p>
-        </div>
-
-        <div id="billsContainer" class="space-y-4">
-          <!-- Dynamically populated -->
-        </div>
-      </div>
-
-      <!-- TAB 6: PROFILE SETTINGS -->
+      <!-- ========================================== -->
+      <!-- TAB 5: PROFILE SETTINGS -->
+      <!-- ========================================== -->
       <div id="tab-profile" class="tab-content-panel space-y-6">
         <div>
-          <h2 class="text-2xl font-black font-heading text-slate-900 dark:text-white">Farmer Profile Settings</h2>
-          <p class="text-xs text-muted">Update your farm location, contact details, and land acreage.</p>
+          <h2 class="text-2xl font-black font-heading text-slate-900 dark:text-white">Edit Farmer Profile</h2>
+          <p class="text-xs text-muted mt-0.5">Keep your farm location, contact numbers, and land size up to date for dispatch coordination.</p>
         </div>
 
         <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 sm:p-8 max-w-2xl shadow-sm">
-          <form id="farmerProfileForm" class="space-y-5">
+          <form id="farmerProfileForm" class="space-y-4">
             <div>
-              <label class="form-label">Farmer Full Name</label>
-              <input type="text" id="profName" class="form-input text-sm" />
+              <label for="profName" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                Farmer Full Name *
+              </label>
+              <input type="text" id="profName" required class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white" />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label class="form-label">Mobile Number (Login ID)</label>
-                <input type="tel" id="profMobile" class="form-input text-sm" />
+                <label for="profMobile" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                  Mobile Number (Dispatch Contact) *
+                </label>
+                <input type="tel" id="profMobile" required class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white" />
               </div>
               <div>
-                <label class="form-label">Email Address</label>
-                <input type="email" id="profEmail" class="form-input text-sm" />
+                <label for="profEmail" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                  Email Address (Invoice Delivery) *
+                </label>
+                <input type="email" id="profEmail" required class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white" />
               </div>
             </div>
 
             <div>
-              <label class="form-label">Village & District Address</label>
-              <input type="text" id="profVillage" class="form-input text-sm" />
+              <label for="profVillage" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                Village & District Address (Delivery Point) *
+              </label>
+              <input type="text" id="profVillage" required class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white" />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label class="form-label">Total Land Holding (Acres)</label>
-                <input type="text" id="profFarmSize" class="form-input text-sm" />
+                <label for="profFarmSize" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                  Total Land Holding (Acres)
+                </label>
+                <input type="text" id="profFarmSize" class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white" />
               </div>
               <div>
-                <label class="form-label">Primary Crops Grown</label>
-                <input type="text" value="Wheat, Paddy, Mustard" class="form-input text-sm" />
+                <label for="profCrops" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                  Primary Crops Cultivated
+                </label>
+                <input type="text" id="profCrops" class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white" />
               </div>
             </div>
 
-            <div class="pt-4 border-t border-slate-100 dark:border-slate-700">
-              <button type="submit" class="btn-primary text-xs py-3 px-6 font-bold">
-                <i class="fa-solid fa-floppy-disk mr-1"></i> Save Profile Changes
+            <div class="pt-4 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between">
+              <span class="text-xs text-muted">Changes take effect immediately across portal</span>
+              <button type="submit" class="btn-primary text-xs py-3 px-6 font-bold shadow-md">
+                <i class="fa-solid fa-floppy-disk mr-1.5"></i> Save Profile Changes
               </button>
             </div>
           </form>
@@ -397,22 +637,71 @@
     </main>
   </div>
 
-  <!-- INVOICE MODAL -->
+  <!-- ========================================== -->
+  <!-- MODAL 1: VIEW BOOKING DETAILS MODAL -->
+  <!-- ========================================== -->
+  <div id="bookingDetailsModal" class="modal-overlay">
+    <div id="bookingDetailsModalContent" class="modal-content max-w-2xl p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 max-h-[90vh] overflow-y-auto">
+      <!-- Populated dynamically by viewBookingDetails(id) -->
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 2: TRACK RENTAL STATUS MODAL -->
+  <!-- ========================================== -->
+  <div id="trackingModal" class="modal-overlay">
+    <div id="trackingModalContent" class="modal-content max-w-2xl p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 max-h-[90vh] overflow-y-auto">
+      <!-- Populated dynamically by trackBookingStatus(id) -->
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 3: CANCEL BOOKING CONFIRMATION MODAL -->
+  <!-- ========================================== -->
+  <div id="cancelModal" class="modal-overlay">
+    <div class="modal-content max-w-md p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700 mb-4">
+        <h3 class="font-bold text-base text-red-600 dark:text-red-400 flex items-center gap-2">
+          <i class="fa-solid fa-triangle-exclamation"></i> Cancel Equipment Booking
+        </h3>
+        <button onclick="closeCancelModal()" class="text-slate-400 hover:text-slate-700 dark:hover:text-white p-1">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+      <p id="cancelModalDetails" class="text-xs text-slate-600 dark:text-slate-300 mb-5 leading-relaxed">
+        Are you sure you want to cancel this booking?
+      </p>
+      <div class="flex items-center justify-end gap-2.5">
+        <button onclick="closeCancelModal()" class="btn-secondary text-xs py-2 px-4">
+          Keep Booking
+        </button>
+        <button onclick="confirmCancelBooking()" class="btn-primary bg-red-600 hover:bg-red-700 text-white text-xs py-2 px-4 font-bold border-red-600">
+          <i class="fa-solid fa-ban mr-1"></i> Yes, Cancel & Refund
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 4: GST TAX INVOICE PREVIEW MODAL -->
+  <!-- ========================================== -->
   <div id="invoiceModal" class="modal-overlay">
-    <div class="modal-content max-w-3xl">
-      <div class="p-4 bg-slate-100 dark:bg-slate-800 border-b flex justify-between items-center no-print">
-        <h4 class="font-bold text-sm text-slate-700 dark:text-white">Tax Invoice Preview</h4>
+    <div class="modal-content max-w-3xl bg-white dark:bg-slate-800 max-h-[92vh] overflow-y-auto">
+      <div class="p-4 bg-slate-100 dark:bg-slate-800/90 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center no-print">
+        <h4 class="font-bold text-sm text-slate-800 dark:text-white flex items-center gap-2">
+          <i class="fa-solid fa-receipt text-agri"></i> GST Tax Invoice Preview
+        </h4>
         <div class="flex items-center gap-2">
           <button onclick="InvoiceManager.print()" class="btn-primary text-xs py-1.5 px-3">
             <i class="fa-solid fa-print mr-1"></i> Print / Download
           </button>
-          <button onclick="InvoiceManager.closeModal()" class="text-slate-500 hover:text-slate-800 dark:hover:text-white p-1">
+          <button onclick="document.getElementById('invoiceModal').classList.remove('active')" class="text-slate-500 hover:text-slate-800 dark:hover:text-white p-1.5">
             <i class="fa-solid fa-xmark text-lg"></i>
           </button>
         </div>
       </div>
       <div id="invoicePrintArea">
-        <!-- Generated by invoice.js -->
+        <!-- Generated dynamically by invoice.js -->
       </div>
     </div>
   </div>
@@ -423,7 +712,6 @@
   <script src="js/theme.js"></script>
   <script src="js/rtl.js"></script>
   <script src="js/animations.js"></script>
-  <script src="js/equipment.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/invoice.js"></script>
   <script src="js/dashboard.js"></script>

@@ -50,13 +50,24 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileNavBackdrop.addEventListener('click', closeDrawer);
   }
 
-  // Active Link Detection
+  // Active Link Detection & Underline Highlight
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-  const navLinks = document.querySelectorAll('.nav-link');
+  const navLinks = document.querySelectorAll('.site-header nav .nav-link, .mobile-nav-drawer nav a');
+  
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
+    let isMatch = false;
+
     if (href === currentPath || (currentPath === '' && href === 'index.html')) {
-      link.classList.add('text-agri', 'font-bold');
+      isMatch = true;
+    } else if ((currentPath === 'index.html' || currentPath === 'home-2.html' || currentPath === '') && link.closest('.dropdown-container')) {
+      isMatch = true;
+    } else if ((currentPath === 'equipment-details.html') && href === 'equipment.html') {
+      isMatch = true;
+    }
+
+    if (isMatch) {
+      link.classList.add('active', 'active-page', 'text-agri', 'font-bold');
       link.setAttribute('aria-current', 'page');
     }
   });
@@ -86,22 +97,39 @@ function updateNavAuthStatus() {
   } catch (e) {
     // Graceful fallback
   }
-  const isLoginPage = window.location.pathname.endsWith('login-register.html');
 
   const authNavContainers = document.querySelectorAll('.nav-auth-item');
   authNavContainers.forEach(container => {
     if (loggedIn && user && user.name) {
       container.innerHTML = `
-        <a href="farmer-dashboard.html" class="nav-link text-xs xl:text-sm font-semibold text-agri dark:text-fresh hover:underline whitespace-nowrap flex items-center gap-1.5" title="Logged in as ${user.name}">
-          <i class="fa-solid fa-circle-user text-sm"></i>
+        <a href="farmer-dashboard.html" class="btn-secondary text-xs xl:text-sm py-2 px-3 xl:px-4 whitespace-nowrap flex items-center gap-1.5 font-semibold" title="Logged in as ${user.name}">
+          <i class="fa-solid fa-circle-user text-xs text-agri"></i>
           <span>${user.name.split(' ')[0]}</span>
         </a>
       `;
     } else {
-      const activeClass = isLoginPage ? 'text-agri font-bold' : 'text-slate-700 dark:text-slate-200 hover:text-agri';
       container.innerHTML = `
-        <a href="login-register.html" class="nav-link text-xs xl:text-sm font-semibold ${activeClass} whitespace-nowrap flex items-center gap-1.5" title="Login / Register">
-          <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
+        <a href="login-register.html" class="btn-secondary text-xs xl:text-sm py-2 px-3 xl:px-4 whitespace-nowrap flex items-center gap-1.5 font-semibold" title="Login / Register">
+          <i class="fa-solid fa-arrow-right-to-bracket text-xs text-agri"></i>
+          <span>Login</span>
+        </a>
+      `;
+    }
+  });
+
+  const mobileAuthContainers = document.querySelectorAll('.mobile-nav-auth-item');
+  mobileAuthContainers.forEach(container => {
+    if (loggedIn && user && user.name) {
+      container.innerHTML = `
+        <a href="farmer-dashboard.html" class="btn-secondary w-full py-2.5 justify-center text-sm font-semibold flex items-center gap-2">
+          <i class="fa-solid fa-circle-user text-agri"></i>
+          <span>${user.name.split(' ')[0]} (Dashboard)</span>
+        </a>
+      `;
+    } else {
+      container.innerHTML = `
+        <a href="login-register.html" class="btn-secondary w-full py-2.5 justify-center text-sm font-semibold flex items-center gap-2">
+          <i class="fa-solid fa-arrow-right-to-bracket text-agri"></i>
           <span>Login</span>
         </a>
       `;

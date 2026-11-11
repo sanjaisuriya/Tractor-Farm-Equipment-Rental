@@ -57,10 +57,11 @@
 </head>
 <body class="bg-white dark:bg-[#121813] text-charcoal dark:text-gray-100 flex flex-col min-h-screen">
 
-  <!-- SITE HEADER / NAVBAR -->
+    <!-- SITE HEADER / NAVBAR -->
   <header class="site-header sticky top-0 z-50 bg-white/95 dark:bg-[#121813]/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-all duration-300">
     <div class="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
-      <!-- Brand Logo -->
+      
+      <!-- Left Side: Tractor & Farm Equipment (Website Logo / Brand Name) -->
       <a href="index.html" class="flex items-center gap-3 group shrink-0" title="AgroRent - Tractor & Farm Equipment">
         <div class="w-11 h-11 rounded-xl bg-forest flex items-center justify-center text-white text-xl shadow-md group-hover:scale-105 transition-transform shrink-0 border border-agri/20 dark:border-white/10">
           <i class="fa-solid fa-tractor text-gold"></i>
@@ -73,20 +74,20 @@
         </div>
       </a>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-5 shrink-0">
+      <!-- Center Navigation -->
+      <nav class="hidden lg:flex items-center gap-1.5 xl:gap-3 2xl:gap-5 shrink-0">
         <!-- Home Dropdown -->
         <div class="dropdown-container relative group py-2">
-          <button class="nav-link flex items-center gap-1 text-xs xl:text-sm font-semibold text-agri font-bold hover:text-agri whitespace-nowrap">
+          <button class="nav-link active active-page flex items-center gap-1 text-xs xl:text-sm font-semibold whitespace-nowrap text-agri font-bold hover:text-agri" aria-current="page">
             <span>Home</span>
             <i class="fa-solid fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
           </button>
-          <div class="dropdown-menu absolute top-full left-0 w-52 bg-white dark:bg-[#1D2A20] rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 p-2 z-50">
+          <div class="dropdown-menu absolute top-full left-0 w-60 bg-white dark:bg-[#1D2A20] rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 p-2 z-50">
             <a href="index.html" class="block px-3 py-2 rounded-lg text-sm font-medium hover:bg-cream dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200">
-              <i class="fa-solid fa-house-chimney text-xs mr-2"></i> Home 1 (Main Landing)
+              <i class="fa-solid fa-tractor text-xs mr-2 text-agri"></i> Tractor & Machinery Hub
             </a>
             <a href="home-2.html" class="block px-3 py-2 rounded-lg text-sm font-medium hover:bg-cream dark:hover:bg-slate-800 text-agri font-bold">
-              <i class="fa-solid fa-tags text-xs mr-2"></i> Home 2 (Offers & Popular)
+              <i class="fa-solid fa-tags text-xs mr-2 text-amber-500"></i> Special Rental Offers
             </a>
           </div>
         </div>
@@ -96,82 +97,112 @@
         <a href="rates-pricing.html" class="nav-link text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap"><span class="hidden xl:inline">Rates & </span>Pricing</a>
         <a href="booking.html" class="nav-link text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap">Booking</a>
         <a href="contact.html" class="nav-link text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap">Contact Us</a>
-        <div class="nav-auth-item">
-          <a href="login-register.html" class="nav-link flex items-center gap-1.5 text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap" title="Login / Register">
-            <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
-            <span>Login</span>
-          </a>
-        </div>
         <a href="farmer-dashboard.html" class="nav-link text-xs xl:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-agri whitespace-nowrap"><span class="hidden 2xl:inline">Farmer </span>Dashboard</a>
       </nav>
 
-      <!-- Header Actions -->
-      <div class="flex items-center gap-2 lg:gap-2.5 xl:gap-3 shrink-0">
-        <div class="flex items-center gap-1 border-r border-gray-200 dark:border-gray-700 pr-2 lg:pr-2.5 xl:pr-3">
-          <button class="theme-toggle-btn w-9 h-9 rounded-lg text-slate-700 dark:text-slate-200 hover:text-agri hover:bg-slate-100 dark:hover:bg-slate-800 transition text-sm flex items-center justify-center" title="Toggle Theme (Dark / Light)" aria-label="Toggle theme">
-            <i class="fa-solid fa-moon"></i>
-          </button>
-          <button class="rtl-toggle-btn w-9 h-9 rounded-lg text-slate-700 dark:text-slate-200 hover:text-agri hover:bg-slate-100 dark:hover:bg-slate-800 transition text-sm flex items-center justify-center" title="Toggle RTL/LTR" aria-label="Toggle RTL/LTR">
-            <i class="fa-solid fa-globe"></i>
-            <span class="sr-only dir-label">RTL</span>
-          </button>
+      <!-- Right Side Controls -->
+      <div class="flex items-center gap-1.5 sm:gap-2 lg:gap-2 xl:gap-3 shrink-0">
+        <!-- Dark Mode / Light Mode Theme Toggle -->
+        <button class="theme-toggle-btn w-9 h-9 rounded-lg text-slate-700 dark:text-slate-200 hover:text-agri hover:bg-slate-100 dark:hover:bg-slate-800 transition text-sm flex items-center justify-center border border-gray-200 dark:border-gray-700" title="Toggle Theme (Dark / Light)" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- RTL / LTR Direction Toggle (Directional Arrows Icon) -->
+        <button class="rtl-toggle-btn w-9 h-9 rounded-lg text-slate-700 dark:text-slate-200 hover:text-agri hover:bg-slate-100 dark:hover:bg-slate-800 transition text-sm flex items-center justify-center border border-gray-200 dark:border-gray-700" title="Toggle Text Direction (LTR / RTL)" aria-label="Toggle text direction">
+          <i class="fa-solid fa-right-left text-sm"></i>
+        </button>
+
+        <!-- Login Button -->
+        <div class="nav-auth-item hidden sm:inline-flex">
+          <a href="login-register.html" class="btn-secondary text-xs xl:text-sm py-2 px-3 xl:px-4 whitespace-nowrap flex items-center gap-1.5 font-semibold" title="Login / Register">
+            <i class="fa-solid fa-arrow-right-to-bracket text-xs text-agri"></i>
+            <span>Login</span>
+          </a>
         </div>
-        <a href="booking.html" class="hidden sm:inline-flex btn-primary text-xs xl:text-sm py-2 xl:py-2.5 px-3.5 xl:px-5 whitespace-nowrap items-center gap-2 animate-pulse-glow">
+
+        <!-- Highlighted Book Equipment CTA Button -->
+        <a href="booking.html" class="hidden sm:inline-flex btn-primary text-xs xl:text-sm py-2 xl:py-2.5 px-3.5 xl:px-5 whitespace-nowrap items-center gap-2 animate-pulse-glow font-bold shadow-md">
           <i class="fa-solid fa-calendar-check"></i> <span><span class="hidden xl:inline">Book Equipment</span><span class="xl:hidden">Book Now</span></span>
         </a>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="mobileMenuToggle" class="lg:hidden p-2 text-slate-700 dark:text-slate-200 hover:text-agri focus:outline-none" aria-label="Open Mobile Menu">
+          <i class="fa-solid fa-bars text-2xl"></i>
+        </button>
       </div>
 
-      <button id="mobileMenuToggle" class="lg:hidden p-2 text-slate-700 dark:text-slate-200 hover:text-agri focus:outline-none" aria-label="Open Mobile Menu">
-        <i class="fa-solid fa-bars text-2xl"></i>
-      </button>
     </div>
   </header>
 
-  <!-- MOBILE NAV DRAWER -->
+    <!-- MOBILE NAV DRAWER -->
   <div id="mobileNavBackdrop" class="mobile-nav-backdrop"></div>
-  <aside id="mobileNavDrawer" class="mobile-nav-drawer p-6">
-    <div class="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-gray-700 mb-6">
-      <div class="flex items-center gap-3">
-        <div class="w-11 h-11 rounded-xl bg-forest flex items-center justify-center text-white text-xl shadow-md shrink-0">
-          <i class="fa-solid fa-tractor text-gold"></i>
+  <aside id="mobileNavDrawer" class="mobile-nav-drawer p-6 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-gray-700 mb-6">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-xl bg-forest flex items-center justify-center text-white text-xl shadow-md shrink-0 border border-agri/20 dark:border-white/10">
+            <i class="fa-solid fa-tractor text-gold"></i>
+          </div>
+          <div class="flex flex-col justify-center">
+            <span class="text-2xl font-black tracking-tight text-forest dark:text-white font-heading leading-none whitespace-nowrap">
+              AGRO<span class="text-agri dark:text-fresh">RENT</span>
+            </span>
+            <span class="block text-[10px] tracking-widest uppercase font-semibold text-muted dark:text-cream/70 leading-tight mt-1 whitespace-nowrap">Tractor & Farm Equipment</span>
+          </div>
         </div>
-        <div class="flex flex-col justify-center">
-          <span class="text-2xl font-black tracking-tight text-forest dark:text-white font-heading leading-none whitespace-nowrap">
-            AGRO<span class="text-agri dark:text-fresh">RENT</span>
-          </span>
-          <span class="block text-[10px] tracking-widest uppercase font-semibold text-muted dark:text-cream/70 leading-tight mt-1 whitespace-nowrap">Tractor & Farm Equipment</span>
-        </div>
-      </div>
-      <button id="closeMobileMenu" class="text-slate-500 hover:text-slate-800 dark:hover:text-white p-2">
-        <i class="fa-solid fa-xmark text-xl"></i>
-      </button>
-    </div>
-    <nav class="flex flex-col gap-3 flex-1">
-      <div>
-        <button id="mobileHomeToggle" class="w-full flex items-center justify-between py-2 text-base font-semibold text-agri font-bold">
-          <span>Home Pages</span>
-          <i class="arrow-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
+        <button id="closeMobileMenu" class="p-2 text-slate-500 hover:text-slate-800 dark:hover:text-white" aria-label="Close Mobile Menu">
+          <i class="fa-solid fa-xmark text-xl"></i>
         </button>
-        <div id="mobileHomeSubmenu" class="hidden pl-4 py-2 space-y-2 border-l-2 border-agri/30 my-1">
-          <a href="index.html" class="block py-1 text-sm font-medium text-slate-600 dark:text-slate-300">Home 1 (Main Landing)</a>
-          <a href="home-2.html" class="block py-1 text-sm font-medium text-agri font-bold">Home 2 (Offers & Popular)</a>
-        </div>
       </div>
 
-      <a href="about.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">About Us</a>
-      <a href="equipment.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">Equipment</a>
-      <a href="rates-pricing.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">Rates & Pricing</a>
-      <a href="booking.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">Booking</a>
-      <a href="contact.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">Contact Us</a>
-      <a href="login-register.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri flex items-center gap-2">
-        <i class="fa-solid fa-arrow-right-to-bracket text-agri text-sm"></i>
-        <span>Login</span>
+      <!-- Center Navigation in Drawer -->
+      <nav class="flex flex-col gap-2.5">
+        <div>
+          <button id="mobileHomeToggle" class="w-full flex items-center justify-between py-2 text-base font-semibold text-agri font-bold">
+            <span>Home Pages</span>
+            <i class="arrow-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
+          </button>
+          <div id="mobileHomeSubmenu" class="hidden pl-4 py-2 space-y-2 border-l-2 border-agri/30 my-1">
+            <a href="index.html" class="block py-1 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2"><i class="fa-solid fa-tractor text-xs text-agri"></i> <span>Tractor & Machinery Hub</span></a>
+            <a href="home-2.html" class="block py-1 text-sm font-medium text-agri font-bold flex items-center gap-2"><i class="fa-solid fa-tags text-xs text-amber-500"></i> <span>Special Rental Offers</span></a>
+          </div>
+        </div>
+
+        <a href="about.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">About Us</a>
+        <a href="equipment.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">Equipment</a>
+        <a href="rates-pricing.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">Rates & Pricing</a>
+        <a href="booking.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">Booking</a>
+        <a href="contact.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri">Contact Us</a>
+        <a href="farmer-dashboard.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri flex items-center gap-2">
+          <i class="fa-solid fa-gauge-high text-agri text-sm"></i>
+          <span>Farmer Dashboard</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Right Controls in Drawer -->
+    <div class="pt-6 border-t border-gray-200 dark:border-gray-700 flex flex-col gap-3">
+      <div class="mobile-nav-auth-item">
+        <a href="login-register.html" class="btn-secondary w-full py-2.5 justify-center text-sm font-semibold flex items-center gap-2">
+          <i class="fa-solid fa-arrow-right-to-bracket text-agri"></i>
+          <span>Login</span>
+        </a>
+      </div>
+      <a href="booking.html" class="btn-primary w-full py-3 justify-center text-sm font-bold shadow-md">
+        <i class="fa-solid fa-calendar-check"></i> Book Equipment
       </a>
-      <a href="farmer-dashboard.html" class="py-2 text-base font-semibold text-slate-800 dark:text-white hover:text-agri flex items-center gap-2">
-        <i class="fa-solid fa-gauge-high text-agri text-sm"></i>
-        <span>Farmer Dashboard</span>
-      </a>
-    </nav>
+      <div class="flex items-center justify-between pt-2">
+        <span class="text-xs text-muted">Theme & Direction:</span>
+        <div class="flex items-center gap-2">
+          <button class="theme-toggle-btn w-9 h-9 rounded-lg text-slate-700 dark:text-slate-200 hover:text-agri hover:bg-slate-100 dark:hover:bg-slate-800 transition text-sm flex items-center justify-center border border-gray-200 dark:border-gray-700" title="Toggle Theme (Dark / Light)" aria-label="Toggle theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          <button class="rtl-toggle-btn w-9 h-9 rounded-lg text-slate-700 dark:text-slate-200 hover:text-agri hover:bg-slate-100 dark:hover:bg-slate-800 transition text-sm flex items-center justify-center border border-gray-200 dark:border-gray-700" title="Toggle Text Direction (LTR / RTL)" aria-label="Toggle text direction">
+            <i class="fa-solid fa-right-left text-sm"></i>
+          </button>
+        </div>
+      </div>
+    </div>
   </aside>
 
   <!-- MAIN CONTENT: HOME 2 -->
@@ -179,7 +210,7 @@
     <!-- ========================================================
          HERO SECTION: HOME PAGE 2 (RENTAL OFFERS & POPULAR FLEET)
          ======================================================== -->
-    <section class="relative py-14 lg:py-20 bg-forest text-white overflow-hidden" style="background-image: linear-gradient(135deg, rgba(23, 61, 43, 0.95) 0%, rgba(23, 61, 43, 0.84) 55%, rgba(52, 122, 69, 0.78) 100%), url('assets/images/home-2/agricultural-field.jpg'); background-size: cover; background-position: center;">
+    <section class="site-hero-banner relative py-16 lg:py-20 bg-forest text-white overflow-hidden border-b border-gray-200 dark:border-gray-800" style="background-image: linear-gradient(135deg, rgba(23, 61, 43, 0.95) 0%, rgba(23, 61, 43, 0.84) 55%, rgba(52, 122, 69, 0.78) 100%), url('assets/images/home-2/agricultural-field.jpg'); background-size: cover; background-position: center;">
       <div class="container-custom relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           

@@ -1,76 +1,44 @@
 /* Contact Us Custom Styling */
 
-.contact-info-card {
-  background: linear-gradient(135deg, var(--color-forest) 0%, #1c4b34 100%);
-  color: #FFFFFF;
-  border-radius: var(--radius-xl);
-  padding: 2.5rem;
-  box-shadow: var(--shadow-xl);
+.contact-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-.contact-info-card h3,
-.contact-info-card p {
-  color: #FFFFFF;
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(23, 61, 43, 0.08);
 }
 
-.contact-icon-pill {
-  width: 46px;
-  height: 46px;
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  color: var(--color-gold);
-  flex-shrink: 0;
-}
-
-.map-container {
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border-color);
-  height: 380px;
-}
-
-/* Regional Hub Cards */
-.hub-card {
+/* Service Area Cards */
+.service-area-card {
   background: var(--bg-card);
   border-radius: var(--radius-xl);
   border: 1px solid var(--border-color);
   padding: 1.75rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   display: flex;
   flex-direction: column;
 }
 
-.hub-card:hover {
+.service-area-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 28px rgba(23, 61, 43, 0.08);
   border-color: var(--color-agri);
 }
 
-/* Departmental Advisory Cards */
-.dept-card {
+/* Equipment Support Assistance Cards */
+.support-item-card {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
   padding: 1.5rem;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.dept-card:hover {
+.support-item-card:hover {
   border-color: var(--color-agri);
   transform: translateY(-2px);
-}
-
-/* Emergency Breakdown Box */
-.sos-box {
-  background: linear-gradient(135deg, #173D2B 0%, #0F281C 100%);
-  border: 1px solid rgba(220, 167, 53, 0.3);
-  border-radius: var(--radius-2xl);
-  color: #FFFFFF;
+  box-shadow: 0 8px 20px rgba(52, 122, 69, 0.06);
 }
 
 /* Contact FAQ Accordion */
@@ -92,6 +60,7 @@
   font-family: var(--font-heading);
   color: var(--text-main);
   user-select: none;
+  gap: 1rem;
 }
 
 .contact-faq-content {
@@ -102,7 +71,7 @@
 
 .contact-faq-item.active {
   border-color: var(--color-agri);
-  box-shadow: 0 4px 12px rgba(52, 122, 69, 0.08);
+  box-shadow: 0 4px 14px rgba(52, 122, 69, 0.08);
 }
 
 .contact-faq-item.active .contact-faq-header {
@@ -115,4 +84,25 @@
 
 .contact-faq-item.active .faq-arrow {
   transform: rotate(180deg);
+}
+
+/* Input validation styles */
+.form-input.is-invalid,
+.form-select.is-invalid,
+.form-textarea.is-invalid {
+  border-color: #ef4444 !important;
+  background-color: rgba(239, 68, 68, 0.04);
+}
+
+.form-error-msg {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+
+.form-input.is-invalid + .form-error-msg,
+.form-select.is-invalid + .form-error-msg,
+.form-textarea.is-invalid + .form-error-msg {
+  display: block;
 }

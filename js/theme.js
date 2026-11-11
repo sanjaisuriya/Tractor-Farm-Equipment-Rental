@@ -1,6 +1,6 @@
 /**
  * Tractor & Farm Equipment Rental - Theme Manager
- * Dark / Light Mode with LocalStorage persistence
+ * Dark / Light Mode with LocalStorage persistence and Sun/Moon icons
  */
 
 (function () {
@@ -30,13 +30,13 @@
       const icon = btn.querySelector('i');
       if (icon) {
         if (theme === 'dark') {
-          icon.className = 'fa-solid fa-sun text-yellow-400';
+          icon.className = 'fa-solid fa-sun text-yellow-400 text-sm';
           btn.setAttribute('aria-label', 'Switch to light mode');
-          btn.setAttribute('title', 'Switch to light mode');
+          btn.setAttribute('title', 'Active: Dark Mode (Click for Light Mode)');
         } else {
-          icon.className = 'fa-solid fa-moon text-slate-700 dark:text-slate-200';
+          icon.className = 'fa-solid fa-moon text-slate-700 dark:text-slate-200 text-sm';
           btn.setAttribute('aria-label', 'Switch to dark mode');
-          btn.setAttribute('title', 'Switch to dark mode');
+          btn.setAttribute('title', 'Active: Light Mode (Click for Dark Mode)');
         }
       }
     });

@@ -32,12 +32,11 @@ const EQUIPMENT_DATA = [
     status: "Available",
     rating: 4.9,
     reviewsCount: 142,
-    image: "assets/images/equipment/tractor.jpg",
+    image: "assets/images/equipment/mahindra-575-di.jpg",
     gallery: [
+      "assets/images/equipment/mahindra-575-di.jpg",
       "assets/images/equipment/tractor.jpg",
-      "assets/images/equipment-details/gallery-1.jpg",
-      "assets/images/equipment-details/gallery-2.jpg",
-      "assets/images/equipment-details/gallery-3.jpg"
+      "assets/images/equipment-details/gallery-1.jpg"
     ],
     shortDesc: "Workhorse 45 HP multi-purpose utility tractor engineered for heavy ploughing, puddling, and haulage across all soil types.",
     description: "The Mahindra 575 DI is renowned among Indian farmers for fuel-efficient power, rugged build quality, and unmatched field versatility. Perfectly paired with 7-9 tine cultivators, rotavators, and heavy-duty trailers. Features high torque backup to handle sudden load shocks effortlessly.",
@@ -76,10 +75,10 @@ const EQUIPMENT_DATA = [
     status: "Available",
     rating: 4.9,
     reviewsCount: 98,
-    image: "assets/images/home-1/hero-tractor.jpg",
+    image: "assets/images/equipment/john-deere-5310.jpg",
     gallery: [
+      "assets/images/equipment/john-deere-5310.jpg",
       "assets/images/home-1/hero-tractor.jpg",
-      "assets/images/equipment/tractor.jpg",
       "assets/images/equipment-details/gallery-1.jpg"
     ],
     shortDesc: "Premium 55 HP four-wheel drive tractor with turbocharger, Collarshift gearbox, and heavy pull traction in wet clay.",
@@ -119,11 +118,11 @@ const EQUIPMENT_DATA = [
     status: "Available",
     rating: 4.8,
     reviewsCount: 76,
-    image: "assets/images/equipment/mini-tractor.jpg",
+    image: "assets/images/equipment/sonalika-gt22-mini.jpg",
     gallery: [
-      "assets/images/equipment/mini-tractor.jpg",
-      "assets/images/equipment/sprayer.jpg",
-      "assets/images/equipment-details/gallery-4.jpg"
+      "assets/images/equipment/sonalika-gt22-mini.jpg",
+      "assets/images/equipment/sonalika-gt22-mini-side.jpg",
+      "assets/images/equipment/mini-tractor.jpg"
     ],
     shortDesc: "Narrow track 22 HP mini tractor designed specifically for vineyard lanes, sugarcane beds, and fruit orchards.",
     description: "Compact 3-foot track width enables effortless inter-row weeding, rotavating, and power spraying between tightly spaced crops. Offers smooth turning radius and featherweight ground pressure to protect delicate crop root zones.",
@@ -208,10 +207,10 @@ const EQUIPMENT_DATA = [
     status: "Available",
     rating: 4.9,
     reviewsCount: 164,
-    image: "assets/images/equipment/rotavator.jpg",
+    image: "assets/images/equipment/rotavator-tilling.jpg",
     gallery: [
-      "assets/images/equipment/rotavator.jpg",
-      "assets/images/equipment-details/gallery-2.jpg"
+      "assets/images/equipment/rotavator-tilling.jpg",
+      "assets/images/equipment/rotavator.jpg"
     ],
     shortDesc: "Heavy-duty multi-speed rotary tiller with 48 boron steel L-blades for superior seedbed preparation and residue incorporation.",
     description: "The Shaktiman Semi-Champion rotavator pulverizes clods and chops standing crop stalks in a single pass. Features oil-bath multi-speed gearbox allowing rotor speed adjustments to match sandy, loamy, or heavy clay soil conditions.",

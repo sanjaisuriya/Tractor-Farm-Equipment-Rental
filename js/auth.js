@@ -1,6 +1,6 @@
 /**
  * Tractor & Farm Equipment Rental - Authentication Manager
- * Demo Login, Registration, Password Toggle & Dashboard Protection
+ * Farmer Login, Demo Credentials, Registration, Password Visibility, and Session Management
  */
 
 const DEFAULT_DEMO_USER = {
@@ -9,6 +9,7 @@ const DEFAULT_DEMO_USER = {
   mobile: "+91 98765 43210",
   village: "Rampur, Ludhiana, Punjab",
   farmSize: "12 Acres",
+  primaryCrops: "Wheat, Paddy, Mustard",
   memberSince: "March 2024",
   role: "Verified Progressive Farmer"
 };
@@ -34,63 +35,80 @@ const Auth = {
     localStorage.setItem('trarent_user', JSON.stringify(user));
   },
 
-  login(identifier, password) {
-    if (!identifier || !password) {
-      return { success: false, message: "Please fill in all required fields." };
+  login(email, password) {
+    if (!email || !password) {
+      return { success: false, message: "Please enter both Email Address and Password." };
     }
 
+    // Demo credentials or any email/password for frontend testing
     let user = this.getUser();
+    if (email.toLowerCase() === DEFAULT_DEMO_USER.email.toLowerCase()) {
+      user = { ...DEFAULT_DEMO_USER };
+    } else {
+      user = {
+        ...user,
+        email: email,
+        name: email.split('@')[0].replace(/[._]/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
+      };
+    }
+
+    this.setUser(user);
+    localStorage.setItem('trarent_auth_origin', 'form');
     localStorage.setItem('trarent_logged_in', 'true');
-    return { success: true, message: "Login successful! Redirecting to Dashboard...", user };
+    return { success: true, message: `Welcome back, ${user.name}! Redirecting to Farmer Dashboard...`, user };
   },
 
   register(userData) {
-    if (!userData.name || !userData.mobile || !userData.password) {
+    if (!userData.name || !userData.mobile || !userData.email || !userData.password) {
       return { success: false, message: "Please fill in all required fields." };
     }
     if (userData.password !== userData.confirmPassword) {
-      return { success: false, message: "Passwords do not match." };
+      return { success: false, message: "Passwords do not match. Please re-enter." };
     }
 
     const newUser = {
       name: userData.name,
-      email: userData.email || "farmer@agrorent.in",
+      email: userData.email,
       mobile: userData.mobile,
-      village: userData.village || "Kisan Nagar",
-      farmSize: "8 Acres",
+      village: userData.village || "Rampur, Punjab",
+      farmSize: userData.farmSize || "10 Acres",
+      primaryCrops: "Wheat, Paddy",
       memberSince: "November 2026",
       role: "Registered Farmer"
     };
 
     this.setUser(newUser);
+    localStorage.setItem('trarent_auth_origin', 'form');
     localStorage.setItem('trarent_logged_in', 'true');
-    return { success: true, message: "Account created successfully! Redirecting to Dashboard...", user: newUser };
+    return { success: true, message: `Account created successfully! Welcome, ${newUser.name}. Redirecting...`, user: newUser };
   },
 
   logout() {
     localStorage.removeItem('trarent_logged_in');
-    window.location.href = 'login-register.html';
+    localStorage.removeItem('trarent_auth_origin');
+    showAuthToast("You have been safely logged out.", "success");
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 500);
   },
 
   protectDashboard() {
-    if (!this.isLoggedIn()) {
-      // In demo mode, if unauthenticated, show a quick prompt or banner
-      const notice = document.getElementById('authNoticeModal');
-      if (notice) {
-        notice.classList.add('active');
-      } else {
-        window.location.href = 'login-register.html?redirect=farmer-dashboard.html';
-      }
+    // Farmer Dashboard runs as a pure dummy / showcase preview.
+    // It should NEVER force login, redirect to login, or automatically mark the user as logged in.
+    if (localStorage.getItem('trarent_auth_origin') !== 'form') {
+      localStorage.removeItem('trarent_logged_in');
     }
+    return true;
   }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Password Visibility Toggle
+  // 1. Password Visibility Toggle (Show / Hide)
   document.querySelectorAll('.password-toggle-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const input = btn.previousElementSibling;
+      const container = btn.closest('.relative') || btn.parentElement;
+      const input = container ? container.querySelector('input') : btn.previousElementSibling;
       if (input && (input.type === 'password' || input.type === 'text')) {
         const isPassword = input.type === 'password';
         input.type = isPassword ? 'text' : 'password';
@@ -98,68 +116,130 @@ document.addEventListener('DOMContentLoaded', () => {
         if (icon) {
           icon.className = isPassword ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
         }
+        btn.setAttribute('title', isPassword ? 'Hide password' : 'Show password');
+        btn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
       }
     });
   });
 
-  // Handle Login & Register page tab switches and submissions if present
-  const loginForm = document.getElementById('farmerLoginForm');
-  const registerForm = document.getElementById('farmerRegisterForm');
+  // 2. Tab Switches and Registration Links
   const tabLogin = document.getElementById('tabLogin');
   const tabRegister = document.getElementById('tabRegister');
   const loginSec = document.getElementById('loginSection');
   const registerSec = document.getElementById('registerSection');
+  const linkToRegister = document.getElementById('linkToRegister');
+  const linkToLogin = document.getElementById('linkToLogin');
 
-  if (tabLogin && tabRegister) {
-    tabLogin.addEventListener('click', () => {
-      tabLogin.classList.add('active');
-      tabRegister.classList.remove('active');
-      loginSec.classList.remove('hidden');
-      registerSec.classList.add('hidden');
-    });
-
-    tabRegister.addEventListener('click', () => {
-      tabRegister.classList.add('active');
-      tabLogin.classList.remove('active');
-      registerSec.classList.remove('hidden');
-      loginSec.classList.add('hidden');
-    });
+  function switchToLogin() {
+    if (tabLogin) tabLogin.classList.add('active');
+    if (tabRegister) tabRegister.classList.remove('active');
+    if (loginSec) loginSec.classList.remove('hidden');
+    if (registerSec) registerSec.classList.add('hidden');
   }
 
-  // Quick Demo Login Button
+  function switchToRegister() {
+    if (tabRegister) tabRegister.classList.add('active');
+    if (tabLogin) tabLogin.classList.remove('active');
+    if (registerSec) registerSec.classList.remove('hidden');
+    if (loginSec) loginSec.classList.add('hidden');
+  }
+
+  if (tabLogin && tabRegister) {
+    tabLogin.addEventListener('click', switchToLogin);
+    tabRegister.addEventListener('click', switchToRegister);
+  }
+  if (linkToRegister) linkToRegister.addEventListener('click', (e) => { e.preventDefault(); switchToRegister(); });
+  if (linkToLogin) linkToLogin.addEventListener('click', (e) => { e.preventDefault(); switchToLogin(); });
+
+  // 3. Quick 1-Click Demo Login Button
   const demoLoginBtn = document.getElementById('quickDemoLoginBtn');
   if (demoLoginBtn) {
     demoLoginBtn.addEventListener('click', (e) => {
       e.preventDefault();
+      const emailInput = document.getElementById('loginEmail');
+      const passInput = document.getElementById('loginPassword');
+      if (emailInput) emailInput.value = DEFAULT_DEMO_USER.email;
+      if (passInput) passInput.value = "farmer123";
+
       Auth.setUser(DEFAULT_DEMO_USER);
+      localStorage.setItem('trarent_auth_origin', 'form');
       localStorage.setItem('trarent_logged_in', 'true');
-      showAuthToast("Welcome, Rajesh Kumar! Logged in as Demo Farmer.", "success");
+      showAuthToast("Signed in as Rajesh Kumar (Demo Farmer)! Opening Dashboard...", "success");
       setTimeout(() => {
         window.location.href = 'farmer-dashboard.html';
       }, 700);
     });
   }
 
-  if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
+  // 4. Fill Demo Credentials Helper Button
+  const fillDemoCredsBtn = document.getElementById('fillDemoCredsBtn');
+  if (fillDemoCredsBtn) {
+    fillDemoCredsBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const identifier = document.getElementById('loginIdentifier')?.value.trim();
-      const password = document.getElementById('loginPassword')?.value;
+      const emailInput = document.getElementById('loginEmail');
+      const passInput = document.getElementById('loginPassword');
+      if (emailInput) emailInput.value = DEFAULT_DEMO_USER.email;
+      if (passInput) passInput.value = "farmer123";
+      showAuthToast("Demo credentials loaded into form!", "success");
+    });
+  }
 
-      const res = Auth.login(identifier, password);
-      if (res.success) {
-        showAuthToast(res.message, "success");
-        setTimeout(() => {
-          const params = new URLSearchParams(window.location.search);
-          const redirect = params.get('redirect') || 'farmer-dashboard.html';
-          window.location.href = redirect;
-        }, 800);
+  // 5. Forgot Password Dialog Trigger
+  const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+  if (forgotPasswordLink) {
+    forgotPasswordLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = document.getElementById('forgotPasswordModal');
+      if (modal) {
+        modal.classList.add('active');
       } else {
-        showAuthToast(res.message, "error");
+        alert("Demo Recovery:\n\nEmail: farmer@agrorent.in\nPassword: farmer123\n\nUse these credentials or click 'Instant 1-Click Demo Login'.");
       }
     });
   }
 
+  const closeForgotModal = document.getElementById('closeForgotModal');
+  if (closeForgotModal) {
+    closeForgotModal.addEventListener('click', () => {
+      document.getElementById('forgotPasswordModal')?.classList.remove('active');
+    });
+  }
+
+  // 6. Login Form Submission
+  const loginForm = document.getElementById('farmerLoginForm');
+  if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail')?.value.trim();
+      const password = document.getElementById('loginPassword')?.value;
+
+      const submitBtn = loginForm.querySelector('button[type="submit"]');
+      const originalHtml = submitBtn ? submitBtn.innerHTML : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Verifying...';
+      }
+
+      setTimeout(() => {
+        const res = Auth.login(email, password);
+        if (res.success) {
+          showAuthToast(res.message, "success");
+          setTimeout(() => {
+            window.location.href = 'farmer-dashboard.html';
+          }, 600);
+        } else {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalHtml;
+          }
+          showAuthToast(res.message, "error");
+        }
+      }, 400);
+    });
+  }
+
+  // 7. Register Form Submission
+  const registerForm = document.getElementById('farmerRegisterForm');
   if (registerForm) {
     registerForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -167,15 +247,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const mobile = document.getElementById('regMobile')?.value.trim();
       const email = document.getElementById('regEmail')?.value.trim();
       const village = document.getElementById('regVillage')?.value.trim();
+      const farmSize = document.getElementById('regFarmSize')?.value.trim();
       const password = document.getElementById('regPassword')?.value;
       const confirmPassword = document.getElementById('regConfirmPassword')?.value;
 
-      const res = Auth.register({ name, mobile, email, village, password, confirmPassword });
+      const res = Auth.register({ name, mobile, email, village, farmSize, password, confirmPassword });
       if (res.success) {
         showAuthToast(res.message, "success");
         setTimeout(() => {
           window.location.href = 'farmer-dashboard.html';
-        }, 800);
+        }, 700);
       } else {
         showAuthToast(res.message, "error");
       }
@@ -201,3 +282,4 @@ function showAuthToast(msg, type = "success") {
 }
 
 window.Auth = Auth;
+window.showAuthToast = showAuthToast;

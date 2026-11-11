@@ -125,7 +125,72 @@ img {
   line-height: 1.25;
   font-weight: 600;
   text-decoration: none;
+  position: relative;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Premium Animated Active & Hover Underline */
+.site-header nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #347A45 0%, #78A85A 100%);
+  border-radius: 9999px;
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.site-header nav .nav-link:hover::after {
+  width: 100%;
+  opacity: 0.7;
+}
+
+.site-header nav .nav-link.active,
+.site-header nav .nav-link.active-page,
+.site-header nav .nav-link[aria-current="page"] {
+  color: #347A45 !important;
+  font-weight: 700 !important;
+}
+
+.site-header nav .nav-link.active::after,
+.site-header nav .nav-link.active-page::after,
+.site-header nav .nav-link[aria-current="page"]::after {
+  width: 100% !important;
+  opacity: 1 !important;
+  background: linear-gradient(90deg, #347A45 0%, #78A85A 100%) !important;
+}
+
+html.dark .site-header nav .nav-link.active,
+html.dark .site-header nav .nav-link.active-page,
+html.dark .site-header nav .nav-link[aria-current="page"] {
+  color: #78A85A !important;
+}
+
+html.dark .site-header nav .nav-link.active::after,
+html.dark .site-header nav .nav-link.active-page::after,
+html.dark .site-header nav .nav-link[aria-current="page"]::after {
+  background: linear-gradient(90deg, #78A85A 0%, #E6AD43 100%) !important;
+}
+
+/* Mobile Drawer Active Link */
+.mobile-nav-drawer nav a.active,
+.mobile-nav-drawer nav a.active-page,
+.mobile-nav-drawer nav a[aria-current="page"] {
+  color: #347A45 !important;
+  font-weight: 700 !important;
+  border-left: 3px solid #347A45;
+  padding-left: 0.75rem;
+}
+
+html.dark .mobile-nav-drawer nav a.active,
+html.dark .mobile-nav-drawer nav a.active-page,
+html.dark .mobile-nav-drawer nav a[aria-current="page"] {
+  color: #78A85A !important;
+  border-left-color: #78A85A;
 }
 
 .site-header .dropdown-container {
@@ -483,5 +548,27 @@ img {
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+/* ==========================================================================
+   UNIFIED HERO BANNER ACROSS ALL PAGES (HOME TO CONTACT)
+   Ensures identical height, alignment, and responsive scale across all pages.
+   ========================================================================== */
+.site-hero-banner {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .site-hero-banner {
+    min-height: 520px;
   }
 }

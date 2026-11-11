@@ -1,13 +1,19 @@
 /* Login & Register Custom Styling */
 .auth-container {
-  max-width: 480px;
   width: 100%;
   margin: 0 auto;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
-  padding: 2.5rem;
+  padding: 2rem 2.25rem;
   box-shadow: var(--shadow-xl);
+  transition: var(--transition);
+}
+
+@media (max-width: 640px) {
+  .auth-container {
+    padding: 1.5rem 1.25rem;
+  }
 }
 
 .auth-tab-btn {
@@ -30,15 +36,64 @@
 .password-toggle-btn {
   position: absolute;
   top: 50%;
-  right: 1rem;
+  right: 0.85rem;
   transform: translateY(-50%);
   background: none;
   border: none;
   color: var(--text-muted);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password-toggle-btn:hover {
+  color: var(--color-agri);
 }
 
 [dir="rtl"] .password-toggle-btn {
   right: auto;
-  left: 1rem;
+  left: 0.85rem;
+}
+
+/* Modal Overlay for Demo Forgot Password */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(18, 24, 19, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+  padding: 1rem;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-color);
+  width: 100%;
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPop {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

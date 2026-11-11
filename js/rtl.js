@@ -1,6 +1,6 @@
 /**
  * Tractor & Farm Equipment Rental - RTL / LTR Manager
- * Direction toggle with LocalStorage persistence
+ * Direction toggle with LocalStorage persistence and directional arrow icons
  */
 
 (function () {
@@ -15,13 +15,30 @@
   }
 
   function updateRtlToggleButtons(dir) {
+    const isRtl = dir === 'rtl';
     const btns = document.querySelectorAll('.rtl-toggle-btn');
     btns.forEach(btn => {
-      const textSpan = btn.querySelector('.dir-label');
-      if (textSpan) {
-        textSpan.textContent = dir === 'rtl' ? 'LTR' : 'RTL';
+      const icon = btn.querySelector('i');
+      if (icon) {
+        icon.className = isRtl
+          ? 'fa-solid fa-right-left text-sm text-agri'
+          : 'fa-solid fa-right-left text-sm text-slate-700 dark:text-slate-200';
       }
-      btn.setAttribute('title', dir === 'rtl' ? 'Switch to Left-to-Right' : 'Switch to Right-to-Left');
+
+      // Ensure no text remains inside button
+      const label = btn.querySelector('.dir-label');
+      if (label) {
+        label.remove();
+      }
+
+      btn.setAttribute('title', isRtl ? 'Active Direction: RTL (Click for LTR)' : 'Active Direction: LTR (Click for RTL)');
+      btn.setAttribute('aria-label', isRtl ? 'Switch to Left-to-Right layout' : 'Switch to Right-to-Left layout');
+
+      if (isRtl) {
+        btn.classList.add('border-agri', 'text-agri', 'bg-agri/10');
+      } else {
+        btn.classList.remove('border-agri', 'text-agri', 'bg-agri/10');
+      }
     });
   }
 

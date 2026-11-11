@@ -53,6 +53,18 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       equipSelect.selectedIndex = 1; // Default to first equipment
     }
+
+    // Preselect start date if provided in query params
+    const dateParam = params.get('startDate') || params.get('date');
+    if (dateParam && startDateInput) {
+      startDateInput.value = dateParam;
+    }
+
+    // Pre-fill location/village if provided in query params
+    const locParam = params.get('location') || params.get('village');
+    if (locParam && locationInput) {
+      locationInput.value = locParam;
+    }
   }
 
   // Set default dates: Start today, End tomorrow
@@ -65,10 +77,24 @@ document.addEventListener('DOMContentLoaded', () => {
   if (startDateInput && !startDateInput.value) {
     startDateInput.min = formatDate(today);
     startDateInput.value = formatDate(today);
+  } else if (startDateInput) {
+    startDateInput.min = formatDate(today);
   }
+
   if (endDateInput && !endDateInput.value) {
-    endDateInput.min = formatDate(today);
-    endDateInput.value = formatDate(tomorrow);
+    endDateInput.min = startDateInput ? startDateInput.value : formatDate(today);
+    if (startDateInput && startDateInput.value) {
+      const s = new Date(startDateInput.value);
+      if (!isNaN(s.getTime())) {
+        const calculatedEnd = new Date(s);
+        calculatedEnd.setDate(calculatedEnd.getDate() + 2);
+        endDateInput.value = formatDate(calculatedEnd);
+      } else {
+        endDateInput.value = formatDate(tomorrow);
+      }
+    } else {
+      endDateInput.value = formatDate(tomorrow);
+    }
   }
 
   // Calculation function

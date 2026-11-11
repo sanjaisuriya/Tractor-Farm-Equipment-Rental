@@ -5,9 +5,17 @@
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const equipId = params.get('id') || 'tr-575';
+  const customImg = params.get('img');
   const item = EquipmentService.getById(equipId);
 
   if (!item) return;
+
+  if (customImg) {
+    item.image = customImg;
+    if (item.gallery && !item.gallery.includes(customImg)) {
+      item.gallery.unshift(customImg);
+    }
+  }
 
   // Set Title & Breadcrumbs
   const titleEl = document.getElementById('detailsTitle');
