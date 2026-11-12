@@ -78,7 +78,7 @@ const EQUIPMENT_DATA = [
     image: "assets/images/equipment/john-deere-5310.jpg",
     gallery: [
       "assets/images/equipment/john-deere-5310.jpg",
-      "assets/images/home-1/hero-tractor.jpg",
+      "assets/images/equipment/heavy-tractor-john-deere.jpg",
       "assets/images/equipment-details/gallery-1.jpg"
     ],
     shortDesc: "Premium 55 HP four-wheel drive tractor with turbocharger, Collarshift gearbox, and heavy pull traction in wet clay.",
@@ -161,9 +161,9 @@ const EQUIPMENT_DATA = [
     status: "In-Use",
     rating: 4.8,
     reviewsCount: 110,
-    image: "assets/images/about/hero-tractor.jpg",
+    image: "assets/images/equipment/swaraj-855-fe.jpg",
     gallery: [
-      "assets/images/about/hero-tractor.jpg",
+      "assets/images/equipment/swaraj-855-fe.jpg",
       "assets/images/equipment/tractor.jpg"
     ],
     shortDesc: "Legendary 52 HP heavy-duty agricultural tractor featuring high displacement for relentless pull in hard soil.",
@@ -333,10 +333,10 @@ const EQUIPMENT_DATA = [
     status: "Available",
     rating: 4.8,
     reviewsCount: 63,
-    image: "assets/images/about/mission-rotavator.jpg",
+    image: "assets/images/equipment/disc-harrow.jpg",
     gallery: [
-      "assets/images/about/mission-rotavator.jpg",
-      "assets/images/equipment/rotavator.jpg"
+      "assets/images/equipment/disc-harrow.jpg",
+      "assets/images/equipment/cultivator.jpg"
     ],
     shortDesc: "High-grade boron steel offset disc harrow for breaking clods, chopping dry crop stalks, and leveling rough fields.",
     description: "Designed for primary and secondary tillage in tough, dry, trashy fields. The front notched discs slice through hard stubble and dry roots while rear smooth discs pulverize clods and leave a uniform tilth.",
@@ -379,10 +379,10 @@ const EQUIPMENT_DATA = [
     status: "Available",
     rating: 4.9,
     reviewsCount: 118,
-    image: "assets/images/equipment/seed-drill.jpg",
+    image: "assets/images/equipment/dasmesh-happy-seeder.jpg",
     gallery: [
-      "assets/images/equipment/seed-drill.jpg",
-      "assets/images/equipment-details/gallery-1.jpg"
+      "assets/images/equipment/dasmesh-happy-seeder.jpg",
+      "assets/images/equipment/seed-drill.jpg"
     ],
     shortDesc: "Direct zero-till seed and fertilizer drill allowing planting wheat and pulses directly into heavy standing paddy stubble.",
     description: "The gold standard for eco-friendly zero-stubble-burning agriculture. The front flail rotor clears a clean narrow strip through heavy paddy straw while rear seed boots deposit seed and DAP fertilizer simultaneously with zero field burning.",
@@ -421,10 +421,10 @@ const EQUIPMENT_DATA = [
     status: "Available",
     rating: 4.8,
     reviewsCount: 42,
-    image: "assets/images/about/company-tractor.jpg",
+    image: "assets/images/equipment/precision-seed-planter.jpg",
     gallery: [
-      "assets/images/about/company-tractor.jpg",
-      "assets/images/equipment/seed-drill.jpg"
+      "assets/images/equipment/precision-seed-planter.jpg",
+      "assets/images/equipment/dasmesh-happy-seeder.jpg"
     ],
     shortDesc: "Accurate pneumatic single-seed metering planter for cotton, maize, groundnut, and sunflower with uniform depth control.",
     description: "Guarantees exact plant-to-plant and row-to-row spacing with zero seed cracking. Powerful vacuum fan holds individual seeds onto rotating discs, dropping them at calibrated intervals to maximize sunlight absorption and crop yield.",
@@ -463,10 +463,10 @@ const EQUIPMENT_DATA = [
     status: "In-Use",
     rating: 4.8,
     reviewsCount: 39,
-    image: "assets/images/home-2/popular-tractor.jpg",
+    image: "assets/images/equipment/paddy-transplanter.jpg",
     gallery: [
-      "assets/images/home-2/popular-tractor.jpg",
-      "assets/images/equipment/seed-drill.jpg"
+      "assets/images/equipment/paddy-transplanter.jpg",
+      "assets/images/equipment/precision-seed-planter.jpg"
     ],
     shortDesc: "High-efficiency mechanized rice seeder ensuring uniform hill-to-hill spacing and root-friendly paddy seedling placement.",
     description: "Transforms labour-intensive paddy transplantation into a swift, mechanized single-person operation. Navigates knee-deep muddy puddling with specialized rubber lugged paddy wheels without sinking.",
@@ -509,10 +509,10 @@ const EQUIPMENT_DATA = [
     status: "Available",
     rating: 4.8,
     reviewsCount: 94,
-    image: "assets/images/equipment/sprayer.jpg",
+    image: "assets/images/equipment/mitra-sprayer.jpg",
     gallery: [
-      "assets/images/equipment/sprayer.jpg",
-      "assets/images/about/vision-fleet.jpg"
+      "assets/images/equipment/mitra-sprayer.jpg",
+      "assets/images/equipment/sprayer.jpg"
     ],
     shortDesc: "Heavy chemical-resistant 500-liter polyethylene tank with aerodynamic fan delivering ultra-fine mist for orchards and tall crops.",
     description: "Engineered for high-velocity, uniform chemical misting across pomegranate, citrus, mango, cotton, and grape vineyards. Dual-speed gearbox powers an aerodynamic fan with brass anti-drip nozzles for 100% underside leaf coverage.",
@@ -551,10 +551,10 @@ const EQUIPMENT_DATA = [
     status: "Available",
     rating: 4.9,
     reviewsCount: 51,
-    image: "assets/images/about/vision-fleet.jpg",
+    image: "assets/images/equipment/hydraulic-boom-sprayer.jpg",
     gallery: [
-      "assets/images/about/vision-fleet.jpg",
-      "assets/images/equipment/sprayer.jpg"
+      "assets/images/equipment/hydraulic-boom-sprayer.jpg",
+      "assets/images/equipment/mitra-sprayer.jpg"
     ],
     shortDesc: "Wide 12-meter hydraulic boom sprayer providing fast, wind-drift protected coverage for cotton, wheat, and sugarcane acreage.",
     description: "Covers expansive open crop acreage in record time. Features hydraulic boom lifting and fold-in wing arms with self-leveling pendulum suspension that absorbs tractor rocking on uneven furrows.",
@@ -593,10 +593,10 @@ const EQUIPMENT_DATA = [
     status: "Available",
     rating: 4.7,
     reviewsCount: 68,
-    image: "assets/images/about/story-tractor.jpg",
+    image: "assets/images/equipment/htp-power-sprayer.jpg",
     gallery: [
-      "assets/images/about/story-tractor.jpg",
-      "assets/images/equipment/sprayer.jpg"
+      "assets/images/equipment/htp-power-sprayer.jpg",
+      "assets/images/equipment/mitra-sprayer.jpg"
     ],
     shortDesc: "Portable high-pressure power sprayer with 150m delivery hose for horticultural plantations, vegetable greenhouses, and pest control.",
     description: "Rugged skid-mounted high-pressure power sprayer powered by an 8 HP commercial petrol engine. Includes two 150-meter heavy-duty chemical hoses and brass spray guns for pinpoint spot application on tree canopies.",
@@ -639,11 +639,10 @@ const EQUIPMENT_DATA = [
     status: "Available",
     rating: 4.9,
     reviewsCount: 88,
-    image: "assets/images/equipment/harvester.jpg",
+    image: "assets/images/equipment/preet-987-harvester.jpg",
     gallery: [
-      "assets/images/equipment/harvester.jpg",
-      "assets/images/home-2/rental-offers.jpg",
-      "assets/images/home-2/equipment-rental.jpg"
+      "assets/images/equipment/preet-987-harvester.jpg",
+      "assets/images/equipment/harvester.jpg"
     ],
     shortDesc: "Heavy-duty 14-foot cutter bar combine harvester offering clean threshing, minimal grain loss, and automatic grain tank unloading.",
     description: "India's premier self-propelled combine harvester for paddy, wheat, soybean, and mustard. Equipped with a heavy rasp-bar threshing drum, wide grain straw walkers, and high-speed unloading auger delivering 99.5% clean grain separation.",
@@ -682,10 +681,10 @@ const EQUIPMENT_DATA = [
     status: "Available",
     rating: 4.8,
     reviewsCount: 47,
-    image: "assets/images/home-2/rental-offers.jpg",
+    image: "assets/images/equipment/reaper-binder.jpg",
     gallery: [
-      "assets/images/home-2/rental-offers.jpg",
-      "assets/images/equipment/harvester.jpg"
+      "assets/images/equipment/reaper-binder.jpg",
+      "assets/images/equipment/preet-987-harvester.jpg"
     ],
     shortDesc: "Harvests and automatically bundles wheat, oats, and paddy stalks into neat sheaves in a single continuous pass.",
     description: "Reaps grain stalks 5 cm above ground level and automatically binds them with jute twine into firm, uniform bundles. Preserves 100% of the long straw for cattle feed while avoiding grain shattering in the field.",
@@ -724,10 +723,10 @@ const EQUIPMENT_DATA = [
     status: "In-Use",
     rating: 4.9,
     reviewsCount: 54,
-    image: "assets/images/home-2/equipment-rental.jpg",
+    image: "assets/images/equipment/round-hay-baler.jpg",
     gallery: [
-      "assets/images/home-2/equipment-rental.jpg",
-      "assets/images/equipment/harvester.jpg"
+      "assets/images/equipment/round-hay-baler.jpg",
+      "assets/images/equipment/preet-987-harvester.jpg"
     ],
     shortDesc: "Compresses post-harvest crop residue into compact weather-resistant round bales for livestock fodder and bio-fuel transport.",
     description: "The premier solution for post-harvest straw management. Collects loose wheat or paddy straw left by combines, compresses it tightly into compact round bales, and wraps them securely with twine for easy transport and moisture protection.",
@@ -770,10 +769,10 @@ const EQUIPMENT_DATA = [
     status: "Available",
     rating: 4.8,
     reviewsCount: 127,
-    image: "assets/images/equipment/trailer.jpg",
+    image: "assets/images/equipment/hydraulic-tipping-trailer.jpg",
     gallery: [
-      "assets/images/equipment/trailer.jpg",
-      "assets/images/booking/booking-banner.jpg"
+      "assets/images/equipment/hydraulic-tipping-trailer.jpg",
+      "assets/images/equipment/trailer.jpg"
     ],
     shortDesc: "Reinforced corrugated steel trolley with 3-way hydraulic tipping for fast mandi harvest transport, manure, and gravel haulage.",
     description: "Fabricated from heavy 10-gauge structural channel steel and reinforced corrugated side panels. Connected via tractor auxiliary hydraulic coupler for rapid 50° high-angle dumping of grain, sugarcane, sand, and farm manure.",
@@ -812,10 +811,10 @@ const EQUIPMENT_DATA = [
     status: "Available",
     rating: 4.9,
     reviewsCount: 73,
-    image: "assets/images/booking/booking-banner.jpg",
+    image: "assets/images/equipment/mandi-grain-trolley.jpg",
     gallery: [
-      "assets/images/booking/booking-banner.jpg",
-      "assets/images/equipment/trailer.jpg"
+      "assets/images/equipment/mandi-grain-trolley.jpg",
+      "assets/images/equipment/hydraulic-tipping-trailer.jpg"
     ],
     shortDesc: "High-volume dual-axle grain trolley built for heavy long-distance Mandi haulage, sugarcane transit, and bulk grain bags.",
     description: "The ideal heavy transport trailer for large acreage harvests and long-distance Mandi trips. Dual-axle rocker beam tandem suspension distributes wheel weight evenly, preventing soil compaction and ensuring highway stability.",
@@ -854,10 +853,10 @@ const EQUIPMENT_DATA = [
     status: "Available",
     rating: 4.7,
     reviewsCount: 92,
-    image: "assets/images/equipment/water-pump.jpg",
+    image: "assets/images/equipment/farm-irrigation-pump.jpg",
     gallery: [
-      "assets/images/equipment/water-pump.jpg",
-      "assets/images/equipment/sprayer.jpg"
+      "assets/images/equipment/farm-irrigation-pump.jpg",
+      "assets/images/equipment/water-pump.jpg"
     ],
     shortDesc: "Rapid water transfer and flood dewatering agricultural pump delivering 1,800 LPM flow for canal and pond irrigation.",
     description: "Heavy-duty agricultural diesel water pump set mounted on a steel wheel-barrow frame with pneumatic wheels. Features self-priming high-head centrifugal impeller designed to handle silt and farm runoff without clogging.",
