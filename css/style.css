@@ -78,6 +78,15 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.25;
 }
 
+.bg-forest h1,
+.bg-forest h2,
+.bg-forest h3,
+.bg-forest h4,
+.bg-forest h5,
+.bg-forest h6 {
+  color: #ffffff !important;
+}
+
 p {
   color: var(--text-muted);
 }
@@ -232,6 +241,74 @@ html.dark .mobile-nav-drawer nav a[aria-current="page"] {
   letter-spacing: 0.05em;
   background-color: rgba(52, 122, 69, 0.12);
   color: var(--color-agri);
+}
+
+/* Compact Category Pill Badge (Top-Left on Equipment Cards) */
+.badge-cat {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9.5px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1 !important;
+  padding: 3px 8px !important;
+  border-radius: 9999px !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  color: #132a13 !important;
+  border: 1px solid rgba(209, 213, 219, 0.8) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+html.dark .badge-cat {
+  background-color: rgba(23, 61, 43, 0.95) !important;
+  color: #F4F7F4 !important;
+  border-color: rgba(75, 85, 99, 0.6) !important;
+}
+
+@media (min-width: 640px) {
+  .badge-cat {
+    font-size: 10px !important;
+    padding: 3px 9px !important;
+  }
+}
+
+/* Compact Subcategory Pill Badge (Top-Right on Equipment Cards) */
+.badge-subcat {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1 !important;
+  padding: 2.5px 7.5px !important;
+  border-radius: 9999px !important;
+  background-color: rgba(19, 42, 19, 0.92) !important;
+  color: #E6AD43 !important;
+  border: 1px solid rgba(230, 173, 67, 0.35) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+@media (min-width: 640px) {
+  .badge-subcat {
+    font-size: 9.5px !important;
+    padding: 3px 8px !important;
+  }
 }
 
 .badge-gold {
@@ -457,6 +534,11 @@ html.dark .mobile-nav-drawer nav a[aria-current="page"] {
   font-family: var(--font-body);
   font-size: 0.95rem;
   transition: var(--transition);
+}
+
+.form-textarea,
+textarea {
+  resize: none !important;
 }
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {

@@ -469,6 +469,39 @@ function loadUserProfile() {
 
 function setupProfileForm() {
   const profileForm = document.getElementById('farmerProfileForm');
+  const profNameInput = document.getElementById('profName');
+  const profMobileInput = document.getElementById('profMobile');
+
+  if (profNameInput) {
+    profNameInput.addEventListener('input', (e) => {
+      e.target.value = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+    });
+    profNameInput.addEventListener('keydown', (e) => {
+      if (['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
+      if (e.ctrlKey || e.metaKey) return;
+      if (e.key === ' ') return;
+      if (!/^[a-zA-Z]$/.test(e.key)) {
+        e.preventDefault();
+      }
+    });
+  }
+
+  if (profMobileInput) {
+    profMobileInput.addEventListener('input', (e) => {
+      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+    });
+    profMobileInput.addEventListener('keydown', (e) => {
+      if (['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
+      if (e.ctrlKey || e.metaKey) return;
+      if (!/^[0-9]$/.test(e.key)) {
+        e.preventDefault();
+      }
+      if (profMobileInput.value.length >= 10 && profMobileInput.selectionStart === profMobileInput.selectionEnd) {
+        e.preventDefault();
+      }
+    });
+  }
+
   if (profileForm) {
     profileForm.addEventListener('submit', (e) => {
       e.preventDefault();

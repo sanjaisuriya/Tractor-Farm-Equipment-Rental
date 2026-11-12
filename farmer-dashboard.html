@@ -584,7 +584,7 @@
               <label for="profName" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                 Farmer Full Name *
               </label>
-              <input type="text" id="profName" required class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white" />
+              <input type="text" id="profName" required pattern="[A-Za-z\s]+" title="Please enter letters and spaces only" class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white" />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -592,7 +592,7 @@
                 <label for="profMobile" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                   Mobile Number (Dispatch Contact) *
                 </label>
-                <input type="tel" id="profMobile" required class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white" />
+                <input type="tel" id="profMobile" required pattern="[0-9]{10}" maxlength="10" inputmode="numeric" title="Please enter 10 digits only" class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white" />
               </div>
               <div>
                 <label for="profEmail" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">

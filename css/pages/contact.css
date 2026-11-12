@@ -1,12 +1,17 @@
-/* Contact Us Custom Styling */
+/* Contact Us Custom Styling - AgroRent */
 
+/* Contact Cards */
 .contact-card {
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .contact-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(23, 61, 43, 0.08);
+  box-shadow: 0 12px 24px rgba(23, 61, 43, 0.08);
 }
 
 /* Service Area Cards */
@@ -18,6 +23,8 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .service-area-card:hover {
@@ -26,28 +33,32 @@
   border-color: var(--color-agri);
 }
 
-/* Equipment Support Assistance Cards */
-.support-item-card {
+/* Machinery Advisory Desk Cards */
+.advisory-card {
   background: var(--bg-card);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   border: 1px solid var(--border-color);
-  padding: 1.5rem;
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 1.75rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
-.support-item-card:hover {
+.advisory-card:hover {
   border-color: var(--color-agri);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(52, 122, 69, 0.06);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(52, 122, 69, 0.08);
 }
 
 /* Contact FAQ Accordion */
 .contact-faq-item {
   background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  border: 1.5px solid var(--border-color);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: var(--transition);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .contact-faq-header {
@@ -56,22 +67,32 @@
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
   font-family: var(--font-heading);
   color: var(--text-main);
   user-select: none;
   gap: 1rem;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.contact-faq-header:hover {
+  color: var(--color-agri);
+  background-color: rgba(52, 122, 69, 0.03);
 }
 
 .contact-faq-content {
   padding: 0 1.5rem 1.25rem;
   display: none;
   color: var(--text-muted);
+  font-size: 0.925rem;
+  line-height: 1.65;
+  border-top: 1px dashed var(--border-color);
+  padding-top: 1rem;
 }
 
 .contact-faq-item.active {
   border-color: var(--color-agri);
-  box-shadow: 0 4px 14px rgba(52, 122, 69, 0.08);
+  box-shadow: 0 6px 18px rgba(52, 122, 69, 0.08);
 }
 
 .contact-faq-item.active .contact-faq-header {
@@ -84,6 +105,7 @@
 
 .contact-faq-item.active .faq-arrow {
   transform: rotate(180deg);
+  color: var(--color-agri);
 }
 
 /* Input validation styles */
@@ -97,12 +119,16 @@
 .form-error-msg {
   color: #ef4444;
   font-size: 0.75rem;
-  margin-top: 0.25rem;
+  margin-top: 0.35rem;
   display: none;
+  font-weight: 500;
 }
 
 .form-input.is-invalid + .form-error-msg,
 .form-select.is-invalid + .form-error-msg,
-.form-textarea.is-invalid + .form-error-msg {
+.form-textarea.is-invalid + .form-error-msg,
+div:has(> .form-input.is-invalid) + .form-error-msg,
+div:has(> .form-select.is-invalid) + .form-error-msg,
+div:has(> .form-textarea.is-invalid) + .form-error-msg {
   display: block;
 }

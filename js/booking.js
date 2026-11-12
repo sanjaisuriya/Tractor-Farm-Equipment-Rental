@@ -36,6 +36,37 @@ document.addEventListener('DOMContentLoaded', () => {
     if (locationInput && !locationInput.value) locationInput.value = user.village || '';
   }
 
+  // Strict Validation: Name (Letters only) & Mobile (Numbers only, 10 digits)
+  if (farmerNameInput) {
+    farmerNameInput.addEventListener('input', (e) => {
+      e.target.value = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+    });
+    farmerNameInput.addEventListener('keydown', (e) => {
+      if (['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
+      if (e.ctrlKey || e.metaKey) return;
+      if (e.key === ' ') return;
+      if (!/^[a-zA-Z]$/.test(e.key)) {
+        e.preventDefault();
+      }
+    });
+  }
+
+  if (mobileInput) {
+    mobileInput.addEventListener('input', (e) => {
+      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+    });
+    mobileInput.addEventListener('keydown', (e) => {
+      if (['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
+      if (e.ctrlKey || e.metaKey) return;
+      if (!/^[0-9]$/.test(e.key)) {
+        e.preventDefault();
+      }
+      if (mobileInput.value.length >= 10 && mobileInput.selectionStart === mobileInput.selectionEnd) {
+        e.preventDefault();
+      }
+    });
+  }
+
   // Populate equipment dropdown
   if (equipSelect && window.EQUIPMENT_DATA) {
     equipSelect.innerHTML = `<option value="">-- Choose Farm Machinery --</option>` +
@@ -175,6 +206,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!farmerName || !mobile || !location) {
         showBookingToast("Please fill in your Name, Mobile Number, and Farm Location.", "error");
+        return;
+      }
+
+      if (!/^[a-zA-Z\s]+$/.test(farmerName)) {
+        showBookingToast("Farmer Full Name must contain letters and spaces only.", "error");
+        farmerNameInput.focus();
+        return;
+      }
+
+      if (!/^[0-9]{10}$/.test(mobile)) {
+        showBookingToast("Please enter a valid 10-digit mobile number.", "error");
+        mobileInput.focus();
         return;
       }
 

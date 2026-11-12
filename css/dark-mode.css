@@ -176,6 +176,25 @@ html.dark .equipment-img-wrapper {
   background-color: #17221A;
 }
 
+/* Ensure Gold Buttons maintain high-contrast dark text on bright gold in both modes */
+.btn-gold,
+html.dark .btn-gold,
+.dark .btn-gold {
+  color: #173D2B !important;
+}
+
+.btn-gold i,
+html.dark .btn-gold i,
+.dark .btn-gold i {
+  color: #173D2B !important;
+}
+
+.btn-gold:hover,
+html.dark .btn-gold:hover,
+.dark .btn-gold:hover {
+  color: #0F281C !important;
+}
+
 /* Smooth transition for theme change */
 html.theme-transition,
 html.theme-transition *,

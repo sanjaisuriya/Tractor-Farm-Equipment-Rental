@@ -494,7 +494,7 @@ const EQUIPMENT_DATA = [
     id: "spray-500",
     name: "Mitra 500L Tractor Mounted Orchard & Crop Sprayer",
     category: "Spraying Equipment",
-    subCategory: "Tractor Mounted Sprayers",
+    subCategory: "Mounted Sprayers",
     hp: "Requires 24-50 HP Tractor",
     hpNum: 30,
     engine: "PTO Driven 55 LPM Ceramic Piston Pump",
@@ -796,7 +796,7 @@ const EQUIPMENT_DATA = [
     id: "trail-mandi",
     name: "Dual-Axle 12-Tonne Grain Haulage Mandi Trolley",
     category: "Transport Equipment",
-    subCategory: "Agricultural Transport Equipment",
+    subCategory: "Grain Trolleys",
     hp: "Requires 50+ HP Tractor",
     hpNum: 50,
     engine: "Dual Heavy Axles with Agricultural Leaf Springs",
@@ -838,7 +838,7 @@ const EQUIPMENT_DATA = [
     id: "pump-10hp",
     name: "Kirloskar 10 HP High-Discharge Farm Irrigation Pump",
     category: "Transport Equipment",
-    subCategory: "Agricultural Transport Equipment",
+    subCategory: "Irrigation Pumps",
     hp: "10 HP High-Flow Diesel",
     hpNum: 10,
     engine: "Heavy-Duty Centrifugal High-Discharge Pump",
@@ -874,6 +874,48 @@ const EQUIPMENT_DATA = [
       "Max Head": "24 Meters (80 Feet)",
       "Fuel Tank": "10 Liters (Up to 9 Hours continuous run)",
       "Total Weight": "135 kg"
+    }
+  },
+  {
+    id: "tanker-5000l",
+    name: "Tractor-Mounted 5,000L Agricultural Water Tanker & Bowser Trolley",
+    category: "Transport Equipment",
+    subCategory: "Water Tankers",
+    hp: "Requires 35+ HP Tractor",
+    hpNum: 35,
+    engine: "Heavy-Duty Dual-Axle Steel Tanker with Gravity & PTO Sprinkler Bar",
+    fuelType: "Tractor Towed",
+    workingCapacity: "5,000 Liters High-Capacity Water Haulage",
+    hourlyRate: 200,
+    dailyRate: 1500,
+    weeklyRate: 8500,
+    monthlyRate: 30000,
+    operatorRate: 400,
+    transportRate: 20,
+    status: "Available",
+    rating: 4.8,
+    reviewsCount: 78,
+    image: "assets/images/equipment/water-tanker-trolley.jpg",
+    gallery: [
+      "assets/images/equipment/water-tanker-trolley.jpg",
+      "assets/images/equipment/cat-transport.jpg"
+    ],
+    shortDesc: "High-capacity 5,000-liter heavy steel water tanker trailer for farm irrigation haulage, spraying refill, and rural water supply.",
+    description: "Rugged heavy-gauge mild steel cylindrical water tanker trailer engineered for rigorous farm transport. Equipped with internal anti-surge baffle plates, rear gravity flow discharge gate, top access manhole, and heavy-duty ribbed agricultural trailer tires.",
+    features: [
+      "5,000 Liters (1,320 Gallon) High-Capacity Cylindrical Steel Tank",
+      "Internal Anti-Surge Baffle Plates for smooth transit over rough farm tracks",
+      "Heavy-Duty Channel Chassis with 3-ton leaf spring suspension",
+      "Rear 3-inch Quick-Release Butterfly Valve + Hose Coupling",
+      "Top Fill Manhole with Safety Cage and Ladder"
+    ],
+    specs: {
+      "Tank Capacity": "5,000 Liters (5.0 m³)",
+      "Tank Material": "3.5 mm Heavy Gauge Mild Steel with Anti-Rust Epoxy Lining",
+      "Chassis": "125 x 65 mm Structural Steel ISMC Channel",
+      "Axle & Tires": "Heavy-Duty Beam Axle with 9.00 x 16 Ribbed Farm Tires",
+      "Hitch Type": "Swivel Eye Towing Hitch for all 35-60 HP Tractors",
+      "Total Unladen Weight": "980 kg"
     }
   }
 ];
@@ -964,60 +1006,58 @@ const EquipmentService = {
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             onerror="this.src='assets/images/equipment/tractor.jpg';"
           />
-          <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
-            <span class="badge-agri bg-white/95 dark:bg-[#173D2B]/95 text-forest dark:text-cream text-[11px] font-bold py-1 px-2.5 rounded-full shadow-sm backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50">
-              ${item.category}
-            </span>
-            ${item.subCategory ? `
-              <span class="badge-agri bg-forest/80 text-gold text-[10px] font-semibold py-1 px-2 rounded-full shadow-sm backdrop-blur-sm hidden sm:inline-block">
-                ${item.subCategory}
+          <div class="absolute top-3 inset-x-2.5 sm:inset-x-3 flex items-center justify-between gap-1.5 z-10 pointer-events-none">
+            <div class="flex-shrink-0 pointer-events-auto">
+              <span class="badge-cat">
+                ${item.category}
               </span>
+            </div>
+            ${item.subCategory ? `
+              <div class="flex-shrink min-w-0 pointer-events-auto text-right">
+                <span class="badge-subcat">
+                  ${item.subCategory}
+                </span>
+              </div>
             ` : ''}
-          </div>
-          <div class="absolute top-3 right-3 z-10">
-            <span class="badge-agri ${isAvail ? 'bg-emerald-600 text-white' : 'bg-amber-600 text-white'} text-[11px] font-bold py-1 px-2.5 rounded-full shadow-md flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full ${isAvail ? 'bg-emerald-200 animate-pulse' : 'bg-amber-200'}"></span>
-              ${item.status}
-            </span>
           </div>
         </div>
 
         <!-- Card Body -->
         <div class="p-5 flex-1 flex flex-col justify-between">
           <div>
-            <div class="flex items-center justify-between text-xs text-muted mb-2">
-              <span class="font-bold text-agri dark:text-fresh flex items-center gap-1">
-                <i class="fa-solid fa-gauge-high"></i>
-                <span>${item.hp}</span>
+            <div class="flex items-center justify-between text-xs text-muted mb-2.5 gap-2">
+              <span class="font-bold text-agri dark:text-fresh flex items-center gap-1.5 truncate max-w-[62%]">
+                <i class="fa-solid fa-gauge-high text-xs shrink-0"></i>
+                <span class="truncate">${item.hp}</span>
               </span>
-              <span class="flex items-center text-amber-500 font-bold text-xs">
+              <span class="flex items-center text-amber-500 font-bold text-xs shrink-0 ml-auto">
                 <i class="fa-solid fa-star text-xs mr-1 text-gold"></i>
                 <span>${item.rating}</span>
                 <span class="text-muted ml-1 font-normal">(${item.reviewsCount})</span>
               </span>
             </div>
 
-            <h3 class="font-bold text-base sm:text-lg text-slate-900 dark:text-white mb-2 leading-snug line-clamp-2 group-hover:text-agri transition-colors">
+            <h3 class="font-bold text-base sm:text-lg text-slate-900 dark:text-white mb-2 leading-snug line-clamp-2 min-h-[2.75rem] sm:min-h-[3.25rem] group-hover:text-agri transition-colors">
               ${item.name}
             </h3>
 
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-4 line-clamp-2 leading-relaxed">
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-4 line-clamp-3 min-h-[3.75rem] leading-relaxed">
               ${item.shortDesc}
             </p>
           </div>
 
           <!-- Card Rates & Action Buttons -->
-          <div class="pt-3 border-t border-slate-100 dark:border-slate-800">
-            <div class="flex items-baseline justify-between mb-4">
-              <div>
-                <span class="text-xl sm:text-2xl font-black text-agri dark:text-fresh font-heading">
+          <div class="mt-auto pt-3.5 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex items-center justify-between mb-3.5">
+              <div class="flex items-baseline gap-1">
+                <span class="text-xl sm:text-2xl font-black text-agri dark:text-fresh font-heading leading-none">
                   ₹${item.dailyRate.toLocaleString('en-IN')}
                 </span>
                 <span class="text-xs text-muted font-medium">/ day</span>
               </div>
               <div class="text-right">
-                <span class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
-                  ₹${item.hourlyRate}/hr
+                <span class="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300">
+                  ₹${item.hourlyRate} / hr
                 </span>
               </div>
             </div>
@@ -1025,7 +1065,7 @@ const EquipmentService = {
             <div class="grid grid-cols-2 gap-2">
               <button 
                 type="button" 
-                class="view-details-btn btn-secondary text-xs py-2 px-2.5 justify-center rounded-xl font-bold flex items-center gap-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                class="view-details-btn btn-secondary text-xs py-2.5 px-2.5 justify-center rounded-xl font-bold flex items-center gap-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 transition shadow-none"
                 data-id="${item.id}"
                 aria-label="View specifications for ${item.name}"
               >
@@ -1034,7 +1074,7 @@ const EquipmentService = {
               </button>
               <a 
                 href="booking.html?id=${item.id}" 
-                class="btn-primary text-xs py-2 px-2.5 justify-center rounded-xl font-bold flex items-center gap-1.5"
+                class="btn-primary text-xs py-2.5 px-2.5 justify-center rounded-xl font-bold flex items-center gap-1.5 shadow-none"
                 aria-label="Book ${item.name} now"
               >
                 <i class="fa-solid fa-calendar-check"></i>

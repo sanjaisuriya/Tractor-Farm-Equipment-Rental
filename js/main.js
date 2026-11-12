@@ -25,14 +25,55 @@ document.addEventListener('DOMContentLoaded', () => {
   // Contact Form Handling (Page 10)
   const contactForm = document.getElementById('tractorContactForm');
   if (contactForm) {
+    const contactNameInput = document.getElementById('contactName');
+    const contactPhoneInput = document.getElementById('contactPhone');
+
+    if (contactNameInput) {
+      contactNameInput.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+      });
+      contactNameInput.addEventListener('keydown', (e) => {
+        if (['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
+        if (e.ctrlKey || e.metaKey) return;
+        if (e.key === ' ') return;
+        if (!/^[a-zA-Z]$/.test(e.key)) e.preventDefault();
+      });
+    }
+
+    if (contactPhoneInput) {
+      contactPhoneInput.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+      });
+      contactPhoneInput.addEventListener('keydown', (e) => {
+        if (['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
+        if (e.ctrlKey || e.metaKey) return;
+        if (!/^[0-9]$/.test(e.key)) e.preventDefault();
+        if (contactPhoneInput.value.length >= 10 && contactPhoneInput.selectionStart === contactPhoneInput.selectionEnd) {
+          e.preventDefault();
+        }
+      });
+    }
+
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('contactName')?.value.trim();
-      const phone = document.getElementById('contactPhone')?.value.trim();
+      const name = contactNameInput?.value.trim();
+      const phone = contactPhoneInput?.value.trim();
       const message = document.getElementById('contactMessage')?.value.trim();
 
       if (!name || !phone || !message) {
         showGlobalToast("Please provide your name, phone number, and rental query.", "error");
+        return;
+      }
+
+      if (!/^[a-zA-Z\s]+$/.test(name)) {
+        showGlobalToast("Name must contain letters and spaces only.", "error");
+        contactNameInput?.focus();
+        return;
+      }
+
+      if (!/^[0-9]{10}$/.test(phone)) {
+        showGlobalToast("Please enter a valid 10-digit phone number.", "error");
+        contactPhoneInput?.focus();
         return;
       }
 

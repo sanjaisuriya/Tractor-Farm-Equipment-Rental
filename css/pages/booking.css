@@ -1,7 +1,6 @@
 /* Booking Page Custom Styling */
 .booking-summary-card {
-  position: sticky;
-  top: 90px;
+  position: relative;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
@@ -42,3 +41,7 @@ details[open] summary .fa-chevron-down {
   transition: transform 0.25s ease;
 }
 
+/* Disable Textarea Resize Handle */
+.form-textarea, textarea {
+  resize: none !important;
+}

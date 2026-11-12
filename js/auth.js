@@ -238,6 +238,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Real-time input validation for Name (letters only) & Mobile (digits only, max 10)
+  const regNameEl = document.getElementById('regName');
+  const regMobileEl = document.getElementById('regMobile');
+
+  if (regNameEl) {
+    regNameEl.addEventListener('input', (e) => {
+      e.target.value = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+    });
+    regNameEl.addEventListener('keydown', (e) => {
+      if (['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
+      if (e.ctrlKey || e.metaKey) return;
+      if (e.key === ' ') return;
+      if (!/^[a-zA-Z]$/.test(e.key)) {
+        e.preventDefault();
+      }
+    });
+  }
+
+  if (regMobileEl) {
+    regMobileEl.addEventListener('input', (e) => {
+      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+    });
+    regMobileEl.addEventListener('keydown', (e) => {
+      if (['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
+      if (e.ctrlKey || e.metaKey) return;
+      if (!/^[0-9]$/.test(e.key)) {
+        e.preventDefault();
+      }
+      if (regMobileEl.value.length >= 10 && regMobileEl.selectionStart === regMobileEl.selectionEnd) {
+        e.preventDefault();
+      }
+    });
+  }
+
   // 7. Register Form Submission
   const registerForm = document.getElementById('farmerRegisterForm');
   if (registerForm) {

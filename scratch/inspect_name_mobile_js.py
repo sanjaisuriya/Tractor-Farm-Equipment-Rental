@@ -1,0 +1,7 @@
+with open('js/booking.js', 'r', encoding='utf-8') as f:
+    js = f.read()
+
+import re
+matches = re.findall(r'[^\n]*(?:farmerNameInput|mobileInput)[^\n]*', js)
+for m in matches:
+    print(m)

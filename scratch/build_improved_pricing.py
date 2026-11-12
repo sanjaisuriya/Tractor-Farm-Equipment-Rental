@@ -1,0 +1,1330 @@
+import os
+
+# We will write the updated main sections HTML
+main_sections_html = '''
+    <!-- =========================================================================
+         SECTION 1: TRANSPARENT AGRICULTURAL RENTAL RATES (HERO BANNER)
+         ========================================================================= -->
+    <section class="site-hero-banner relative py-16 lg:py-20 bg-forest text-white overflow-hidden border-b border-gray-200 dark:border-gray-800" style="background-image: linear-gradient(135deg, rgba(14, 38, 26, 0.85) 0%, rgba(23, 61, 43, 0.72) 50%, rgba(14, 38, 26, 0.88) 100%), url('assets/images/pricing/pricing-banner.jpg'); background-size: cover; background-position: center bottom;">
+      <div class="container-custom relative z-10 text-center max-w-4xl mx-auto">
+        <!-- Breadcrumbs -->
+        <nav class="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-cream/70 mb-6" aria-label="Breadcrumb">
+          <a href="index.html" class="hover:text-gold transition flex items-center gap-1.5">
+            <i class="fa-solid fa-house"></i> Home
+          </a>
+          <i class="fa-solid fa-angle-right text-[10px] text-cream/40"></i>
+          <span class="text-gold font-bold">Rates & Pricing</span>
+        </nav>
+
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-gold text-xs sm:text-sm font-bold uppercase tracking-wider mb-6 border border-white/15">
+          <i class="fa-solid fa-indian-rupee-sign"></i>
+          <span>Affordable Farm Mechanization • Zero Hidden Charges</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black font-heading tracking-tight mb-6 leading-tight text-white drop-shadow-md">
+          Transparent Agricultural Rental Rates
+        </h1>
+
+        <p class="text-base sm:text-lg text-cream/90 max-w-2xl mx-auto leading-relaxed mb-8">
+          Clear and honest pricing in Indian Rupees (₹), with no hidden charges or unexpected fees. Choose flexible rental plans based on your farming requirements.
+        </p>
+
+        <!-- Rate Period Switcher Tabs -->
+        <div class="inline-flex flex-wrap justify-center p-1.5 rounded-2xl bg-black/50 backdrop-blur-md border border-white/20 gap-1.5 shadow-lg">
+          <button class="rate-period-tab py-2.5 px-4 sm:px-5 rounded-xl text-xs sm:text-sm font-bold transition-all text-white/80 hover:text-white" data-period="hourly">
+            Hourly Rates
+          </button>
+          <button class="rate-period-tab py-2.5 px-4 sm:px-5 rounded-xl text-xs sm:text-sm font-bold transition-all active bg-agri text-white shadow-md" data-period="daily">
+            Daily Rates (Standard)
+          </button>
+          <button class="rate-period-tab py-2.5 px-4 sm:px-5 rounded-xl text-xs sm:text-sm font-bold transition-all text-white/80 hover:text-white" data-period="weekly">
+            Weekly Plans (Save 15%)
+          </button>
+          <button class="rate-period-tab py-2.5 px-4 sm:px-5 rounded-xl text-xs sm:text-sm font-bold transition-all text-white/80 hover:text-white" data-period="monthly">
+            Monthly Season Pass
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 2: INTERACTIVE FARM ECONOMICS (FARMLAND ESTIMATOR)
+         ========================================================================= -->
+    <section class="py-16 bg-white dark:bg-[#121813] border-b border-gray-100 dark:border-gray-800">
+      <div class="container-custom">
+        <div class="text-center max-w-2xl mx-auto mb-12 reveal-on-scroll">
+          <span class="section-subtitle">Interactive Farm Economics</span>
+          <h2 class="section-title">Farmland Rental Cost & Savings Estimator</h2>
+          <p class="text-sm sm:text-base text-muted">
+            Select your specific agricultural operation and land acreage to calculate dynamic rental budgets, estimated field time, and labour savings in real time.
+          </p>
+        </div>
+
+        <div class="estimator-container max-w-4xl mx-auto p-6 sm:p-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            
+            <!-- Estimator Controls (Left 7 cols) -->
+            <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+              
+              <!-- Operation Selector -->
+              <div>
+                <label for="calcOperation" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200 mb-2">
+                  Select Agricultural Operation
+                </label>
+                <select id="calcOperation" class="form-select text-sm py-2.5 px-3.5 w-full bg-white dark:bg-[#1D2A20] border-gray-300 dark:border-gray-700 rounded-xl font-medium focus:ring-2 focus:ring-agri">
+                  <option value="plough">Primary Deep Ploughing (Mahindra 575 DI + 3-MB Plough)</option>
+                  <option value="rotavate">Secondary Seedbed Tillage (Mahindra 575 DI + 6ft Rotavator)</option>
+                  <option value="seeding">Zero-Till Sowing & Drilling (John Deere 5310 4WD + Happy Seeder)</option>
+                  <option value="spraying">Crop Protection Spraying (Sonalika GT 22 Mini + 500L Sprayer)</option>
+                  <option value="harvest">Multi-Crop Combine Harvesting (Preet 987 14ft Cutter)</option>
+                  <option value="transport">Bulk Grain & Mandi Transport (Mahindra 575 DI + 8-Tonne Trailer)</option>
+                </select>
+              </div>
+
+              <!-- Farmland Acreage Slider -->
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <label for="calcAcreageSlider" class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200">
+                    Farmland Area (Acres)
+                  </label>
+                  <span id="calcAcreageDisplay" class="text-base font-black text-agri dark:text-fresh font-heading">
+                    5 Acres
+                  </span>
+                </div>
+                <input 
+                  type="range" 
+                  id="calcAcreageSlider" 
+                  min="1" 
+                  max="50" 
+                  value="5" 
+                  step="1" 
+                  class="w-full accent-agri cursor-pointer h-2 bg-slate-200 dark:bg-slate-700 rounded-lg"
+                  aria-label="Select farmland acreage" 
+                />
+                <div class="flex justify-between text-[11px] text-muted font-medium mt-1">
+                  <span>1 Acre</span>
+                  <span>10 Acres</span>
+                  <span>25 Acres</span>
+                  <span>50 Acres</span>
+                </div>
+              </div>
+
+              <!-- Additional Options Toggles -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <label class="flex items-center gap-3 p-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1D2A20] cursor-pointer hover:border-agri transition">
+                  <input type="checkbox" id="calcOperatorCheck" checked class="w-4 h-4 accent-agri rounded" />
+                  <span class="text-xs font-semibold text-slate-800 dark:text-slate-200">
+                    Certified Equipment Driver <span class="text-agri dark:text-fresh font-bold block text-[11px]">(Optional / +₹100/hr)</span>
+                  </span>
+                </label>
+                <label class="flex items-center gap-3 p-3.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1D2A20] cursor-pointer hover:border-agri transition">
+                  <input type="checkbox" id="calcFuelCheck" class="w-4 h-4 accent-agri rounded" />
+                  <span class="text-xs font-semibold text-slate-800 dark:text-slate-200">
+                    Pre-Filled Diesel Fuel Tank <span class="text-muted block text-[11px]">(Optional / ₹92 per Liter)</span>
+                  </span>
+                </label>
+              </div>
+
+              <!-- Calculation Inclusions Clarification Box -->
+              <div class="p-3 rounded-xl bg-slate-50 dark:bg-[#18231B] border border-slate-200 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 flex items-start gap-2.5">
+                <i class="fa-solid fa-circle-info text-agri dark:text-fresh mt-0.5 text-xs"></i>
+                <div class="leading-relaxed">
+                  <span class="font-bold text-slate-800 dark:text-slate-200">Inclusion Details:</span>
+                  <span id="calcInclusionExplain" class="block text-[11px] mt-0.5">Machine + Certified Driver included. Diesel fuel is excluded (farmer supplied or pre-filled on demand).</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Calculation Output Card (Right 5 cols) -->
+            <div class="lg:col-span-5 bg-forest text-white p-6 sm:p-7 rounded-2xl shadow-xl flex flex-col justify-between border border-gold/20">
+              <div>
+                <span class="text-[11px] font-bold text-gold uppercase tracking-wider block mb-1">
+                  Estimated Rental Budget
+                </span>
+                <h3 id="calcOutMachine" class="text-base font-bold text-white mb-4 line-clamp-1">
+                  Mahindra 575 DI (45 HP) + 3-MB Plough
+                </h3>
+
+                <div class="space-y-3 mb-5 pb-5 border-b border-white/10 text-xs">
+                  <div class="flex justify-between items-center text-cream/80">
+                    <span>Estimated Field Time:</span>
+                    <strong id="calcOutHours" class="text-white text-sm">~5.0 Hours</strong>
+                  </div>
+                  <div class="flex justify-between items-center text-cream/80">
+                    <span>Estimated Fuel Usage:</span>
+                    <strong id="calcOutFuel" class="text-white text-sm">~28 Liters</strong>
+                  </div>
+                  <div class="flex justify-between items-center text-cream/80">
+                    <span>Doorstep Farm Transit:</span>
+                    <strong class="text-fresh font-bold">100% Free (&lt;10 km)</strong>
+                  </div>
+                  <div class="flex justify-between items-center text-cream/80">
+                    <span>Breakdown Backup:</span>
+                    <strong class="text-fresh font-bold">2-Hour Rapid SLA</strong>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <span class="text-xs text-cream/70 block">Estimated Rental Cost:</span>
+                  <div class="flex items-baseline gap-2 mt-0.5">
+                    <span id="calcOutCost" class="text-3xl sm:text-4xl font-black font-heading text-gold">
+                      ₹4,500
+                    </span>
+                    <span id="calcCostLabel" class="text-xs text-cream/80 font-medium">incl. driver</span>
+                  </div>
+                  <span id="calcInclusionBadge" class="inline-block mt-1 text-[11px] text-cream/80">
+                    Machine + Driver Included | Diesel Excluded
+                  </span>
+                </div>
+
+                <div class="p-2.5 rounded-lg bg-white/10 text-[11px] text-fresh font-semibold mb-6 flex items-center gap-2 border border-white/10">
+                  <i class="fa-solid fa-piggy-bank text-gold"></i>
+                  <span id="calcOutSavings">Save approx. ₹6,500 vs manual labour</span>
+                </div>
+              </div>
+
+              <a id="calcBookBtn" href="booking.html" class="btn-primary w-full py-3 text-center justify-center font-bold text-xs shadow-md">
+                <i class="fa-solid fa-calendar-check mr-2"></i> Book This Machine Now
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 3: FLEXIBLE RENTAL PRICING PLANS
+         ========================================================================= -->
+    <section id="pricingPlans" class="py-20 bg-slate-50 dark:bg-[#151D16]">
+      <div class="container-custom">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+          <span class="section-subtitle">Transparent Tiered Tariffs</span>
+          <h2 class="section-title">Flexible Rental Pricing Plans</h2>
+          <p class="text-sm sm:text-base text-muted">
+            Choose between flexible hourly, daily, weekly, and monthly passes tailored for smallholders, mid-sized farms, and full-season crop cycles.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8 items-stretch">
+          
+          <!-- Card 1: Hourly Flexible -->
+          <div class="pricing-card reveal-on-scroll" data-card-period="hourly">
+            <div class="pricing-img-wrapper">
+              <img 
+                src="assets/images/pricing/plan-hourly-tractor.jpg" 
+                alt="Indian tractor operating in an agricultural field" 
+                loading="lazy" 
+              />
+              <span class="absolute bottom-2 left-2 px-2.5 py-1 rounded-md bg-forest/85 backdrop-blur-md text-white text-[11px] font-semibold flex items-center gap-1 shadow-sm">
+                <i class="fa-solid fa-clock text-gold"></i> Short Tasks
+              </span>
+            </div>
+
+            <div class="mb-3">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-muted mb-1 block">Quick Field Tasks</span>
+              <h3 class="text-xl font-black text-slate-900 dark:text-white font-heading">Hourly Flexible</h3>
+              <p class="text-xs text-muted mt-1 leading-relaxed min-h-[36px]">
+                Ideal for quick field tasks, small acreage tilling, canal irrigation pumping, and short harvest haulage runs.
+              </p>
+            </div>
+
+            <div class="mb-5 pb-5 border-b border-slate-100 dark:border-slate-800">
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-3xl sm:text-4xl font-black text-agri dark:text-fresh font-heading dynamic-price-value" data-hourly="450" data-daily="3200" data-weekly="19000" data-monthly="65000">₹450</span>
+                <span class="text-xs font-bold text-muted dynamic-period-label">/ hour</span>
+              </div>
+              <span class="text-[11px] text-muted block mt-1">Starting from ₹350/hr • 2-hour minimum</span>
+            </div>
+
+            <ul class="space-y-2.5 text-xs text-slate-700 dark:text-slate-300 mb-6 flex-1">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>Fleet Access:</strong> 22 - 50 HP field-tested diesel tractors</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>GPS Hour Meter:</strong> Pay strictly for running engine hours</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>Attachment Pairing:</strong> Add ploughs, rotavators, or pumps</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>Driver On-Demand:</strong> Optional certified driver (+₹100/hr)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>Zero Surge:</strong> Transparent, locked rate year-round</span>
+              </li>
+            </ul>
+
+            <a href="booking.html?plan=hourly" class="btn-secondary w-full justify-center text-xs py-3 font-bold mt-auto shadow-sm">
+              Book Now
+            </a>
+          </div>
+
+          <!-- Card 2: Standard Daily Rental (Featured) -->
+          <div class="pricing-card featured reveal-on-scroll" style="transition-delay: 0.1s;" data-card-period="daily">
+            <span class="pricing-badge-popular">MOST POPULAR</span>
+
+            <div class="pricing-img-wrapper">
+              <img 
+                src="assets/images/pricing/plan-daily-rotavator.jpg" 
+                alt="Tractor with attached rotavator tilling soil" 
+                loading="lazy" 
+              />
+              <span class="absolute bottom-2 left-2 px-2.5 py-1 rounded-md bg-forest/85 backdrop-blur-md text-white text-[11px] font-semibold flex items-center gap-1 shadow-sm">
+                <i class="fa-solid fa-gear text-gold"></i> Full Shift
+              </span>
+            </div>
+
+            <div class="mb-3">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-agri dark:text-fresh mb-1 block">Full-Day Cultivation</span>
+              <h3 class="text-xl font-black text-slate-900 dark:text-white font-heading">Standard Daily Rental</h3>
+              <p class="text-xs text-muted mt-1 leading-relaxed min-h-[36px]">
+                Full 8-hour field shift for primary ploughing, rotary tilling, laser levelling, or multi-field operations.
+              </p>
+            </div>
+
+            <div class="mb-5 pb-5 border-b border-slate-100 dark:border-slate-800">
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-3xl sm:text-4xl font-black text-agri dark:text-fresh font-heading dynamic-price-value" data-hourly="500" data-daily="3500" data-weekly="21000" data-monthly="75000">₹3,500</span>
+                <span class="text-xs font-bold text-muted dynamic-period-label">/ day</span>
+              </div>
+              <span class="text-[11px] text-agri dark:text-fresh font-semibold block mt-1">Full 8-hour shift • Free delivery &lt;10km</span>
+            </div>
+
+            <ul class="space-y-2.5 text-xs text-slate-700 dark:text-slate-300 mb-6 flex-1">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>High-Torque Power:</strong> 45 - 55 HP Mahindra / Swaraj diesel</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>Free Farm Transit:</strong> 100% free delivery within 10 km</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>Midday Implement Swap:</strong> Switch tools at our local hub</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>Breakdown Guarantee:</strong> 2-hr replacement van support</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>Zero Wear Penalty:</strong> Blade and tyne wear 100% covered</span>
+              </li>
+            </ul>
+
+            <a href="booking.html?plan=daily" class="btn-primary w-full justify-center text-xs py-3 font-bold mt-auto shadow-md">
+              Book Now
+            </a>
+          </div>
+
+          <!-- Card 3: Weekly Rental Plan -->
+          <div class="pricing-card reveal-on-scroll" style="transition-delay: 0.2s;" data-card-period="weekly">
+            <div class="pricing-img-wrapper">
+              <img 
+                src="assets/images/pricing/plan-weekly-harvester.jpg" 
+                alt="Combine harvester working in a paddy field" 
+                loading="lazy" 
+              />
+              <span class="absolute bottom-2 left-2 px-2.5 py-1 rounded-md bg-forest/85 backdrop-blur-md text-white text-[11px] font-semibold flex items-center gap-1 shadow-sm">
+                <i class="fa-solid fa-wheat-awn text-gold"></i> Save 15%
+              </span>
+            </div>
+
+            <div class="mb-3">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-1 block">Save 15% Bundled</span>
+              <h3 class="text-xl font-black text-slate-900 dark:text-white font-heading">Weekly Rental Plan</h3>
+              <p class="text-xs text-muted mt-1 leading-relaxed min-h-[36px]">
+                Multi-day continuous farming pass for intensive sowing windows, complete village acreage, or harvest cycles.
+              </p>
+            </div>
+
+            <div class="mb-5 pb-5 border-b border-slate-100 dark:border-slate-800">
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-3xl sm:text-4xl font-black text-agri dark:text-fresh font-heading dynamic-price-value" data-hourly="2800" data-daily="3200" data-weekly="19500" data-monthly="75000">₹19,500</span>
+                <span class="text-xs font-bold text-muted dynamic-period-label">/ week</span>
+              </div>
+              <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold block mt-1">15% discount applied • 7 continuous days</span>
+            </div>
+
+            <ul class="space-y-2.5 text-xs text-slate-700 dark:text-slate-300 mb-6 flex-1">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>7 Consecutive Days:</strong> 56 total field operating hours</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>Cost Savings:</strong> ₹5,000 lower than single-day billing</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>Weekend Priority:</strong> Guaranteed machinery availability</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>Dedicated Mechanic:</strong> Standby maintenance technician</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>Free Transit:</strong> Low-bed trailer farm delivery included</span>
+              </li>
+            </ul>
+
+            <a href="booking.html?plan=weekly" class="btn-secondary w-full justify-center text-xs py-3 font-bold mt-auto shadow-sm">
+              Book Now
+            </a>
+          </div>
+
+          <!-- Card 4: Monthly Season Pass -->
+          <div class="pricing-card reveal-on-scroll" style="transition-delay: 0.3s;" data-card-period="monthly">
+            <div class="pricing-img-wrapper">
+              <img 
+                src="assets/images/pricing/plan-monthly-fleet.jpg" 
+                alt="Multiple tractors and agricultural machinery fleet" 
+                loading="lazy" 
+              />
+              <span class="absolute bottom-2 left-2 px-2.5 py-1 rounded-md bg-forest/85 backdrop-blur-md text-white text-[11px] font-semibold flex items-center gap-1 shadow-sm">
+                <i class="fa-solid fa-boxes-stacked text-gold"></i> Full Fleet
+              </span>
+            </div>
+
+            <div class="mb-3">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-yellow-800 dark:text-gold mb-1 block">Complete Season Pass</span>
+              <h3 class="text-xl font-black text-slate-900 dark:text-white font-heading">Monthly Season Pass</h3>
+              <p class="text-xs text-muted mt-1 leading-relaxed min-h-[36px]">
+                Dedicated on-farm machinery deployment for full Kharif or Rabi crop cycle management without ownership costs.
+              </p>
+            </div>
+
+            <div class="mb-5 pb-5 border-b border-slate-100 dark:border-slate-800">
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-3xl sm:text-4xl font-black text-agri dark:text-fresh font-heading dynamic-price-value" data-hourly="1100" data-daily="7500" data-weekly="45000" data-monthly="65000">₹65,000</span>
+                <span class="text-xs font-bold text-muted dynamic-period-label">/ month</span>
+              </div>
+              <span class="text-[11px] text-yellow-800 dark:text-gold font-semibold block mt-1">Unlimited implement swaps • Post-harvest KCC</span>
+            </div>
+
+            <ul class="space-y-2.5 text-xs text-slate-700 dark:text-slate-300 mb-6 flex-1">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>30-Day Deployment:</strong> Parked directly at your farmhouse</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>Free Implement Swaps:</strong> Ploughs, rotavator, seeder, trolley</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>Zero Deposit:</strong> No security deposit for verified FPOs</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>Fortnightly Service:</strong> Regular lubrication & maintenance</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-agri mt-0.5 shrink-0"></i>
+                <span><strong>Post-Harvest Pay:</strong> Flexible credit settlement options</span>
+              </li>
+            </ul>
+
+            <a href="booking.html?plan=monthly" class="btn-secondary w-full justify-center text-xs py-3 font-bold mt-auto shadow-sm">
+              Book Now
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 4: TRACTOR SPECIFICATIONS & PRICE MATRIX
+         ========================================================================= -->
+    <section class="py-20 bg-white dark:bg-[#121813] border-b border-gray-200 dark:border-gray-800">
+      <div class="container-custom">
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal-on-scroll">
+          <span class="section-subtitle">Model Comparison & Tariffs</span>
+          <h2 class="section-title">Tractor Specifications & Price Matrix</h2>
+          <p class="text-sm sm:text-base text-muted">
+            Compare technical specifications, horsepower ratings, hydraulic lift capacities, and transparent rental tariffs across our primary tractor fleet.
+          </p>
+        </div>
+
+        <div class="table-responsive rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm bg-white dark:bg-[#18231B] reveal-on-scroll">
+          <table class="w-full text-left border-collapse min-w-[720px]">
+            <thead>
+              <tr class="bg-slate-50 dark:bg-[#121813] border-b border-gray-200 dark:border-gray-800 text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                <th class="py-4 px-6">Tractor Model</th>
+                <th class="py-4 px-4 text-center">Horsepower</th>
+                <th class="py-4 px-4">Drive Type</th>
+                <th class="py-4 px-4">Lift Capacity</th>
+                <th class="py-4 px-4 text-right">Hourly Rate</th>
+                <th class="py-4 px-4 text-right">Daily Rate</th>
+                <th class="py-4 px-6 text-center">Rent Action</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 dark:divide-gray-800 text-xs sm:text-sm">
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-[#1F2F23]/40 transition">
+                <td class="py-4 px-6 font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <i class="fa-solid fa-tractor text-agri"></i>
+                  <span>Sonalika GT 22 Orchard Mini</span>
+                </td>
+                <td class="py-4 px-4 text-center font-bold text-agri dark:text-fresh">22 HP</td>
+                <td class="py-4 px-4 text-muted">2WD Compact Narrow</td>
+                <td class="py-4 px-4 text-muted">650 kg</td>
+                <td class="py-4 px-4 text-right font-semibold text-slate-800 dark:text-slate-200">₹350 / hr</td>
+                <td class="py-4 px-4 text-right font-black text-agri dark:text-fresh">₹2,200 / day</td>
+                <td class="py-4 px-6 text-center">
+                  <a href="booking.html?id=mini-245" class="btn-primary text-xs py-1.5 px-3.5 font-bold">Rent Now</a>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-[#1F2F23]/40 transition">
+                <td class="py-4 px-6 font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <i class="fa-solid fa-tractor text-agri"></i>
+                  <span>Mahindra 575 DI High-Power</span>
+                </td>
+                <td class="py-4 px-4 text-center font-bold text-agri dark:text-fresh">45 HP</td>
+                <td class="py-4 px-4 text-muted">2WD Heavy Duty</td>
+                <td class="py-4 px-4 text-muted">1,600 kg</td>
+                <td class="py-4 px-4 text-right font-semibold text-slate-800 dark:text-slate-200">₹500 / hr</td>
+                <td class="py-4 px-4 text-right font-black text-agri dark:text-fresh">₹3,500 / day</td>
+                <td class="py-4 px-6 text-center">
+                  <a href="booking.html?id=tr-575" class="btn-primary text-xs py-1.5 px-3.5 font-bold">Rent Now</a>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-[#1F2F23]/40 transition">
+                <td class="py-4 px-6 font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <i class="fa-solid fa-tractor text-agri"></i>
+                  <span>Swaraj 855 FE Heavy Cultivation</span>
+                </td>
+                <td class="py-4 px-4 text-center font-bold text-agri dark:text-fresh">52 HP</td>
+                <td class="py-4 px-4 text-muted">2WD High Displacement</td>
+                <td class="py-4 px-4 text-muted">1,700 kg</td>
+                <td class="py-4 px-4 text-right font-semibold text-slate-800 dark:text-slate-200">₹580 / hr</td>
+                <td class="py-4 px-4 text-right font-black text-agri dark:text-fresh">₹4,000 / day</td>
+                <td class="py-4 px-6 text-center">
+                  <a href="booking.html?id=tr-swaraj855" class="btn-primary text-xs py-1.5 px-3.5 font-bold">Rent Now</a>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-[#1F2F23]/40 transition">
+                <td class="py-4 px-6 font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <i class="fa-solid fa-tractor text-agri"></i>
+                  <span>John Deere 5310 PowerTech</span>
+                </td>
+                <td class="py-4 px-4 text-center font-bold text-agri dark:text-fresh">55 HP</td>
+                <td class="py-4 px-4 text-muted">4WD Turbocharged</td>
+                <td class="py-4 px-4 text-muted">2,000 kg</td>
+                <td class="py-4 px-4 text-right font-semibold text-slate-800 dark:text-slate-200">₹650 / hr</td>
+                <td class="py-4 px-4 text-right font-black text-agri dark:text-fresh">₹4,500 / day</td>
+                <td class="py-4 px-6 text-center">
+                  <a href="booking.html?id=tr-johndeere" class="btn-primary text-xs py-1.5 px-3.5 font-bold">Rent Now</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-4 p-4 rounded-xl bg-slate-50 dark:bg-[#18231B] border border-gray-200 dark:border-gray-800 text-xs text-muted flex flex-col sm:flex-row items-center justify-between gap-3">
+          <span class="flex items-center gap-2">
+            <i class="fa-solid fa-circle-info text-agri"></i>
+            <span>All tractor tariffs exclude diesel fuel (farmer supplied or pre-filled at ₹92/L). Certified tractor driver optional at ₹600–₹700/day.</span>
+          </span>
+          <a href="equipment.html" class="text-agri dark:text-fresh font-bold hover:underline shrink-0">
+            View Full Equipment Catalog & Specs <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 5: STANDALONE FARM IMPLEMENT & MACHINERY ATTACHMENT RATES
+         ========================================================================= -->
+    <section class="py-20 bg-slate-50 dark:bg-[#151D16] border-b border-gray-200 dark:border-gray-800">
+      <div class="container-custom">
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal-on-scroll">
+          <span class="section-subtitle">Attachments & Implements</span>
+          <h2 class="section-title">Standalone Farm Implement & Machinery Attachment Rates</h2>
+          <p class="text-sm sm:text-base text-muted">
+            Rent tractor attachments independently if you own a tractor, or add them to your tractor hire. All implements arrive sharp, greased, and field-tested.
+          </p>
+        </div>
+
+        <div class="table-responsive rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm bg-white dark:bg-[#18231B] reveal-on-scroll">
+          <table class="w-full text-left border-collapse min-w-[780px]">
+            <thead>
+              <tr class="bg-slate-100/70 dark:bg-[#121813] border-b border-gray-200 dark:border-gray-800 text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                <th class="py-4 px-6">Equipment / Implement</th>
+                <th class="py-4 px-4">Category</th>
+                <th class="py-4 px-4">Tractor Power Required</th>
+                <th class="py-4 px-4">Working Capacity</th>
+                <th class="py-4 px-4 text-right">Hourly Rate</th>
+                <th class="py-4 px-4 text-right">Daily Rate</th>
+                <th class="py-4 px-6 text-center">Rent Action</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 dark:divide-gray-800 text-xs sm:text-sm">
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-[#1F2F23]/40 transition">
+                <td class="py-3.5 px-6 font-bold text-slate-900 dark:text-white">Shaktiman Semi-Champion 6ft Rotavator</td>
+                <td class="py-3.5 px-4"><span class="badge-cat">Tillage</span></td>
+                <td class="py-3.5 px-4 text-muted">40 - 50 HP PTO</td>
+                <td class="py-3.5 px-4 text-muted">1.25 Acres / hr fine tilth</td>
+                <td class="py-3.5 px-4 text-right font-semibold text-slate-800 dark:text-slate-200">₹250 / hr</td>
+                <td class="py-3.5 px-4 text-right font-black text-agri dark:text-fresh">₹1,600 / day</td>
+                <td class="py-3.5 px-6 text-center">
+                  <a href="booking.html?id=rot-48" class="btn-primary text-xs py-1.5 px-3 font-bold">Rent Now</a>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-[#1F2F23]/40 transition">
+                <td class="py-3.5 px-6 font-bold text-slate-900 dark:text-white">Fieldking 9-Tyne Spring Loaded Cultivator</td>
+                <td class="py-3.5 px-4"><span class="badge-cat">Tillage</span></td>
+                <td class="py-3.5 px-4 text-muted">35 - 45 HP</td>
+                <td class="py-3.5 px-4 text-muted">2.2 Acres / hr secondary tillage</td>
+                <td class="py-3.5 px-4 text-right font-semibold text-slate-800 dark:text-slate-200">₹180 / hr</td>
+                <td class="py-3.5 px-4 text-right font-black text-agri dark:text-fresh">₹1,100 / day</td>
+                <td class="py-3.5 px-6 text-center">
+                  <a href="booking.html?id=cult-9" class="btn-primary text-xs py-1.5 px-3 font-bold">Rent Now</a>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-[#1F2F23]/40 transition">
+                <td class="py-3.5 px-6 font-bold text-slate-900 dark:text-white">Lemken 3-Furrow Reversible MB Plough</td>
+                <td class="py-3.5 px-4"><span class="badge-cat">Tillage</span></td>
+                <td class="py-3.5 px-4 text-muted">50 - 65 HP</td>
+                <td class="py-3.5 px-4 text-muted">1.0 Acre / hr deep furrow</td>
+                <td class="py-3.5 px-4 text-right font-semibold text-slate-800 dark:text-slate-200">₹300 / hr</td>
+                <td class="py-3.5 px-4 text-right font-black text-agri dark:text-fresh">₹1,900 / day</td>
+                <td class="py-3.5 px-6 text-center">
+                  <a href="booking.html?id=plough-mb3" class="btn-primary text-xs py-1.5 px-3 font-bold">Rent Now</a>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-[#1F2F23]/40 transition">
+                <td class="py-3.5 px-6 font-bold text-slate-900 dark:text-white">Heavy-Duty 16-Disc Trailed Offset Harrow</td>
+                <td class="py-3.5 px-4"><span class="badge-cat">Tillage</span></td>
+                <td class="py-3.5 px-4 text-muted">45 - 60 HP</td>
+                <td class="py-3.5 px-4 text-muted">2.5 Acres / hr clod break</td>
+                <td class="py-3.5 px-4 text-right font-semibold text-slate-800 dark:text-slate-200">₹280 / hr</td>
+                <td class="py-3.5 px-4 text-right font-black text-agri dark:text-fresh">₹1,750 / day</td>
+                <td class="py-3.5 px-6 text-center">
+                  <a href="booking.html?id=harrow-disc" class="btn-primary text-xs py-1.5 px-3 font-bold">Rent Now</a>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-[#1F2F23]/40 transition">
+                <td class="py-3.5 px-6 font-bold text-slate-900 dark:text-white">Dasmesh Happy Seeder & Zero-Till Drill</td>
+                <td class="py-3.5 px-4"><span class="badge-cat">Sowing</span></td>
+                <td class="py-3.5 px-4 text-muted">45 - 55 HP PTO</td>
+                <td class="py-3.5 px-4 text-muted">1.3 Acres / hr zero stubble burning</td>
+                <td class="py-3.5 px-4 text-right font-semibold text-slate-800 dark:text-slate-200">₹350 / hr</td>
+                <td class="py-3.5 px-4 text-right font-black text-agri dark:text-fresh">₹2,100 / day</td>
+                <td class="py-3.5 px-6 text-center">
+                  <a href="booking.html?id=seed-super" class="btn-primary text-xs py-1.5 px-3 font-bold">Rent Now</a>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-[#1F2F23]/40 transition">
+                <td class="py-3.5 px-6 font-bold text-slate-900 dark:text-white">Multi-Crop Pneumatic Precision Seed Planter</td>
+                <td class="py-3.5 px-4"><span class="badge-cat">Sowing</span></td>
+                <td class="py-3.5 px-4 text-muted">40 - 50 HP</td>
+                <td class="py-3.5 px-4 text-muted">2.2 Acres / hr single-seed drop</td>
+                <td class="py-3.5 px-4 text-right font-semibold text-slate-800 dark:text-slate-200">₹380 / hr</td>
+                <td class="py-3.5 px-4 text-right font-black text-agri dark:text-fresh">₹2,400 / day</td>
+                <td class="py-3.5 px-6 text-center">
+                  <a href="booking.html?id=seed-planter" class="btn-primary text-xs py-1.5 px-3 font-bold">Rent Now</a>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-[#1F2F23]/40 transition">
+                <td class="py-3.5 px-6 font-bold text-slate-900 dark:text-white">Mitra 500L Tractor Mounted Orchard Sprayer</td>
+                <td class="py-3.5 px-4"><span class="badge-cat">Spraying</span></td>
+                <td class="py-3.5 px-4 text-muted">24 - 50 HP PTO</td>
+                <td class="py-3.5 px-4 text-muted">4.5 Acres / hr fine droplet mist</td>
+                <td class="py-3.5 px-4 text-right font-semibold text-slate-800 dark:text-slate-200">₹280 / hr</td>
+                <td class="py-3.5 px-4 text-right font-black text-agri dark:text-fresh">₹1,800 / day</td>
+                <td class="py-3.5 px-6 text-center">
+                  <a href="booking.html?id=spray-500" class="btn-primary text-xs py-1.5 px-3 font-bold">Rent Now</a>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-[#1F2F23]/40 transition">
+                <td class="py-3.5 px-6 font-bold text-slate-900 dark:text-white">Hydraulic 40-Nozzle 12-Meter Boom Sprayer</td>
+                <td class="py-3.5 px-4"><span class="badge-cat">Spraying</span></td>
+                <td class="py-3.5 px-4 text-muted">35 - 50 HP</td>
+                <td class="py-3.5 px-4 text-muted">9.0 Acres / hr wide coverage</td>
+                <td class="py-3.5 px-4 text-right font-semibold text-slate-800 dark:text-slate-200">₹320 / hr</td>
+                <td class="py-3.5 px-4 text-right font-black text-agri dark:text-fresh">₹2,000 / day</td>
+                <td class="py-3.5 px-6 text-center">
+                  <a href="booking.html?id=spray-boom" class="btn-primary text-xs py-1.5 px-3 font-bold">Rent Now</a>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-[#1F2F23]/40 transition">
+                <td class="py-3.5 px-6 font-bold text-slate-900 dark:text-white">Heavy-Duty Round Straw & Fodder Hay Baler</td>
+                <td class="py-3.5 px-4"><span class="badge-cat">Harvesting</span></td>
+                <td class="py-3.5 px-4 text-muted">45 - 60 HP PTO</td>
+                <td class="py-3.5 px-4 text-muted">60 Compact Bales / hour</td>
+                <td class="py-3.5 px-4 text-right font-semibold text-slate-800 dark:text-slate-200">₹700 / hr</td>
+                <td class="py-3.5 px-4 text-right font-black text-agri dark:text-fresh">₹4,200 / day</td>
+                <td class="py-3.5 px-6 text-center">
+                  <a href="booking.html?id=baler-straw" class="btn-primary text-xs py-1.5 px-3 font-bold">Rent Now</a>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-[#1F2F23]/40 transition">
+                <td class="py-3.5 px-6 font-bold text-slate-900 dark:text-white">Heavy-Duty 8-Tonne Hydraulic Tipping Trailer</td>
+                <td class="py-3.5 px-4"><span class="badge-cat">Transport</span></td>
+                <td class="py-3.5 px-4 text-muted">40+ HP Tractor</td>
+                <td class="py-3.5 px-4 text-muted">8,000 kg Mandi haulage</td>
+                <td class="py-3.5 px-4 text-right font-semibold text-slate-800 dark:text-slate-200">₹220 / hr</td>
+                <td class="py-3.5 px-4 text-right font-black text-agri dark:text-fresh">₹1,500 / day</td>
+                <td class="py-3.5 px-6 text-center">
+                  <a href="booking.html?id=trail-8t" class="btn-primary text-xs py-1.5 px-3 font-bold">Rent Now</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 6: SEASONAL PACKAGE BUNDLES & ACREAGE COMBO PASSES
+         ========================================================================= -->
+    <section class="py-20 bg-white dark:bg-[#121813] border-b border-gray-200 dark:border-gray-800">
+      <div class="container-custom">
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal-on-scroll">
+          <span class="section-subtitle">Multi-Day Multi-Machine Savings</span>
+          <h2 class="section-title">Seasonal Package Bundles & Acreage Combo Passes</h2>
+          <p class="text-sm sm:text-base text-muted">
+            Lock in discounted bundle tariffs by pairing high-horsepower tractors with matching attachments for complete crop life cycles. Save up to 22% compared to single-day rentals.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          
+          <!-- Bundle 1: Land Prep -->
+          <div class="bundle-card p-5 reveal-on-scroll flex flex-col justify-between">
+            <div>
+              <div class="bundle-img-wrapper">
+                <img 
+                  src="assets/images/equipment/cycle-phase-1-plough.jpg" 
+                  alt="Deep Plowing Land Preparation Combo" 
+                  loading="lazy" 
+                />
+                <span class="absolute bottom-2 left-2 px-2.5 py-1 rounded-md bg-forest/90 backdrop-blur-md text-gold text-[10px] font-bold uppercase tracking-wider">
+                  Kharif / Rabi Tillage
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1.5 leading-snug">
+                Deep Plowing Land Preparation Combo
+              </h3>
+              <p class="text-xs text-muted mb-3 font-medium">
+                <strong>Included Equipment:</strong> Mahindra 575 DI (45 HP) + Reversible MB Plough + 6ft Rotavator.
+              </p>
+              
+              <div class="mb-4 pb-3 border-b border-gray-100 dark:border-gray-800">
+                <div class="flex items-baseline gap-2">
+                  <span class="text-2xl font-black text-agri dark:text-fresh font-heading">₹13,500</span>
+                  <span class="text-xs text-muted font-semibold">/ 3 Days (24 Hrs)</span>
+                </div>
+                <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold block mt-1">
+                  Save ₹2,500 vs individual daily rates
+                </span>
+              </div>
+
+              <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300 mb-6">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agri text-xs shrink-0"></i> 45 HP Diesel Tractor + 2 Implements</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agri text-xs shrink-0"></i> Hydraulic Reversible MB Plough</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agri text-xs shrink-0"></i> 48-Blade Rotary Tiller for fine seedbed</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agri text-xs shrink-0"></i> Free doorstep delivery within 15 km</li>
+              </ul>
+            </div>
+
+            <a href="booking.html?bundle=landprep" class="btn-primary text-xs py-2.5 justify-center font-bold mt-auto w-full">
+              Book Package
+            </a>
+          </div>
+
+          <!-- Bundle 2: Zero-Stubble Sowing -->
+          <div class="bundle-card p-5 reveal-on-scroll flex flex-col justify-between" style="transition-delay: 0.1s;">
+            <div>
+              <div class="bundle-img-wrapper">
+                <img 
+                  src="assets/images/equipment/dasmesh-happy-seeder.jpg" 
+                  alt="Zero-Till Happy Seeder Pass" 
+                  loading="lazy" 
+                />
+                <span class="absolute bottom-2 left-2 px-2.5 py-1 rounded-md bg-forest/90 backdrop-blur-md text-gold text-[10px] font-bold uppercase tracking-wider">
+                  Rabi Wheat Seeding
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1.5 leading-snug">
+                Zero-Till Happy Seeder Pass
+              </h3>
+              <p class="text-xs text-muted mb-3 font-medium">
+                <strong>Included Equipment:</strong> John Deere 5310 (55 HP 4WD) + Dasmesh Happy Seeder Drill.
+              </p>
+              
+              <div class="mb-4 pb-3 border-b border-gray-100 dark:border-gray-800">
+                <div class="flex items-baseline gap-2">
+                  <span class="text-2xl font-black text-agri dark:text-fresh font-heading">₹11,200</span>
+                  <span class="text-xs text-muted font-semibold">/ 3 Days (24 Hrs)</span>
+                </div>
+                <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold block mt-1">
+                  Save ₹2,300 vs individual daily rates
+                </span>
+              </div>
+
+              <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300 mb-6">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agri text-xs shrink-0"></i> Direct drilling into standing paddy stubble</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agri text-xs shrink-0"></i> 55 HP 4WD Tractor with Collarshift</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agri text-xs shrink-0"></i> Dual seed & basal fertilizer hopper</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agri text-xs shrink-0"></i> Free technician calibration in field</li>
+              </ul>
+            </div>
+
+            <a href="booking.html?bundle=happyseeder" class="btn-primary text-xs py-2.5 justify-center font-bold mt-auto w-full">
+              Book Package
+            </a>
+          </div>
+
+          <!-- Bundle 3: Full Harvest -->
+          <div class="bundle-card p-5 reveal-on-scroll flex flex-col justify-between" style="transition-delay: 0.2s;">
+            <div>
+              <div class="bundle-img-wrapper">
+                <img 
+                  src="assets/images/equipment/preet-987-harvester.jpg" 
+                  alt="Full Harvest & Mandi Haulage" 
+                  loading="lazy" 
+                />
+                <span class="absolute bottom-2 left-2 px-2.5 py-1 rounded-md bg-forest/90 backdrop-blur-md text-gold text-[10px] font-bold uppercase tracking-wider">
+                  Harvest & Logistics
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1.5 leading-snug">
+                Full Harvest & Mandi Haulage
+              </h3>
+              <p class="text-xs text-muted mb-3 font-medium">
+                <strong>Included Equipment:</strong> Preet 987 Combine Harvester + 8-Tonne Tipping Trailer.
+              </p>
+              
+              <div class="mb-4 pb-3 border-b border-gray-100 dark:border-gray-800">
+                <div class="flex items-baseline gap-2">
+                  <span class="text-2xl font-black text-agri dark:text-fresh font-heading">₹24,000</span>
+                  <span class="text-xs text-muted font-semibold">/ 2 Days (16 Hrs)</span>
+                </div>
+                <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold block mt-1">
+                  Save ₹3,800 vs individual daily rates
+                </span>
+              </div>
+
+              <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300 mb-6">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agri text-xs shrink-0"></i> Multi-crop cutting, threshing & cleaning</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agri text-xs shrink-0"></i> Certified Harvester Master Pilot included</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agri text-xs shrink-0"></i> 8-Tonne Hydraulic Tipping Trailer for Mandi</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agri text-xs shrink-0"></i> 2-hour priority on-site breakdown SLA</li>
+              </ul>
+            </div>
+
+            <a href="booking.html?bundle=harvest" class="btn-primary text-xs py-2.5 justify-center font-bold mt-auto w-full">
+              Book Package
+            </a>
+          </div>
+
+          <!-- Bundle 4: Orchard Monthly -->
+          <div class="bundle-card p-5 reveal-on-scroll flex flex-col justify-between" style="transition-delay: 0.3s;">
+            <div>
+              <div class="bundle-img-wrapper">
+                <img 
+                  src="assets/images/equipment/sonalika-gt22-mini.jpg" 
+                  alt="Orchard Monthly Care Pass" 
+                  loading="lazy" 
+                />
+                <span class="absolute bottom-2 left-2 px-2.5 py-1 rounded-md bg-forest/90 backdrop-blur-md text-gold text-[10px] font-bold uppercase tracking-wider">
+                  30-Day Horticulture Pass
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1.5 leading-snug">
+                Orchard Monthly Care Pass
+              </h3>
+              <p class="text-xs text-muted mb-3 font-medium">
+                <strong>Included Equipment:</strong> Sonalika GT 22 Mini Tractor + Mitra 500L Sprayer.
+              </p>
+              
+              <div class="mb-4 pb-3 border-b border-gray-100 dark:border-gray-800">
+                <div class="flex items-baseline gap-2">
+                  <span class="text-2xl font-black text-agri dark:text-fresh font-heading">₹42,000</span>
+                  <span class="text-xs text-muted font-semibold">/ 30 Days</span>
+                </div>
+                <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold block mt-1">
+                  Save ₹11,500 vs daily rental
+                </span>
+              </div>
+
+              <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300 mb-6">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agri text-xs shrink-0"></i> Compact 22 HP tractor for narrow lanes</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agri text-xs shrink-0"></i> 500L orchard sprayer with mist fan</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agri text-xs shrink-0"></i> Fortnightly on-farm mechanical tune-up</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-agri text-xs shrink-0"></i> Flexible post-harvest cooperative billing</li>
+              </ul>
+            </div>
+
+            <a href="booking.html?bundle=orchard" class="btn-primary text-xs py-2.5 justify-center font-bold mt-auto w-full">
+              Book Package
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 7: CERTIFIED OPERATOR & TRANSIT CHARGES
+         ========================================================================= -->
+    <section class="py-20 bg-slate-50 dark:bg-[#151D16]">
+      <div class="container-custom">
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal-on-scroll">
+          <span class="section-subtitle">Driver & Delivery Tariffs</span>
+          <h2 class="section-title">Certified Operator & Transit Charges</h2>
+          <p class="text-sm sm:text-base text-muted">
+            Self-operate or request our certified agricultural drivers. Flat, predictable transportation tariffs directly to your GPS farm coordinates.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
+          
+          <!-- Subsection 1: Certified Equipment Operator -->
+          <div class="p-8 rounded-2xl bg-white dark:bg-[#18231B] border border-slate-200 dark:border-slate-700 reveal-on-scroll shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-forest text-gold flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-id-card-clip"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Certified Equipment Operator</h3>
+              <p class="text-xs text-muted mb-5 leading-relaxed">
+                Skilled agricultural drivers with verified field experience in laser levelling, reversible deep ploughing, zero-till drilling, and precision harvest threshing.
+              </p>
+              
+              <div class="space-y-3 text-xs text-slate-700 dark:text-slate-300 mb-6">
+                <div class="flex items-center justify-between py-2 border-b border-slate-100 dark:border-slate-800">
+                  <div>
+                    <span class="font-bold text-slate-900 dark:text-white block">Mini Tractor Driver</span>
+                    <span class="text-[11px] text-muted">Orchard & vineyard operations</span>
+                  </div>
+                  <div class="text-right">
+                    <strong class="font-bold text-slate-900 dark:text-white block text-sm">₹600 / day</strong>
+                    <span class="text-[10px] text-amber-600 dark:text-amber-400 font-bold uppercase">Optional Service</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between py-2 border-b border-slate-100 dark:border-slate-800">
+                  <div>
+                    <span class="font-bold text-slate-900 dark:text-white block">Utility Tractor Driver</span>
+                    <span class="text-[11px] text-muted">45 - 55 HP heavy ploughing & tillage</span>
+                  </div>
+                  <div class="text-right">
+                    <strong class="font-bold text-slate-900 dark:text-white block text-sm">₹700 / day</strong>
+                    <span class="text-[10px] text-amber-600 dark:text-amber-400 font-bold uppercase">Optional Service</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between py-2 border-b border-slate-100 dark:border-slate-800">
+                  <div>
+                    <span class="font-bold text-slate-900 dark:text-white block">Combine Harvester Master Pilot</span>
+                    <span class="text-[11px] text-muted">Multi-crop grain cutter & thresher</span>
+                  </div>
+                  <div class="text-right">
+                    <strong class="font-bold text-emerald-600 dark:text-fresh block text-sm">₹1,200 / day</strong>
+                    <span class="text-[10px] text-emerald-600 dark:text-fresh font-bold uppercase">Included in Hire</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <span class="text-[11px] text-agri dark:text-fresh font-semibold flex items-center gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
+              <i class="fa-solid fa-shield-halved text-xs"></i> All drivers hold commercial agricultural endorsements and full third-party liability coverage.
+            </span>
+          </div>
+
+          <!-- Subsection 2: Doorstep Farm Transit -->
+          <div class="p-8 rounded-2xl bg-white dark:bg-[#18231B] border border-slate-200 dark:border-slate-700 reveal-on-scroll shadow-sm flex flex-col justify-between" style="transition-delay: 0.1s;">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-forest text-gold flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-truck-ramp-box"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Doorstep Farm Transit</h3>
+              <p class="text-xs text-muted mb-5 leading-relaxed">
+                Loaded on dedicated hydraulic low-bed transport carriers and unloaded safely directly at your designated farm road or field boundary coordinates.
+              </p>
+
+              <div class="space-y-3 text-xs text-slate-700 dark:text-slate-300 mb-6">
+                <div class="flex items-center justify-between py-2 border-b border-slate-100 dark:border-slate-800">
+                  <div>
+                    <span class="font-bold text-slate-900 dark:text-white block">Within 10 km Service Radius</span>
+                    <span class="text-[11px] text-muted">From nearest AgroRent machinery depot</span>
+                  </div>
+                  <div class="text-right">
+                    <strong class="text-emerald-600 dark:text-fresh font-black block text-sm">100% FREE</strong>
+                    <span class="text-[10px] text-emerald-600 dark:text-fresh font-bold uppercase">Included</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between py-2 border-b border-slate-100 dark:border-slate-800">
+                  <div>
+                    <span class="font-bold text-slate-900 dark:text-white block">Additional Distance Charges</span>
+                    <span class="text-[11px] text-muted">Beyond 10 km for Tractors & Implements</span>
+                  </div>
+                  <div class="text-right">
+                    <strong class="font-bold text-slate-900 dark:text-white block text-sm">₹25 - ₹35 / km</strong>
+                    <span class="text-[10px] text-slate-500 font-semibold uppercase">Distance-based</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between py-2 border-b border-slate-100 dark:border-slate-800">
+                  <div>
+                    <span class="font-bold text-slate-900 dark:text-white block">Heavy Harvester Transit Charges</span>
+                    <span class="text-[11px] text-muted">Dedicated heavy hydraulic carrier trailer</span>
+                  </div>
+                  <div class="text-right">
+                    <strong class="font-bold text-slate-900 dark:text-white block text-sm">₹65 / km</strong>
+                    <span class="text-[10px] text-slate-500 font-semibold uppercase">Specialized Carrier</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <span class="text-[11px] text-agri dark:text-fresh font-semibold flex items-center gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
+              <i class="fa-solid fa-location-dot text-xs"></i> Real-time SMS GPS tracking provided when equipment departs the depot for your farm.
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 8: WHAT'S INCLUDED IN YOUR RENTAL
+         ========================================================================= -->
+    <section class="py-20 bg-white dark:bg-[#121813] border-b border-gray-200 dark:border-gray-800">
+      <div class="container-custom max-w-4xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-14 reveal-on-scroll">
+          <span class="section-subtitle">Rental Guarantees</span>
+          <h2 class="section-title">What's Included in Your Rental</h2>
+          <p class="text-sm sm:text-base text-muted">
+            We believe in 100% upfront clarity. No surprise deductions, no ambiguous fuel surcharges, and no hidden maintenance penalties.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          
+          <!-- Group 1: Always Included -->
+          <div class="guarantee-box p-6 sm:p-8 border-l-4 border-l-emerald-600 shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-600"></i>
+                <span>Always Included (100% Free)</span>
+              </h3>
+              <ul class="space-y-3.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-emerald-600 mt-1 shrink-0"></i>
+                  <span><strong>Pre-delivery mechanical inspection:</strong> 50-point checklist verifying hydraulics, fluids, belts, and tire pressures before departure.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-emerald-600 mt-1 shrink-0"></i>
+                  <span><strong>Breakdown support:</strong> Rapid response mobile technician dispatched within 2 hours or instant machine replacement.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-emerald-600 mt-1 shrink-0"></i>
+                  <span><strong>Applicable transit and field insurance:</strong> Comprehensive transit insurance and third-party agricultural liability coverage included.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-emerald-600 mt-1 shrink-0"></i>
+                  <span><strong>Normal wear and tear coverage:</strong> Routine wear on blades, tines, shear pins, and belts 100% absorbed by AgroRent.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-emerald-600 mt-1 shrink-0"></i>
+                  <span><strong>GPS and hour meter billing:</strong> Tamper-proof digital hour-meter logging ensures you only pay for actual machine runtime.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Group 2: Zero Hidden Fees -->
+          <div class="guarantee-box p-6 sm:p-8 border-l-4 border-l-agri shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-shield-halved text-agri"></i>
+                <span>Zero Hidden Fees Guarantee</span>
+              </h3>
+              <ul class="space-y-3.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-agri mt-1 shrink-0"></i>
+                  <span><strong>Transparent rental tariffs:</strong> Clear, published rates in Indian Rupees (₹) with zero seasonal surge pricing during peak sowing.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-agri mt-1 shrink-0"></i>
+                  <span><strong>Clear cancellation policy:</strong> 100% deposit refund for cancellations made up to 24 hours prior to equipment dispatch.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-agri mt-1 shrink-0"></i>
+                  <span><strong>Security deposit refund policy:</strong> Fully refundable deposit credited back to your bank account or UPI within 4 hours of equipment return.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-check text-agri mt-1 shrink-0"></i>
+                  <span><strong>No unexpected maintenance charges:</strong> We never bill farmers for scheduled servicing, engine oil, or standard lubrication.</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-muted font-medium">
+              <span class="text-agri dark:text-fresh font-bold">100% Transparent Promise:</span> If any unexplained charge appears on your invoice, we refund it immediately with zero questions asked.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 9: FLEXIBLE FARMER PAYMENT OPTIONS
+         ========================================================================= -->
+    <section class="py-16 bg-cream/40 dark:bg-[#162319] border-b border-gray-200 dark:border-gray-800">
+      <div class="container-custom">
+        <div class="text-center max-w-2xl mx-auto mb-12 reveal-on-scroll">
+          <span class="section-subtitle">Payment Flexibility</span>
+          <h2 class="section-title">Flexible Farmer Payment Options</h2>
+          <p class="text-sm sm:text-base text-muted">
+            Multiple hassle-free digital and agricultural payment avenues designed around farming cash flows and harvest cycles.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Payment Option 1: UPI Payments -->
+          <div class="payment-card p-6 reveal-on-scroll">
+            <div class="w-11 h-11 rounded-xl bg-agri/15 text-agri dark:text-fresh flex items-center justify-center text-lg mb-4">
+              <i class="fa-solid fa-qrcode"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white mb-1.5">UPI Payments</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Instant scan & pay via BHIM UPI, Paytm, or any compatible banking app with zero transaction surcharges and instant confirmation.
+            </p>
+          </div>
+
+          <!-- Payment Option 2: Google Pay -->
+          <div class="payment-card p-6 reveal-on-scroll" style="transition-delay: 0.05s;">
+            <div class="w-11 h-11 rounded-xl bg-blue-500/15 text-blue-600 dark:text-blue-400 flex items-center justify-center text-lg mb-4">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white mb-1.5">Google Pay</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Quick, secure tap-to-pay directly linked to your bank account with instant SMS confirmations and digital invoice generation.
+            </p>
+          </div>
+
+          <!-- Payment Option 3: PhonePe -->
+          <div class="payment-card p-6 reveal-on-scroll" style="transition-delay: 0.1s;">
+            <div class="w-11 h-11 rounded-xl bg-purple-500/15 text-purple-600 dark:text-purple-400 flex items-center justify-center text-lg mb-4">
+              <i class="fa-solid fa-wallet"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white mb-1.5">PhonePe</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Fast UPI transfers and wallet settlements with automated transaction tracking and 24/7 dedicated payment reconciliation support.
+            </p>
+          </div>
+
+          <!-- Payment Option 4: Bank Transfer -->
+          <div class="payment-card p-6 reveal-on-scroll" style="transition-delay: 0.15s;">
+            <div class="w-11 h-11 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center text-lg mb-4">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white mb-1.5">Bank Transfer</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Direct IMPS, NEFT, or RTGS bank wire transfers ideal for high-value weekly packages, combine harvester hire, and seasonal passes.
+            </p>
+          </div>
+
+          <!-- Payment Option 5: Kisan Credit Card (KCC) -->
+          <div class="payment-card p-6 reveal-on-scroll" style="transition-delay: 0.2s;">
+            <div class="w-11 h-11 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg mb-4">
+              <i class="fa-solid fa-credit-card"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white mb-1.5">Kisan Credit Card (KCC)</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Supported institutional agricultural credit settlement for eligible cardholders with flexible short-term seasonal financing terms.
+            </p>
+          </div>
+
+          <!-- Payment Option 6: Post-Harvest Payment -->
+          <div class="payment-card p-6 reveal-on-scroll" style="transition-delay: 0.25s;">
+            <div class="w-11 h-11 rounded-xl bg-gold/20 text-yellow-800 dark:text-gold flex items-center justify-center text-lg mb-4">
+              <i class="fa-solid fa-seedling"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white mb-1.5">Post-Harvest Payment</h3>
+            <p class="text-xs text-muted leading-relaxed">
+              Deferred credit settlement facility available exclusively for verified Farmer Producer Organizations (FPOs) and agricultural cooperatives.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 10: FREQUENTLY ASKED QUESTIONS
+         ========================================================================= -->
+    <section id="faq" class="py-20 bg-slate-50 dark:bg-[#151D16]">
+      <div class="container-custom max-w-3xl mx-auto">
+        <div class="text-center mb-14 reveal-on-scroll">
+          <span class="section-subtitle">Got Questions?</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="text-sm sm:text-base text-muted">
+            Clear answers to common questions regarding security deposits, fuel policies, delivery logistics, operators, and booking terms.
+          </p>
+        </div>
+
+        <div class="space-y-4 reveal-on-scroll">
+          
+          <!-- FAQ 1: Security Deposit -->
+          <div class="faq-item active">
+            <div class="faq-header">
+              <span>1. Security Deposit: How is the deposit calculated and refunded?</span>
+              <i class="faq-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
+            </div>
+            <div class="faq-content text-xs sm:text-sm leading-relaxed">
+              <p>
+                We require a nominal refundable security deposit of ₹2,000 for standalone implements and ₹5,000 for tractors. Once our field technician conducts the post-rental check, the full deposit is refunded to your UPI ID or bank account within 4 hours. No deductions are made for normal wear and tear.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 2: Diesel and Fuel -->
+          <div class="faq-item">
+            <div class="faq-header">
+              <span>2. Diesel and Fuel: How does the fuel policy work?</span>
+              <i class="faq-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
+            </div>
+            <div class="faq-content text-xs sm:text-sm leading-relaxed">
+              <p>
+                Our standard rental tariffs exclude diesel fuel. Tractors are delivered with a 100% full fuel tank. You can either return the machine refilled, or opt for our pre-filled diesel add-on billed transparently at current pump rates (₹92/liter) based on actual liters consumed.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 3: Equipment Operator -->
+          <div class="faq-item">
+            <div class="faq-header">
+              <span>3. Equipment Operator: Can I drive the tractor myself or hire your driver?</span>
+              <i class="faq-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
+            </div>
+            <div class="faq-content text-xs sm:text-sm leading-relaxed">
+              <p>
+                Yes! Any farmer holding a valid agricultural tractor driving license can self-operate. If you prefer a skilled hand, we provide certified tractor drivers for ₹600–₹700/day. Note that heavy combine harvesters always include our certified Master Pilot in the rental rate for maximum safety and grain protection.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 4: Delivery Charges -->
+          <div class="faq-item">
+            <div class="faq-header">
+              <span>4. Delivery Charges: How are doorstep transit costs calculated?</span>
+              <i class="faq-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
+            </div>
+            <div class="faq-content text-xs sm:text-sm leading-relaxed">
+              <p>
+                Doorstep delivery directly to your farm road is 100% free within a 10 km radius of our nearest machinery hub. For distances beyond 10 km, we bill a flat transit tariff of ₹25–₹35 per additional kilometer using dedicated hydraulic low-bed carriers.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 5: Breakdown Support -->
+          <div class="faq-item">
+            <div class="faq-header">
+              <span>5. Breakdown Support: What happens if machinery breaks down in my field?</span>
+              <i class="faq-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
+            </div>
+            <div class="faq-content text-xs sm:text-sm leading-relaxed">
+              <p>
+                Every booking is backed by our 2-hour field response guarantee. Our mobile service van reaches your field coordinates within 2 hours. If the breakdown cannot be fixed within 2 hours, we provide an immediate replacement machine of equal or higher horsepower at zero additional charge.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 6: Cancellation and Refunds -->
+          <div class="faq-item">
+            <div class="faq-header">
+              <span>6. Cancellation and Refunds: What is the cancellation policy?</span>
+              <i class="faq-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
+            </div>
+            <div class="faq-content text-xs sm:text-sm leading-relaxed">
+              <p>
+                We understand farming weather is unpredictable. You can cancel or reschedule with a 100% full refund up to 24 hours prior to equipment dispatch. Cancellations made within 24 hours incur only a nominal ₹500 logistics staging charge.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 7: Rental Duration and Payments -->
+          <div class="faq-item">
+            <div class="faq-header">
+              <span>7. Rental Duration and Payments: Can I extend my rental if rains delay work?</span>
+              <i class="faq-icon fa-solid fa-chevron-down text-xs transition-transform"></i>
+            </div>
+            <div class="faq-content text-xs sm:text-sm leading-relaxed">
+              <p>
+                Yes! Simply call our 24/7 farmer hotline or tap "Extend Rental" on the Farmer Portal before your shift ends. Rental extensions are billed at your existing discounted slab rate without any late penalties or surge pricing.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 11: FINAL BOOKING CTA
+         ========================================================================= -->
+    <section class="py-16 bg-forest text-white text-center">
+      <div class="container-custom max-w-2xl mx-auto reveal-on-scroll">
+        <h2 class="text-3xl font-black font-heading mb-4">Book Your Farm Machinery at Transparent Rates</h2>
+        <p class="text-sm text-cream/80 mb-8">
+          Save time and cultivation costs with reliable tractor and agricultural machinery rental services.
+        </p>
+        <a href="booking.html" class="btn-gold py-3.5 px-8 text-base font-bold inline-flex items-center shadow-lg hover:shadow-xl transition-all">
+          <i class="fa-solid fa-calendar-check mr-2"></i> Book Farm Equipment Now
+        </a>
+      </div>
+    </section>
+'''
+
+# Read original rates-pricing.html
+with open('rates-pricing.html', 'r', encoding='utf-8') as f:
+    orig = f.read()
+
+# Find the start of Section 1 and end of Section 11
+start_marker = '    <!-- PAGE HERO -->'
+end_marker = '  </main>'
+
+start_pos = orig.find(start_marker)
+end_pos = orig.find(end_marker)
+
+assert start_pos != -1, "start_marker not found"
+assert end_pos != -1, "end_marker not found"
+
+new_content = orig[:start_pos] + main_sections_html.lstrip('\n') + '\n  ' + orig[end_pos:]
+
+with open('rates-pricing.html', 'w', encoding='utf-8') as f:
+    f.write(new_content)
+
+print("rates-pricing.html updated successfully!")

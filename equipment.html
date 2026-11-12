@@ -386,12 +386,12 @@
               <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
               <div class="absolute top-3.5 left-3.5">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-forest/90 text-gold text-xs font-bold backdrop-blur-sm border border-white/10">
-                  <i class="fa-solid fa-truck-ramp-box"></i> 3 Units Ready
+                  <i class="fa-solid fa-truck-ramp-box"></i> 4 Units Ready
                 </span>
               </div>
               <div class="absolute bottom-3.5 left-3.5 right-3.5 text-white">
                 <h3 class="text-xl font-bold font-heading mb-1 text-white">Transport Equipment</h3>
-                <p class="text-xs text-cream/80 line-clamp-1">Tractor Trailers and Agricultural Transport Equipment</p>
+                <p class="text-xs text-cream/80 line-clamp-1">Tractor Trailers, Haulage Trolleys, Tankers & Pumps</p>
               </div>
             </div>
             <div class="p-5 flex items-center justify-between">
@@ -421,7 +421,7 @@
           </div>
           <div class="flex items-center gap-3">
             <span id="activeCountBadge" class="badge-agri bg-agri/15 text-agri dark:text-fresh text-xs sm:text-sm font-bold py-1.5 px-3.5 rounded-full border border-agri/20">
-              19 Farm Equipment Ready
+              21 Farm Equipment Ready
             </span>
           </div>
         </div>
@@ -910,7 +910,7 @@
             <div class="p-6 rounded-2xl bg-forest text-white shadow-xl flex flex-col justify-between">
               <div>
                 <span class="text-3xl sm:text-4xl font-black font-heading text-gold mb-2 block">100%</span>
-                <h4 class="text-base font-bold font-heading mb-1">Pre-Field Inspected</h4>
+                <h4 class="text-base font-bold font-heading mb-1 text-white">Pre-Field Inspected</h4>
                 <p class="text-xs text-cream/80 leading-relaxed">
                   Every machine leaves the service hub in verified working condition.
                 </p>
@@ -952,7 +952,7 @@
             <div class="p-6 rounded-2xl bg-forest text-white shadow-xl flex flex-col justify-between">
               <div>
                 <span class="text-3xl sm:text-4xl font-black font-heading text-gold mb-2 block">₹0</span>
-                <h4 class="text-base font-bold font-heading mb-1">Maintenance Debt</h4>
+                <h4 class="text-base font-bold font-heading mb-1 text-white">Maintenance Debt</h4>
                 <p class="text-xs text-cream/80 leading-relaxed">
                   All wear-and-tear, hydraulic servicing, and tyre replacements are 100% on us.
                 </p>
@@ -1446,6 +1446,7 @@
       const sortSelect = document.getElementById('sortSelect');
       const resetBtn = document.getElementById('resetFiltersBtn');
       const countText = document.getElementById('resultsCountText');
+      const activeCountBadge = document.getElementById('activeCountBadge');
       const pillsContainer = document.getElementById('categoryPillsContainer');
 
       // Modal Elements
@@ -1518,6 +1519,9 @@
         // Update count text
         if (countText) {
           countText.textContent = `Showing ${filtered.length} equipment in ${selectedCategory}`;
+        }
+        if (activeCountBadge) {
+          activeCountBadge.textContent = `${filtered.length} Farm Equipment Ready`;
         }
 
         // Render Cards or Empty State

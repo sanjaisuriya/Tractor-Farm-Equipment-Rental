@@ -255,6 +255,9 @@
                 id="regName"
                 required
                 placeholder="e.g. Rajesh Kumar"
+                pattern="[A-Za-z\s]+"
+                title="Please enter letters and spaces only"
+                autocomplete="name"
                 class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
               />
             </div>
@@ -268,7 +271,12 @@
                   type="tel"
                   id="regMobile"
                   required
-                  placeholder="e.g. +91 98765 43210"
+                  placeholder="e.g. 9876543210"
+                  pattern="[0-9]{10}"
+                  maxlength="10"
+                  inputmode="numeric"
+                  title="Please enter 10 digits only"
+                  autocomplete="tel"
                   class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
                 />
               </div>

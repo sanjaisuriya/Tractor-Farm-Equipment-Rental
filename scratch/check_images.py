@@ -1,10 +1,12 @@
-import re
+import glob, re
 
-for filename in ['about.html', 'home-2.html', 'index.html']:
-    print(f'=== {filename} ===')
-    with open(filename, 'r', encoding='utf-8') as f:
-        content = f.read()
-    matches = re.findall(r'<img[^>]+src=["\']([^"\']+)["\'][^>]*alt=["\']([^"\']*)["\']', content)
-    for src, alt in matches:
-        if any(w in src.lower() for w in ['tractor', 'farmer', 'land']):
-            print(f'{src} | {alt}')
+for f in glob.glob('*.html'):
+    with open(f, 'r', encoding='utf-8') as fp:
+        c = fp.read()
+    for m in re.finditer(r'<img[^>]+src=["\']([^"\']+)["\'][^>]*>', c):
+        tag = m.group(0)
+        src = m.group(1)
+        if any(w in src for w in ['preet', 'rotavator', 'fleet', 'depot', 'harvester', 'tractor', 'swaraj', 'mahindra']):
+            alt = re.search(r'alt=["\']([^"\']+)["\']', tag)
+            alt_text = alt.group(1) if alt else 'NO ALT'
+            print(f'{f} -> {src} | alt: {alt_text}')
