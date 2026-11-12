@@ -57,56 +57,54 @@
 <body class="bg-slate-50 dark:bg-[#121813] text-charcoal dark:text-gray-100 flex flex-col min-h-screen">
 
   <!-- TOP DASHBOARD BAR -->
-  <header class="bg-forest text-white h-20 border-b border-white/10 sticky top-0 z-40">
+  <!-- TOP APP BAR (Light & Clean matching target format) -->
+  <header class="bg-white dark:bg-slate-900 text-slate-800 dark:text-white h-20 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 transition-colors">
     <div class="px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
       <div class="flex items-center gap-3 sm:gap-4">
         <!-- Sidebar Toggle for Mobile / Tablet -->
-        <button id="dashboardSidebarToggle" class="lg:hidden p-2 text-white hover:text-gold rounded-lg hover:bg-white/10 transition" aria-label="Toggle Dashboard Menu">
+        <button id="dashboardSidebarToggle" class="lg:hidden p-2 text-slate-600 hover:text-agri dark:text-slate-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Toggle Dashboard Menu">
           <i class="fa-solid fa-bars text-xl"></i>
         </button>
         <a href="index.html" class="flex items-center gap-3 group shrink-0" title="AgroRent - Tractor & Farm Equipment">
-          <div class="w-10 h-10 rounded-xl bg-forest border border-white/20 flex items-center justify-center text-white text-lg shadow-md group-hover:scale-105 transition-transform shrink-0">
+          <div class="w-10 h-10 rounded-xl bg-forest border border-forest/20 flex items-center justify-center text-white text-lg shadow-md group-hover:scale-105 transition-transform shrink-0">
             <i class="fa-solid fa-tractor text-gold"></i>
           </div>
           <div class="shrink-0 flex flex-col justify-center">
-            <span class="text-xl font-black font-heading tracking-tight leading-none text-white whitespace-nowrap">AGRO<span class="text-fresh">RENT</span></span>
-            <span class="block text-[9px] tracking-widest uppercase font-semibold text-cream/70 leading-tight mt-0.5 whitespace-nowrap">Tractor & Farm Equipment</span>
+            <span class="text-xl font-black font-heading tracking-tight leading-none text-forest dark:text-white whitespace-nowrap">AGRO<span class="text-agri dark:text-fresh">RENT</span></span>
+            <span class="block text-[9px] tracking-widest uppercase font-semibold text-slate-500 dark:text-cream/70 leading-tight mt-0.5 whitespace-nowrap">Tractor & Farm Equipment</span>
           </div>
         </a>
-        <span class="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-white/10 text-gold border border-white/15">
-          <i class="fa-solid fa-wheat-awn text-[11px]"></i> Farmer Portal
+        <span class="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-700/50 shadow-xs">
+          AgroRent Hub
+        </span>
+        <span class="hidden xl:inline text-xs text-slate-500 dark:text-slate-400 font-medium">
+          &bull; Active Season 2026
         </span>
       </div>
 
-      <!-- Quick Actions & Controls -->
+      <!-- Quick Actions & Controls (Theme, RTL, User Pill, Logout) -->
       <div class="flex items-center gap-2 sm:gap-3 text-xs">
-        <a href="booking.html" class="btn-gold hidden md:inline-flex py-2 px-3.5 text-xs font-bold shadow-md">
-          <i class="fa-solid fa-plus mr-1"></i> Book Machinery
-        </a>
-
         <!-- Dark / Light Theme Toggle -->
-        <button class="theme-toggle-btn w-9 h-9 rounded-lg hover:bg-white/10 text-white hover:text-gold transition flex items-center justify-center text-sm border border-white/20" title="Toggle Theme (Dark / Light)" aria-label="Toggle theme">
-          <i class="fa-solid fa-moon"></i>
+        <button class="theme-toggle-btn w-9 h-9 rounded-xl bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 hover:text-amber-500 transition flex items-center justify-center text-sm border border-slate-200 dark:border-slate-700" title="Toggle Theme (Dark / Light)" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon text-amber-500"></i>
         </button>
 
         <!-- RTL / LTR Direction Toggle -->
-        <button class="rtl-toggle-btn w-9 h-9 rounded-lg hover:bg-white/10 text-white hover:text-gold transition flex items-center justify-center text-sm border border-white/20" title="Toggle Text Direction (LTR / RTL)" aria-label="Toggle text direction">
-          <i class="fa-solid fa-right-left text-xs"></i>
+        <button class="rtl-toggle-btn w-9 h-9 rounded-xl bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 hover:text-agri transition flex items-center justify-center text-sm border border-slate-200 dark:border-slate-700" title="Toggle Text Direction (LTR / RTL)" aria-label="Toggle text direction">
+          <i class="fa-solid fa-right-left text-sm"></i>
         </button>
 
-        <!-- User Profile Pill -->
-        <div class="flex items-center gap-2.5 border-l border-white/20 pl-2 sm:pl-3">
-          <div class="w-9 h-9 rounded-full bg-agri/40 border border-gold flex items-center justify-center text-white font-bold text-xs shadow-inner">
-            <i class="fa-solid fa-user"></i>
-          </div>
-          <div class="hidden sm:block text-left">
-            <span class="font-bold block user-name-display leading-tight text-xs text-white">Rajesh Kumar</span>
-            <span class="text-[10px] text-cream/70 block user-village-display">Rampur, Punjab</span>
-          </div>
-          <button onclick="if(window.Auth) Auth.logout(); else window.location.href='index.html';" class="p-2 text-white/80 hover:text-red-400 rounded-lg transition" title="Exit Dashboard" aria-label="Exit Dashboard">
-            <i class="fa-solid fa-right-from-bracket text-sm"></i>
-          </button>
+        <!-- User Profile Pill (matches target format: G Guest) -->
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-semibold shadow-xs">
+          <div class="w-6 h-6 rounded-full bg-slate-700 text-white font-bold text-xs flex items-center justify-center user-avatar-initial">G</div>
+          <span class="font-bold text-xs user-name-display truncate max-w-[120px]">Guest</span>
         </div>
+
+        <!-- Distinct Red Outline Logout Button -->
+        <button onclick="if(window.Auth) Auth.logout(); else window.location.href='index.html';" class="px-3.5 py-1.5 rounded-xl border border-red-200 dark:border-red-900/50 bg-red-50/80 hover:bg-red-100 text-red-600 dark:bg-red-950/40 dark:text-red-400 dark:hover:bg-red-900/50 font-bold text-xs flex items-center gap-1.5 transition shadow-xs" title="Logout" aria-label="Logout">
+          <i class="fa-solid fa-arrow-right-from-bracket text-red-500"></i>
+          <span>Logout</span>
+        </button>
       </div>
     </div>
   </header>
@@ -130,48 +128,53 @@
           </button>
         </div>
 
-        <!-- Farmer Profile Card Small -->
-        <div class="p-3.5 rounded-2xl bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 mb-6">
+        <!-- Farmer Profile Card Small (Matching Target Format) -->
+        <div class="p-4 rounded-2xl bg-[#fbf7ee] dark:bg-slate-800/80 border border-amber-200/50 dark:border-slate-700 mb-5 shadow-xs">
           <div class="flex items-center gap-3">
-            <div class="w-11 h-11 rounded-xl bg-forest text-gold flex items-center justify-center text-lg font-black flex-shrink-0 shadow-sm border border-gold/30">
+            <div class="w-10 h-10 rounded-xl bg-forest text-gold flex items-center justify-center text-base font-black flex-shrink-0 shadow-sm border border-gold/30">
               <i class="fa-solid fa-tractor"></i>
             </div>
             <div class="overflow-hidden min-w-0">
-              <h4 class="font-bold text-xs text-slate-900 dark:text-white truncate user-name-display">Rajesh Kumar</h4>
-              <p class="text-[11px] text-agri dark:text-fresh font-bold truncate flex items-center gap-1">
-                <i class="fa-solid fa-certificate text-[9px]"></i> Verified Progressive Farmer
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white truncate user-name-display">Guest</h4>
+              <p class="text-[11px] text-agri dark:text-fresh font-bold truncate flex items-center gap-1 mt-0.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span> Verified Progressive Farmer
               </p>
-              <p class="text-[10px] text-muted truncate user-village-display">Rampur, Ludhiana</p>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400 truncate user-village-display mt-0.5">Rampur, Ludhiana, Punjab</p>
             </div>
           </div>
-          <div class="mt-2.5 pt-2 border-t border-slate-200 dark:border-slate-700 flex justify-between text-[11px] text-slate-600 dark:text-slate-400">
-            <span>Land: <strong class="text-slate-800 dark:text-slate-200 user-farmsize-display">12 Acres</strong></span>
-            <span class="text-agri font-semibold">Active Member</span>
+          <div class="mt-3 pt-2.5 border-t border-amber-200/60 dark:border-slate-700 flex justify-between items-center text-[11px] text-slate-600 dark:text-slate-400">
+            <span>Land: <strong class="text-slate-900 dark:text-slate-200 user-farmsize-display font-bold">12 Acres</strong></span>
+            <span class="text-agri dark:text-fresh font-bold text-xs bg-agri/10 px-2 py-0.5 rounded-full">Active Member</span>
           </div>
         </div>
 
-        <!-- Sidebar Navigation Links -->
+        <!-- Sidebar Navigation Links (Exact 5 Links as Requested) -->
         <nav class="space-y-1">
+          <!-- 1. Overview -->
           <div class="sidebar-link active" data-tab="overview">
-            <i class="sidebar-icon fa-solid fa-gauge-high text-base"></i>
+            <i class="sidebar-icon fa-solid fa-gauge text-base"></i>
             <span>Overview</span>
           </div>
 
+          <!-- 2. My Equipment Bookings -->
           <div class="sidebar-link" data-tab="my-bookings">
             <i class="sidebar-icon fa-solid fa-calendar-check text-base"></i>
             <span>My Equipment Bookings</span>
           </div>
 
+          <!-- 3. Rental Tracking -->
           <div class="sidebar-link" data-tab="rental-tracking">
             <i class="sidebar-icon fa-solid fa-location-dot text-base"></i>
             <span>Rental Tracking</span>
           </div>
 
+          <!-- 4. Payment Details & Bills -->
           <div class="sidebar-link" data-tab="payment-details">
             <i class="sidebar-icon fa-solid fa-indian-rupee-sign text-base"></i>
             <span>Payment Details & Bills</span>
           </div>
 
+          <!-- 5. Edit Farmer Profile -->
           <div class="sidebar-link" data-tab="profile">
             <i class="sidebar-icon fa-solid fa-user-pen text-base"></i>
             <span>Edit Farmer Profile</span>
@@ -181,12 +184,12 @@
 
       <!-- Bottom Actions -->
       <div class="pt-5 border-t border-slate-200 dark:border-slate-800 space-y-1">
-        <a href="index.html" class="sidebar-link text-slate-600 dark:text-slate-300">
-          <i class="sidebar-icon fa-solid fa-house text-base"></i>
-          <span>Back to Main Site</span>
+        <a href="contact.html" class="sidebar-link text-slate-600 dark:text-slate-300 hover:text-agri">
+          <i class="sidebar-icon fa-solid fa-headset text-base text-agri"></i>
+          <span>Contact Us</span>
         </a>
         <div class="sidebar-link text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30" data-tab="logout">
-          <i class="sidebar-icon fa-solid fa-right-from-bracket text-base"></i>
+          <i class="sidebar-icon fa-solid fa-arrow-right-from-bracket text-base text-red-500"></i>
           <span>Logout</span>
         </div>
       </div>
@@ -198,82 +201,114 @@
       <!-- ========================================== -->
       <!-- TAB 1: OVERVIEW -->
       <!-- ========================================== -->
-      <div id="tab-overview" class="tab-content-panel active space-y-8">
+      <div id="tab-overview" class="tab-content-panel active space-y-7">
 
-        <!-- Welcome Banner -->
-        <div class="bg-gradient-to-r from-forest via-[#1F4E37] to-agri rounded-2xl p-6 sm:p-8 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-md border border-agri/20">
-          <div>
-            <div class="flex items-center gap-2 mb-1">
-              <span class="text-[11px] font-bold uppercase tracking-wider text-gold bg-black/20 px-2.5 py-0.5 rounded-full">
-                <i class="fa-solid fa-seedling mr-1"></i> Kisan Dashboard
+        <!-- Welcome Hero Banner (Photo Background + Bright Pure White Text + Action Buttons) -->
+        <div class="relative rounded-2xl p-6 sm:p-8 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl border border-white/10 overflow-hidden" style="background-image: linear-gradient(135deg, rgba(12, 32, 22, 0.94) 0%, rgba(20, 50, 35, 0.88) 60%, rgba(12, 32, 22, 0.95) 100%), url('assets/images/home-1/hero-tractor.jpg'); background-size: cover; background-position: center;">
+          <!-- Subtle agricultural glow pattern -->
+          <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-agri/15 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="relative z-10">
+            <!-- Badges (Matching Target Format: Gold Suite Pill + Black/Gold Welcome Pill) -->
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="text-[11px] font-black uppercase tracking-wider text-amber-950 bg-[#dca735] px-3.5 py-1 rounded-full shadow-sm">
+                Agricultural Fleet Suite
               </span>
-              <span class="text-xs text-cream/80">Kharif & Rabi Season 2026</span>
+              <span class="text-[11px] font-bold text-[#f6d787] bg-black/60 border border-[#dca735]/40 px-3.5 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
+                <span>👋 Welcome, <span class="user-name-display">Guest</span>!</span>
+              </span>
             </div>
-            <h2 class="text-2xl sm:text-3xl font-black font-heading mb-2">
-              Welcome Back, <span class="user-name-display">Rajesh Kumar</span>!
+
+            <!-- Main Heading (White Text Guaranteed) -->
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black font-heading mb-2.5 tracking-tight text-white drop-shadow-md" style="color: #ffffff !important;">
+              Welcome, <span class="user-name-display" style="color: #ffffff !important;">Guest</span>!
             </h2>
-            <p class="text-xs sm:text-sm text-cream/90 max-w-xl leading-relaxed">
-              You currently have <strong class="text-gold">3 active machinery units</strong> deployed in your Rampur fields. Track live engine telemetry, review scheduled implements, or download GST rental receipts.
+
+            <!-- Subtitle -->
+            <p class="text-xs sm:text-sm text-cream/90 max-w-2xl leading-relaxed font-medium">
+              Farmer Equipment Planning Dashboard &bull; AgroRent Fleet Hub &bull; Kharif & Rabi Season 2026 &bull; Active Fleet Operations
             </p>
           </div>
-          <div class="flex flex-col sm:flex-row gap-2.5 w-full md:w-auto">
-            <button onclick="document.querySelector('[data-tab=\'rental-tracking\']').click()" class="btn-secondary bg-white/10 text-white border-white/20 hover:bg-white/20 py-2.5 px-4 text-xs font-bold text-center">
-              <i class="fa-solid fa-location-dot mr-1 text-gold"></i> Live Tracking
-            </button>
-            <a href="booking.html" class="btn-gold py-2.5 px-5 text-xs font-bold whitespace-nowrap shadow-lg text-center">
-              <i class="fa-solid fa-plus mr-1"></i> Rent Machinery
+
+          <!-- Buttons (Matching Target Format: Gold Action Button + Dark Translucent Return Button) -->
+          <div class="relative z-10 flex flex-col sm:flex-row gap-2.5 w-full md:w-auto shrink-0">
+            <a href="booking.html" class="btn-gold bg-[#dca735] hover:bg-[#c69228] text-amber-950 font-extrabold py-2.5 px-5 text-xs sm:text-sm whitespace-nowrap rounded-xl shadow-lg text-center flex items-center justify-center gap-2 hover:scale-105 transition-all">
+              <i class="fa-solid fa-plus text-xs"></i>
+              <span>Book Machinery</span>
+            </a>
+            <a href="index.html" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 py-2.5 px-4 text-xs sm:text-sm font-bold text-center rounded-xl flex items-center justify-center gap-2 transition-all">
+              <i class="fa-solid fa-arrow-left text-xs"></i>
+              <span>Return to Site</span>
             </a>
           </div>
         </div>
 
-        <!-- 4 KPI CARDS (Explicit user specs: Total: 12, Active: 3, Completed: 8, Pending: ₹8,500) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- SECTION HEADER: Agricultural Operations Command Center (Matches Target Format) -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1">
+          <div>
+            <h3 class="text-2xl sm:text-3xl font-black font-heading text-slate-900 dark:text-white tracking-tight">
+              Agricultural Operations Command Center
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+              Real-time machinery reservations, active field deployments, and season rental budget.
+            </p>
+          </div>
+          <div class="shrink-0">
+            <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-extrabold bg-[#c59328] text-white shadow-sm tracking-wide">
+              Active Fleet Status: Field Ready
+            </span>
+          </div>
+        </div>
+
+        <!-- 4 BIG STAT / KPI CARDS (Matching Target Format: Large Centered Bold Numbers) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           <!-- KPI Card 1: Total Bookings (12) -->
-          <div class="stat-card">
-            <div class="stat-icon bg-emerald-100 dark:bg-emerald-950/50 text-agri dark:text-fresh border border-emerald-200 dark:border-emerald-800">
-              <i class="fa-solid fa-list-check"></i>
-            </div>
-            <div>
-              <span class="text-xs text-muted block font-semibold">Total Bookings</span>
-              <strong id="kpiTotalBookings" class="text-3xl font-black text-slate-900 dark:text-white">12</strong>
-              <span class="text-[11px] text-slate-500 block mt-0.5">All seasonal reservations</span>
-            </div>
+          <div class="stat-card-centered bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm">
+            <strong id="kpiTotalBookings" class="text-4xl sm:text-5xl font-black text-[#c59328] block leading-none">12</strong>
+            <span class="text-sm sm:text-base font-bold text-slate-900 dark:text-white mt-3 block">Total Bookings</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-1 block">All seasonal reservations</span>
           </div>
 
           <!-- KPI Card 2: Active Rentals (3) -->
-          <div class="stat-card">
-            <div class="stat-icon bg-green-100 dark:bg-green-950/50 text-green-600 dark:text-green-400 border border-green-200 dark:border-green-800">
-              <i class="fa-solid fa-tractor"></i>
-            </div>
-            <div>
-              <span class="text-xs text-muted block font-semibold">Active Rentals</span>
-              <strong id="kpiActiveRentals" class="text-3xl font-black text-green-600 dark:text-green-400">3</strong>
-              <span class="text-[11px] text-slate-500 block mt-0.5">Currently working in fields</span>
-            </div>
+          <div class="stat-card-centered bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm">
+            <strong id="kpiActiveRentals" class="text-4xl sm:text-5xl font-black text-[#c59328] block leading-none">3</strong>
+            <span class="text-sm sm:text-base font-bold text-slate-900 dark:text-white mt-3 block">Active Field Rentals</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-1 block">Currently working in fields</span>
           </div>
 
           <!-- KPI Card 3: Completed Rentals (8) -->
-          <div class="stat-card">
-            <div class="stat-icon bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800">
-              <i class="fa-solid fa-circle-check"></i>
-            </div>
-            <div>
-              <span class="text-xs text-muted block font-semibold">Completed Rentals</span>
-              <strong id="kpiCompletedRentals" class="text-3xl font-black text-slate-900 dark:text-white">8</strong>
-              <span class="text-[11px] text-slate-500 block mt-0.5">Returned & deposit cleared</span>
-            </div>
+          <div class="stat-card-centered bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm">
+            <strong id="kpiCompletedRentals" class="text-4xl sm:text-5xl font-black text-[#10b981] block leading-none">8</strong>
+            <span class="text-sm sm:text-base font-bold text-slate-900 dark:text-white mt-3 block">Completed Deployments</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-1 block">Returned & deposit cleared</span>
           </div>
 
           <!-- KPI Card 4: Pending Payments (₹8,500) -->
-          <div class="stat-card">
-            <div class="stat-icon bg-amber-100 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
-              <i class="fa-solid fa-indian-rupee-sign"></i>
-            </div>
-            <div>
-              <span class="text-xs text-muted block font-semibold">Pending Payments</span>
-              <strong id="kpiPendingPayments" class="text-2xl sm:text-3xl font-black text-amber-600 dark:text-amber-400">₹8,500</strong>
-              <span class="text-[11px] text-slate-500 block mt-0.5">Due on return inspection</span>
-            </div>
+          <div class="stat-card-centered bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm">
+            <strong id="kpiPendingPayments" class="text-3xl sm:text-4xl font-black text-[#c59328] block leading-none">₹8,500</strong>
+            <span class="text-sm sm:text-base font-bold text-slate-900 dark:text-white mt-3 block">Pending Payments</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-1 block">Due on return inspection</span>
+          </div>
+        </div>
+
+        <!-- OVERALL PRODUCTION MILESTONE READINESS TRACKER (Directly below 4 KPI cards matching Image 1) -->
+        <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-sm sm:text-base font-heading text-slate-900 dark:text-white">
+              Overall Production Milestone Readiness
+            </h4>
+            <span class="text-xs font-bold text-[#c59328] flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-dot text-[10px] animate-pulse"></i> Live Milestone Tracker
+            </span>
+          </div>
+          <div class="w-full h-3 rounded-full bg-[#f1ebd9] dark:bg-slate-700 overflow-hidden mt-4">
+            <div class="h-full rounded-full bg-[#c59328] w-[58%] transition-all duration-500"></div>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-semibold text-slate-600 dark:text-slate-300 mt-3 pt-1">
+            <span>Concept & Field Secured</span>
+            <span class="sm:text-center">Machinery & Fleet Deployed</span>
+            <span class="sm:text-center">Inter-cultivation Active</span>
+            <span class="text-right">Harvest & Return Ready</span>
           </div>
         </div>
 

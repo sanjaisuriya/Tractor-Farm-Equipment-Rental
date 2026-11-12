@@ -87,6 +87,45 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff !important;
 }
 
+/* Override for light-card elements inside .bg-forest sections (e.g. Home 2 Hero Image Caption) */
+.hero-showcase-caption,
+.bg-forest .hero-showcase-caption {
+  background-color: #ffffff !important;
+  border-color: rgba(23, 61, 43, 0.15) !important;
+  color: #173D2B !important;
+}
+
+.hero-showcase-caption h4,
+.hero-showcase-caption .caption-title,
+.bg-forest .hero-showcase-caption h4,
+.bg-forest .hero-showcase-caption .caption-title {
+  color: #173D2B !important;
+}
+
+.hero-showcase-caption .caption-tag,
+.bg-forest .hero-showcase-caption .caption-tag {
+  color: #2D5A3C !important;
+}
+
+html.dark .hero-showcase-caption,
+html.dark .bg-forest .hero-showcase-caption {
+  background-color: rgba(18, 24, 19, 0.96) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+html.dark .hero-showcase-caption h4,
+html.dark .hero-showcase-caption .caption-title,
+html.dark .bg-forest .hero-showcase-caption h4,
+html.dark .bg-forest .hero-showcase-caption .caption-title {
+  color: #ffffff !important;
+}
+
+html.dark .hero-showcase-caption .caption-tag,
+html.dark .bg-forest .hero-showcase-caption .caption-tag {
+  color: #8FD19E !important;
+}
+
 p {
   color: var(--text-muted);
 }
@@ -707,4 +746,100 @@ html.dark input[type="date"]::-webkit-calendar-picker-indicator:hover,
 .dark input[type="date"]::-webkit-calendar-picker-indicator:hover {
   opacity: 1 !important;
   transform: scale(1.05);
+}
+
+/* ==========================================================================
+   THEME TOGGLE & RTL TOGGLE CONTROLS (HIGH-CONTRAST & PREMIUM POLISH)
+   ========================================================================== */
+.theme-toggle-btn,
+.rtl-toggle-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 2.375rem !important; /* 38px */
+  height: 2.375rem !important; /* 38px */
+  border-radius: 0.625rem !important; /* 10px rounded */
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #CBD5E1 !important; /* clear, visible slate-300 */
+  color: #173D2B !important; /* brand forest green icon */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+}
+
+.theme-toggle-btn i,
+.rtl-toggle-btn i {
+  font-size: 0.875rem !important; /* 14px */
+  line-height: 1 !important;
+  color: inherit !important;
+  transition: transform 0.2s ease, color 0.2s ease !important;
+}
+
+.theme-toggle-btn:hover,
+.rtl-toggle-btn:hover {
+  background-color: #F0FDF4 !important; /* soft green tint */
+  border-color: #347A45 !important; /* agri green */
+  color: #347A45 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 10px rgba(52, 122, 69, 0.16) !important;
+}
+
+.theme-toggle-btn:hover i {
+  transform: rotate(15deg);
+}
+
+.rtl-toggle-btn:hover i {
+  transform: scale(1.1);
+}
+
+/* RTL Active state in LTR/Light */
+.rtl-toggle-btn.rtl-active {
+  background-color: #ECFDF5 !important;
+  border-color: #059669 !important;
+  color: #059669 !important;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2) !important;
+}
+
+/* High-Contrast Styling on Dark Forest Headers / Backgrounds (e.g. Farmer Dashboard) */
+.bg-forest .theme-toggle-btn,
+.bg-forest .rtl-toggle-btn {
+  background-color: rgba(255, 255, 255, 0.14) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+}
+
+.bg-forest .theme-toggle-btn i.fa-moon {
+  color: #FCD34D !important; /* warm luminous gold moon */
+}
+
+.bg-forest .theme-toggle-btn i.fa-sun {
+  color: #FBBF24 !important; /* bright golden sun */
+  filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.5));
+}
+
+.bg-forest .rtl-toggle-btn i {
+  color: #A7F3D0 !important; /* fresh bright mint green */
+}
+
+.bg-forest .theme-toggle-btn:hover,
+.bg-forest .rtl-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.24) !important;
+  border-color: #FCD34D !important;
+  color: #FCD34D !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+}
+
+.bg-forest .rtl-toggle-btn:hover i {
+  color: #FCD34D !important;
+}
+
+.bg-forest .rtl-toggle-btn.rtl-active {
+  background-color: rgba(16, 185, 129, 0.25) !important;
+  border-color: #34D399 !important;
+  color: #6EE7B7 !important;
 }

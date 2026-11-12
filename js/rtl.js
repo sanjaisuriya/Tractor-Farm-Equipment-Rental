@@ -20,9 +20,7 @@
     btns.forEach(btn => {
       const icon = btn.querySelector('i');
       if (icon) {
-        icon.className = isRtl
-          ? 'fa-solid fa-right-left text-sm text-agri'
-          : 'fa-solid fa-right-left text-sm text-slate-700 dark:text-slate-200';
+        icon.className = 'fa-solid fa-right-left text-sm';
       }
 
       // Ensure no text remains inside button
@@ -35,9 +33,9 @@
       btn.setAttribute('aria-label', isRtl ? 'Switch to Left-to-Right layout' : 'Switch to Right-to-Left layout');
 
       if (isRtl) {
-        btn.classList.add('border-agri', 'text-agri', 'bg-agri/10');
+        btn.classList.add('rtl-active');
       } else {
-        btn.classList.remove('border-agri', 'text-agri', 'bg-agri/10');
+        btn.classList.remove('rtl-active');
       }
     });
   }

@@ -4,8 +4,8 @@
  */
 
 const DEFAULT_DEMO_USER = {
-  name: "Rajesh Kumar",
-  email: "farmer@agrorent.in",
+  name: "Guest",
+  email: "guest@agrorent.in",
   mobile: "+91 98765 43210",
   village: "Rampur, Ludhiana, Punjab",
   farmSize: "12 Acres",
@@ -36,19 +36,16 @@ const Auth = {
   },
 
   login(email, password) {
-    if (!email || !password) {
-      return { success: false, message: "Please enter both Email Address and Password." };
-    }
-
-    // Demo credentials or any email/password for frontend testing
     let user = this.getUser();
-    if (email.toLowerCase() === DEFAULT_DEMO_USER.email.toLowerCase()) {
+    if (!email || email.toLowerCase() === DEFAULT_DEMO_USER.email.toLowerCase()) {
       user = { ...DEFAULT_DEMO_USER };
     } else {
+      let displayName = email.split('@')[0].replace(/[._]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      if (!displayName || displayName.trim() === '') displayName = "Farmer";
       user = {
         ...user,
         email: email,
-        name: email.split('@')[0].replace(/[._]/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
+        name: displayName
       };
     }
 
@@ -56,6 +53,26 @@ const Auth = {
     localStorage.setItem('trarent_auth_origin', 'form');
     localStorage.setItem('trarent_logged_in', 'true');
     return { success: true, message: `Welcome back, ${user.name}! Redirecting to Farmer Dashboard...`, user };
+  },
+
+  loginAsGuest() {
+    const guestUser = {
+      name: "Guest",
+      email: "guest@agrorent.in",
+      mobile: "+91 98765 43210",
+      village: "Coimbatore, Tamil Nadu",
+      farmSize: "10 Acres",
+      primaryCrops: "Paddy, Coconut, Sugarcane",
+      memberSince: "November 2026",
+      role: "Guest Farmer"
+    };
+    this.setUser(guestUser);
+    localStorage.setItem('trarent_auth_origin', 'form');
+    localStorage.setItem('trarent_logged_in', 'true');
+    showAuthToast("Welcome, Guest! Opening Farmer Dashboard...", "success");
+    setTimeout(() => {
+      window.location.href = 'farmer-dashboard.html';
+    }, 500);
   },
 
   register(userData) {
@@ -86,14 +103,35 @@ const Auth = {
   logout() {
     localStorage.removeItem('trarent_logged_in');
     localStorage.removeItem('trarent_auth_origin');
+    localStorage.removeItem('trarent_user');
     showAuthToast("You have been safely logged out.", "success");
     setTimeout(() => {
       window.location.href = 'index.html';
     }, 500);
   },
 
+  loginAsSocial(provider) {
+    const user = {
+      name: "Guest",
+      email: `guest.${provider.toLowerCase().replace(/\s+/g, '')}@agrorent.in`,
+      mobile: "+91 98765 43210",
+      village: "Rampur, Punjab",
+      farmSize: "12 Acres",
+      primaryCrops: "Wheat, Paddy, Mustard",
+      memberSince: "November 2026",
+      role: `${provider} Connected Farmer`
+    };
+    this.setUser(user);
+    localStorage.setItem('trarent_auth_origin', 'guest');
+    localStorage.removeItem('trarent_logged_in');
+    showAuthToast(`Authenticated via ${provider}! Redirecting to Dashboard...`, "success");
+    setTimeout(() => {
+      window.location.href = 'farmer-dashboard.html';
+    }, 600);
+  },
+
   protectDashboard() {
-    // Farmer Dashboard runs as a pure dummy / showcase preview.
+    // Farmer Dashboard runs as a live showcase preview.
     // It should NEVER force login, redirect to login, or automatically mark the user as logged in.
     if (localStorage.getItem('trarent_auth_origin') !== 'form') {
       localStorage.removeItem('trarent_logged_in');
@@ -116,11 +154,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (icon) {
           icon.className = isPassword ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
         }
+        if (btn.id === 'passwordShowToggleBtn') {
+          btn.textContent = isPassword ? 'Hide' : 'Show';
+        }
         btn.setAttribute('title', isPassword ? 'Hide password' : 'Show password');
         btn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
       }
     });
   });
+
+  // Continue as Guest Button (1-Click Instant Guest Access)
+  const guestBtn = document.getElementById('continueAsGuestBtn');
+  if (guestBtn) {
+    guestBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      Auth.loginAsGuest();
+    });
+  }
 
   // 2. Tab Switches and Registration Links
   const tabLogin = document.getElementById('tabLogin');
@@ -202,6 +252,68 @@ document.addEventListener('DOMContentLoaded', () => {
   if (closeForgotModal) {
     closeForgotModal.addEventListener('click', () => {
       document.getElementById('forgotPasswordModal')?.classList.remove('active');
+    });
+  }
+
+  // Social Login: Google and Apple Buttons
+  const googleBtn = document.getElementById('googleSignInBtn');
+  if (googleBtn) {
+    googleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      Auth.loginAsSocial('Google');
+    });
+  }
+
+  const appleBtn = document.getElementById('appleSignInBtn');
+  if (appleBtn) {
+    appleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      Auth.loginAsSocial('Apple ID');
+    });
+  }
+
+  // Create Farmer Account Modal Triggers
+  const createAccBtn = document.getElementById('createAccountBtn');
+  const regModal = document.getElementById('registerModal');
+  const closeRegModal = document.getElementById('closeRegisterModal');
+
+  if (createAccBtn && regModal) {
+    createAccBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      regModal.classList.add('active');
+    });
+  }
+
+  if (closeRegModal && regModal) {
+    closeRegModal.addEventListener('click', () => {
+      regModal.classList.remove('active');
+    });
+  }
+
+  const createAccForm = document.getElementById('createAccountForm');
+  if (createAccForm) {
+    createAccForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('regFarmerName')?.value.trim() || 'Guest';
+      const contact = document.getElementById('regFarmerContact')?.value.trim() || '';
+      const user = {
+        name: name,
+        email: contact.includes('@') ? contact : `${contact}@farmer.agrorent.in`,
+        mobile: contact.includes('@') ? '+91 98765 43210' : contact,
+        village: 'Rampur, Punjab',
+        farmSize: '12 Acres',
+        primaryCrops: 'Wheat, Paddy',
+        memberSince: 'November 2026',
+        role: 'Registered Farmer'
+      };
+      Auth.setUser(user);
+      localStorage.setItem('trarent_auth_origin', 'form');
+      localStorage.setItem('trarent_logged_in', 'true');
+      showAuthToast(`Account created! Welcome, ${name}. Loading Dashboard...`, 'success');
+      regModal?.classList.remove('active');
+      setTimeout(() => {
+        window.location.href = 'farmer-dashboard.html';
+      }, 700);
     });
   }
 

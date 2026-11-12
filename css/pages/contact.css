@@ -132,3 +132,66 @@ div:has(> .form-select.is-invalid) + .form-error-msg,
 div:has(> .form-textarea.is-invalid) + .form-error-msg {
   display: block;
 }
+
+/* WhatsApp CTA Banner Button (Ultra High-Contrast in Light & Dark Mode) */
+.whatsapp-cta-btn,
+html.dark .whatsapp-cta-btn,
+.dark .whatsapp-cta-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.75rem !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #0e2e1d !important;
+  font-weight: 800 !important;
+  font-size: 1rem !important;
+  border-radius: 1rem !important;
+  padding: 0.95rem 2rem !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35) !important;
+  border: 2px solid #ffffff !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+.whatsapp-cta-btn:hover,
+html.dark .whatsapp-cta-btn:hover,
+.dark .whatsapp-cta-btn:hover {
+  background-color: #f4f7f2 !important;
+  background-image: none !important;
+  color: #064e3b !important;
+  transform: translateY(-2px) scale(1.03) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45) !important;
+  border-color: #f4f7f2 !important;
+}
+
+.whatsapp-cta-btn i,
+html.dark .whatsapp-cta-btn i,
+.dark .whatsapp-cta-btn i {
+  color: #25d366 !important;
+  font-size: 1.6rem !important;
+  line-height: 1 !important;
+  transition: transform 0.2s ease !important;
+}
+
+.whatsapp-cta-btn:hover i,
+html.dark .whatsapp-cta-btn:hover i,
+.dark .whatsapp-cta-btn:hover i {
+  transform: scale(1.1) !important;
+}
+
+.whatsapp-cta-btn span,
+html.dark .whatsapp-cta-btn span,
+.dark .whatsapp-cta-btn span {
+  color: #0e2e1d !important;
+  font-weight: 800 !important;
+  font-size: 1rem !important;
+  letter-spacing: -0.01em !important;
+}
+
+.whatsapp-cta-btn:hover span,
+html.dark .whatsapp-cta-btn:hover span,
+.dark .whatsapp-cta-btn:hover span {
+  color: #064e3b !important;
+}

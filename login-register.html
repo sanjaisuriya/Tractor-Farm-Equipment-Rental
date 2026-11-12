@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" class="overflow-y-scroll" style="overflow-y: scroll;">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,363 +54,249 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
   <link rel="shortcut icon" href="favicon.ico" />
 </head>
-<body class="bg-slate-50 dark:bg-[#121813] text-charcoal dark:text-gray-100 flex flex-col min-h-screen">
+<body class="text-charcoal dark:text-gray-100 flex flex-col min-h-screen bg-slate-50 dark:bg-[#121813]">
 
-  <!-- MINIMAL AUTH HEADER (BRAND + HOME LINK + THEME & RTL CONTROLS) -->
-  <header class="site-header sticky top-0 z-50 bg-white/95 dark:bg-[#121813]/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-all duration-300">
-    <div class="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
-      <!-- Brand Logo -->
-      <a href="index.html" class="flex items-center gap-3 group shrink-0" title="AgroRent - Tractor & Farm Equipment">
-        <div class="w-11 h-11 rounded-xl bg-forest flex items-center justify-center text-white text-xl shadow-md group-hover:scale-105 transition-transform shrink-0 border border-agri/20 dark:border-white/10">
-          <i class="fa-solid fa-tractor text-gold"></i>
-        </div>
-        <div class="shrink-0 flex flex-col justify-center">
-          <span class="text-2xl font-black tracking-tight text-forest dark:text-white font-heading block leading-none whitespace-nowrap">
-            AGRO<span class="text-agri dark:text-fresh">RENT</span>
-          </span>
-          <span class="block text-[10px] tracking-widest uppercase font-semibold text-muted dark:text-cream/70 leading-tight mt-1 whitespace-nowrap">Tractor & Farm Equipment</span>
-        </div>
-      </a>
-
-      <!-- Controls: Back to Home + Dark/Light Mode + RTL/LTR -->
-      <div class="flex items-center gap-2 sm:gap-4 shrink-0">
-        <a href="index.html" class="text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-agri dark:hover:text-fresh flex items-center gap-1.5 py-2 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
-          <i class="fa-solid fa-arrow-left text-[11px]"></i>
-          <span>Back to Home</span>
-        </a>
-
-        <div class="flex items-center gap-1 pl-2 border-l border-gray-200 dark:border-gray-700">
-          <!-- Dark / Light Mode Toggle -->
-          <button class="theme-toggle-btn w-9 h-9 rounded-lg text-slate-700 dark:text-slate-200 hover:text-agri hover:bg-slate-100 dark:hover:bg-slate-800 transition text-sm flex items-center justify-center border border-gray-200 dark:border-gray-700" title="Toggle Theme (Dark / Light)" aria-label="Toggle theme">
-            <i class="fa-solid fa-moon"></i>
-          </button>
-
-          <!-- RTL / LTR Toggle -->
-          <button class="rtl-toggle-btn w-9 h-9 rounded-lg text-slate-700 dark:text-slate-200 hover:text-agri hover:bg-slate-100 dark:hover:bg-slate-800 transition text-sm flex items-center justify-center border border-gray-200 dark:border-gray-700" title="Toggle Text Direction (LTR / RTL)" aria-label="Toggle text direction">
-            <i class="fa-solid fa-right-left text-sm"></i>
-          </button>
-        </div>
-      </div>
+  <!-- TOP CONTROLS STRIP (Permanently Fixed/Sticky at the Top) -->
+  <header class="top-header-sticky fixed top-0 left-0 right-0 w-full bg-white dark:bg-[#121813] border-b border-gray-200 dark:border-gray-800 py-2.5 px-4 sm:px-8 flex items-center justify-end z-50 shadow-sm backdrop-blur-md">
+    <div class="flex items-center gap-2">
+      <!-- Dark / Light Mode Toggle -->
+      <button class="theme-toggle-btn" title="Toggle Theme (Dark / Light)" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <!-- RTL / LTR Toggle -->
+      <button class="rtl-toggle-btn" title="Toggle Text Direction (LTR / RTL)" aria-label="Toggle text direction">
+        <i class="fa-solid fa-right-left"></i>
+      </button>
     </div>
   </header>
 
-  <!-- MAIN CONTENT: AUTH CONTAINER -->
-  <main class="flex-1 py-10 sm:py-14 flex items-center justify-center px-4">
-    <div class="w-full max-w-lg">
+  <!-- MAIN CONTENT: AUTH CONTAINER WITH REALISTIC AGRICULTURAL BACKGROUND -->
+  <main class="flex-1 w-full auth-page-bg flex flex-col items-center justify-center px-4 pt-16 pb-12 sm:pt-20 sm:pb-16" style="background-image: linear-gradient(135deg, rgba(14, 40, 26, 0.76) 0%, rgba(23, 61, 43, 0.84) 50%, rgba(10, 26, 17, 0.90) 100%), url('assets/images/home-1/hero-tractor.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+    <div class="w-full max-w-[440px] my-auto">
 
-      <!-- DEMO CREDENTIALS CALLOUT BOX -->
-      <div class="mb-6 p-4 rounded-2xl bg-emerald-50/90 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/80 shadow-sm">
-        <div class="flex items-start justify-between gap-3 mb-2">
-          <div class="flex items-center gap-2">
-            <span class="w-7 h-7 rounded-lg bg-agri/15 text-agri dark:text-fresh flex items-center justify-center text-xs">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <!-- AUTH CARD (Clean Farmer Login + Continue as Guest) -->
+      <div class="auth-container bg-white dark:bg-[#1A261D] rounded-3xl p-5 sm:p-7 shadow-2xl border border-slate-200/80 dark:border-emerald-900/60">
+        
+        <!-- Brand Logo & Name (Clickable to Home Page as requested) -->
+        <a href="index.html" class="flex flex-col items-center group mb-3 transition-transform hover:scale-105" title="Go to AgroRent Home">
+          <div class="flex items-center gap-2 mb-1">
+            <div class="w-9 h-9 rounded-xl bg-forest border border-gold/40 flex items-center justify-center text-white text-lg shadow-sm group-hover:border-gold transition-all">
+              <i class="fa-solid fa-tractor text-gold"></i>
+            </div>
+            <span class="font-heading font-black text-xl tracking-tight text-forest dark:text-white leading-none">
+              AGRO<span class="text-agri dark:text-fresh">RENT</span>
             </span>
-            <span class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
-              Demo Credentials & 1-Click Access
-            </span>
           </div>
-          <span class="text-[10px] font-bold bg-agri text-white px-2 py-0.5 rounded-full">Frontend Demo</span>
-        </div>
-        <div class="text-xs text-slate-600 dark:text-slate-300 space-y-1 mb-3 bg-white/70 dark:bg-slate-900/60 p-2.5 rounded-xl border border-emerald-100 dark:border-emerald-900">
-          <div class="flex items-center justify-between">
-            <span class="text-slate-500">Email Address:</span>
-            <code class="font-mono font-bold text-forest dark:text-fresh bg-emerald-100/60 dark:bg-emerald-900/40 px-1.5 py-0.5 rounded">farmer@agrorent.in</code>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="text-slate-500">Demo Password:</span>
-            <code class="font-mono font-bold text-forest dark:text-fresh bg-emerald-100/60 dark:bg-emerald-900/40 px-1.5 py-0.5 rounded">farmer123</code>
-          </div>
-        </div>
-        <div class="flex flex-col sm:flex-row gap-2">
-          <button id="quickDemoLoginBtn" type="button" class="btn-primary flex-1 py-2 text-xs font-bold justify-center shadow-sm">
-            <i class="fa-solid fa-bolt mr-1 text-gold"></i> 1-Click Instant Demo Login
-          </button>
-          <button id="fillDemoCredsBtn" type="button" class="btn-secondary py-2 px-3 text-xs font-semibold justify-center">
-            <i class="fa-solid fa-pen-to-square mr-1 text-agri"></i> Fill Inputs
-          </button>
-        </div>
-      </div>
+          <span class="text-[9px] tracking-widest uppercase font-bold text-muted dark:text-cream/80 group-hover:text-agri transition-colors">
+            TRACTOR & FARM EQUIPMENT
+          </span>
+        </a>
 
-      <!-- AUTH CARD -->
-      <div class="auth-container">
-        <!-- Auth Tabs Toggle -->
-        <div class="flex border-b border-slate-200 dark:border-slate-700 mb-6">
-          <button id="tabLogin" type="button" class="auth-tab-btn active">
-            <i class="fa-solid fa-right-to-bracket mr-1.5"></i> Farmer Login
-          </button>
-          <button id="tabRegister" type="button" class="auth-tab-btn">
-            <i class="fa-solid fa-user-plus mr-1.5"></i> Register New Farmer
-          </button>
+        <!-- Pill Badge -->
+        <div class="flex justify-center mb-2.5">
+          <span class="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30">
+            <i class="fa-solid fa-wheat-awn text-[10px]"></i> Farmer Portal
+          </span>
         </div>
 
-        <!-- SECTION 1: LOGIN FORM -->
-        <div id="loginSection">
-          <div class="mb-5 text-center">
-            <div class="w-12 h-12 rounded-2xl bg-forest/10 dark:bg-forest/30 text-agri dark:text-fresh flex items-center justify-center text-xl mx-auto mb-3">
-              <i class="fa-solid fa-wheat-awn"></i>
-            </div>
-            <h2 class="text-2xl font-black font-heading text-slate-900 dark:text-white">Farmer Portal Sign In</h2>
-            <p class="text-xs text-muted mt-1">Access your machinery bookings, active rentals, and tax invoices</p>
+        <!-- Heading & Subtitle -->
+        <h2 class="text-2xl font-black font-heading text-slate-900 dark:text-white text-center mb-1">
+          Farmer Login
+        </h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400 text-center mb-4 max-w-xs mx-auto leading-relaxed">
+          Access your real-time machinery bookings, active rentals & invoices.
+        </p>
+
+        <!-- Farmer Login Form -->
+        <form id="farmerLoginForm" class="space-y-3">
+          <!-- Work Email Address -->
+          <div>
+            <label for="loginEmail" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+              Work Email Address <span class="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="loginEmail"
+              name="email"
+              placeholder="name@company.com"
+              class="form-input text-sm w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-agri focus:border-agri outline-none transition"
+            />
           </div>
 
-          <form id="farmerLoginForm" class="space-y-4">
-            <!-- Email Address Field -->
-            <div>
-              <label for="loginEmail" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-                <i class="fa-solid fa-envelope text-agri mr-1 text-[11px]"></i> Email Address *
+          <!-- Password with Forgot Password Link and Show Toggle -->
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <label for="loginPassword" class="block text-xs font-bold text-slate-700 dark:text-slate-300">
+                Password <span class="text-red-500">*</span>
               </label>
-              <div class="relative">
-                <input
-                  type="email"
-                  id="loginEmail"
-                  name="email"
-                  required
-                  value="farmer@agrorent.in"
-                  placeholder="e.g. farmer@agrorent.in"
-                  class="form-input text-sm w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-agri focus:border-agri outline-none transition"
-                />
-              </div>
-            </div>
-
-            <!-- Password Field with Show/Hide -->
-            <div>
-              <label for="loginPassword" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-                <i class="fa-solid fa-lock text-agri mr-1 text-[11px]"></i> Password *
-              </label>
-              <div class="relative">
-                <input
-                  type="password"
-                  id="loginPassword"
-                  name="password"
-                  required
-                  value="farmer123"
-                  placeholder="Enter your password"
-                  class="form-input text-sm w-full px-4 py-3 pr-11 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-agri focus:border-agri outline-none transition"
-                />
-                <button
-                  type="button"
-                  class="password-toggle-btn absolute top-1/2 -translate-y-1/2 right-3 p-1.5 text-slate-400 hover:text-agri transition text-sm"
-                  aria-label="Show password"
-                  title="Show password"
-                >
-                  <i class="fa-solid fa-eye"></i>
-                </button>
-              </div>
-            </div>
-
-            <!-- Remember Me & Forgot Password -->
-            <div class="flex items-center justify-between text-xs text-slate-600 dark:text-slate-300 pt-1">
-              <label class="flex items-center gap-2 cursor-pointer select-none">
-                <input
-                  type="checkbox"
-                  id="rememberMe"
-                  name="rememberMe"
-                  checked
-                  class="w-4 h-4 rounded text-agri focus:ring-agri border-slate-300 accent-[#347A45]"
-                />
-                <span class="font-medium">Remember Me</span>
-              </label>
-              <a href="#" id="forgotPasswordLink" class="text-agri dark:text-fresh font-bold hover:underline">
-                Forgot Password?
+              <a href="#" id="forgotPasswordLink" class="text-xs font-semibold text-amber-600 dark:text-amber-400 hover:underline">
+                Forgot password?
               </a>
             </div>
-
-            <!-- Login Button -->
-            <button
-              type="submit"
-              class="btn-primary w-full py-3.5 text-sm font-bold justify-center shadow-lg mt-2 transition"
-            >
-              <i class="fa-solid fa-right-to-bracket mr-2"></i> Sign In to Farmer Dashboard
-            </button>
-          </form>
-
-          <!-- Register New Farmer Link -->
-          <div class="mt-6 pt-5 border-t border-slate-200 dark:border-slate-800 text-center">
-            <p class="text-xs text-slate-600 dark:text-slate-400">
-              Don't have a farmer account yet?
-              <a href="#" id="linkToRegister" class="text-agri dark:text-fresh font-bold hover:underline ml-1">
-                Register New Farmer <i class="fa-solid fa-arrow-right text-[10px] ml-0.5"></i>
-              </a>
-            </p>
-          </div>
-        </div>
-
-        <!-- SECTION 2: REGISTER FORM -->
-        <div id="registerSection" class="hidden">
-          <div class="mb-5 text-center">
-            <div class="w-12 h-12 rounded-2xl bg-forest/10 dark:bg-forest/30 text-agri dark:text-fresh flex items-center justify-center text-xl mx-auto mb-3">
-              <i class="fa-solid fa-seedling"></i>
-            </div>
-            <h2 class="text-2xl font-black font-heading text-slate-900 dark:text-white">Register New Farmer</h2>
-            <p class="text-xs text-muted mt-1">Join 5,200+ Indian farmers renting verified tractors & implements</p>
-          </div>
-
-          <form id="farmerRegisterForm" class="space-y-3.5">
-            <div>
-              <label for="regName" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                Farmer Full Name *
-              </label>
+            <div class="relative flex items-center">
               <input
-                type="text"
-                id="regName"
-                required
-                placeholder="e.g. Rajesh Kumar"
-                pattern="[A-Za-z\s]+"
-                title="Please enter letters and spaces only"
-                autocomplete="name"
-                class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                type="password"
+                id="loginPassword"
+                name="password"
+                placeholder="••••••••"
+                class="form-input text-sm w-full px-3.5 py-2.5 pr-16 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-agri focus:border-agri outline-none transition"
               />
+              <button
+                type="button"
+                id="passwordShowToggleBtn"
+                class="password-toggle-btn absolute right-2 top-1/2 -translate-y-1/2 px-2.5 py-1 text-xs font-bold text-slate-700 dark:text-slate-200 hover:text-agri bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg transition"
+                aria-label="Toggle password visibility"
+              >
+                Show
+              </button>
             </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div>
-                <label for="regMobile" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                  Mobile Number *
-                </label>
-                <input
-                  type="tel"
-                  id="regMobile"
-                  required
-                  placeholder="e.g. 9876543210"
-                  pattern="[0-9]{10}"
-                  maxlength="10"
-                  inputmode="numeric"
-                  title="Please enter 10 digits only"
-                  autocomplete="tel"
-                  class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                />
-              </div>
-              <div>
-                <label for="regEmail" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  id="regEmail"
-                  required
-                  placeholder="farmer@agrorent.in"
-                  class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                />
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div>
-                <label for="regVillage" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                  Village & District *
-                </label>
-                <input
-                  type="text"
-                  id="regVillage"
-                  required
-                  placeholder="e.g. Rampur, Ludhiana"
-                  class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                />
-              </div>
-              <div>
-                <label for="regFarmSize" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                  Farm Size (Acres)
-                </label>
-                <input
-                  type="text"
-                  id="regFarmSize"
-                  placeholder="e.g. 12 Acres"
-                  value="12 Acres"
-                  class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                />
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div>
-                <label for="regPassword" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                  Create Password *
-                </label>
-                <div class="relative">
-                  <input
-                    type="password"
-                    id="regPassword"
-                    required
-                    placeholder="Min. 6 chars"
-                    class="form-input text-sm w-full px-4 py-2.5 pr-10 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                  />
-                  <button
-                    type="button"
-                    class="password-toggle-btn absolute top-1/2 -translate-y-1/2 right-3 p-1 text-slate-400 hover:text-agri text-xs"
-                    aria-label="Toggle password"
-                  >
-                    <i class="fa-solid fa-eye"></i>
-                  </button>
-                </div>
-              </div>
-              <div>
-                <label for="regConfirmPassword" class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                  Confirm Password *
-                </label>
-                <div class="relative">
-                  <input
-                    type="password"
-                    id="regConfirmPassword"
-                    required
-                    placeholder="Re-type password"
-                    class="form-input text-sm w-full px-4 py-2.5 pr-10 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                  />
-                  <button
-                    type="button"
-                    class="password-toggle-btn absolute top-1/2 -translate-y-1/2 right-3 p-1 text-slate-400 hover:text-agri text-xs"
-                    aria-label="Toggle password"
-                  >
-                    <i class="fa-solid fa-eye"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              class="btn-primary w-full py-3.5 text-sm font-bold justify-center shadow-lg mt-2"
-            >
-              <i class="fa-solid fa-user-plus mr-2"></i> Register & Enter Dashboard
-            </button>
-          </form>
-
-          <!-- Back to Login Link -->
-          <div class="mt-6 pt-5 border-t border-slate-200 dark:border-slate-800 text-center">
-            <p class="text-xs text-slate-600 dark:text-slate-400">
-              Already have an account?
-              <a href="#" id="linkToLogin" class="text-agri dark:text-fresh font-bold hover:underline ml-1">
-                Sign In to Farmer Portal <i class="fa-solid fa-arrow-right text-[10px] ml-0.5"></i>
-              </a>
-            </p>
           </div>
+
+          <!-- Remember Me Checkbox -->
+          <div class="flex items-center gap-2 pt-0.5">
+            <input
+              type="checkbox"
+              id="rememberMe"
+              name="rememberMe"
+              checked
+              class="w-4 h-4 rounded text-amber-600 focus:ring-amber-500 border-slate-300 accent-[#DCA735] cursor-pointer"
+            />
+            <label for="rememberMe" class="text-xs font-medium text-slate-600 dark:text-slate-300 cursor-pointer select-none">
+              Remember my login on this device
+            </label>
+          </div>
+
+          <!-- Primary Sign In Button (Gold Accent, Image 2 style) -->
+          <button
+            type="submit"
+            id="signInSubmitBtn"
+            class="btn-gold w-full py-3 px-4 text-sm font-black justify-center shadow-md rounded-xl transition hover:brightness-105"
+          >
+            Sign In
+          </button>
+
+          <!-- Secondary Continue as Guest Button (Outline, Image 2 style) -->
+          <button
+            type="button"
+            id="continueAsGuestBtn"
+            class="w-full py-3 px-4 text-sm font-bold rounded-xl border-2 border-slate-300 dark:border-slate-700 hover:border-purple-600 dark:hover:border-purple-400 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 hover:text-purple-700 dark:hover:text-purple-300 transition flex items-center justify-center gap-2 shadow-sm"
+          >
+            <i class="fa-solid fa-user text-purple-700 dark:text-purple-400"></i>
+            <span>Continue as Guest</span>
+          </button>
+        </form>
+
+        <!-- Divider: or continue with -->
+        <div class="relative my-4 flex items-center justify-center">
+          <div class="border-t border-slate-200 dark:border-slate-700 w-full"></div>
+          <span class="bg-white dark:bg-[#1A261D] px-3 text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">or continue with</span>
+          <div class="border-t border-slate-200 dark:border-slate-700 w-full"></div>
         </div>
 
+        <!-- Social Sign In Options: Google and Apple -->
+        <div class="grid grid-cols-2 gap-3 mb-3">
+          <button
+            type="button"
+            id="googleSignInBtn"
+            class="social-auth-btn flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 text-xs sm:text-sm font-semibold transition shadow-xs hover:shadow-sm"
+          >
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+            <span>Google</span>
+          </button>
+          <button
+            type="button"
+            id="appleSignInBtn"
+            class="social-auth-btn flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 text-xs sm:text-sm font-semibold transition shadow-xs hover:shadow-sm"
+          >
+            <i class="fa-brands fa-apple text-base text-slate-900 dark:text-white"></i>
+            <span>Apple</span>
+          </button>
+        </div>
+
+        <!-- Don't have an account subtext -->
+        <p class="text-xs text-center text-slate-500 dark:text-slate-400 mt-2">
+          Don't have a corporate client account yet? <a href="#" id="createAccountBtn" class="font-bold text-[#c59328] hover:underline">Create account</a>
+        </p>
+
+        <!-- Security & Trust Information -->
+        <p class="text-[10px] text-center text-slate-400 dark:text-slate-500 mt-3 flex items-center justify-center gap-1.5">
+          <i class="fa-solid fa-shield-halved text-agri"></i>
+          <span>Secure 256-Bit SSL Encrypted &bull; Direct access to Farmer Dashboard</span>
+        </p>
       </div>
 
     </div>
   </main>
 
-  <!-- FORGOT PASSWORD DEMO MODAL -->
+  <!-- MINIMAL BOTTOM FOOTER STRIP (Matches Reference Example) -->
+  <footer class="w-full bg-white dark:bg-[#121813] border-t border-slate-200 dark:border-slate-800 py-3.5 px-4 text-center shrink-0 z-20">
+    <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium">
+      &copy; 2026 AgroRent Tractor &amp; Farm Equipment Ltd. Secure Farmer Portal.
+    </p>
+  </footer>
+
+  <!-- FORGOT PASSWORD MODAL -->
   <div id="forgotPasswordModal" class="modal-overlay">
     <div class="modal-content max-w-md p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700">
       <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700 mb-4">
         <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
           <i class="fa-solid fa-key text-agri"></i> Reset Farmer Password
         </h3>
-        <button id="closeForgotModal" class="text-slate-400 hover:text-slate-700 dark:hover:text-white p-1">
+        <button id="closeForgotModal" class="text-slate-400 hover:text-slate-700 dark:hover:text-white p-1" aria-label="Close modal">
           <i class="fa-solid fa-xmark text-lg"></i>
         </button>
       </div>
       <p class="text-xs text-slate-600 dark:text-slate-300 mb-4">
-        This is a frontend demonstration. For fast testing, use the pre-configured credentials below:
+        Enter your registered email address or mobile number to receive password reset instructions.
       </p>
-      <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs space-y-1.5 mb-4">
-        <p><strong class="text-slate-500">Email:</strong> <span class="font-mono text-agri font-bold">farmer@agrorent.in</span></p>
-        <p><strong class="text-slate-500">Password:</strong> <span class="font-mono text-agri font-bold">farmer123</span></p>
+      <form id="forgotPasswordForm" class="space-y-3" onsubmit="event.preventDefault(); showAuthToast('Password reset link sent to your email/mobile!', 'success'); document.getElementById('forgotPasswordModal').classList.remove('active');">
+        <div>
+          <label class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Registered Email or Mobile *</label>
+          <input type="text" required placeholder="e.g. farmer@agrorent.in or 9876543210" class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-agri" />
+        </div>
+        <button type="submit" class="btn-primary w-full py-2.5 text-xs font-bold justify-center">
+          <i class="fa-solid fa-paper-plane mr-1.5"></i> Send Reset Instructions
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CREATE ACCOUNT MODAL -->
+  <div id="registerModal" class="modal-overlay">
+    <div class="modal-content max-w-md p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700 mb-4">
+        <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+          <i class="fa-solid fa-user-plus text-agri"></i> Create Farmer Account
+        </h3>
+        <button id="closeRegisterModal" class="text-slate-400 hover:text-slate-700 dark:hover:text-white p-1" aria-label="Close modal">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
       </div>
-      <button onclick="document.getElementById('quickDemoLoginBtn').click(); document.getElementById('forgotPasswordModal').classList.remove('active');" class="btn-primary w-full py-2.5 text-xs font-bold justify-center">
-        <i class="fa-solid fa-bolt mr-1"></i> Auto-Login with These Credentials
-      </button>
+      <p class="text-xs text-slate-600 dark:text-slate-300 mb-4">
+        Join AgroRent to reserve tractors, access seasonal harvester slots, and track equipment in your district.
+      </p>
+      <form id="createAccountForm" class="space-y-3">
+        <div>
+          <label class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Farmer Full Name *</label>
+          <input type="text" id="regFarmerName" required placeholder="e.g. Gurpreet Singh" class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-agri" />
+        </div>
+        <div>
+          <label class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Mobile / Email *</label>
+          <input type="text" id="regFarmerContact" required placeholder="e.g. 9876543210 or farmer@gmail.com" class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-agri" />
+        </div>
+        <div>
+          <label class="form-label block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Create Password *</label>
+          <input type="password" id="regFarmerPass" required placeholder="••••••••" class="form-input text-sm w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-agri" />
+        </div>
+        <button type="submit" class="btn-gold w-full py-2.5 text-xs font-bold justify-center rounded-xl shadow-md">
+          <i class="fa-solid fa-check mr-1.5"></i> Create & Open Dashboard
+        </button>
+      </form>
     </div>
   </div>
 

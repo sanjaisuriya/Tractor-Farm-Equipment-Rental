@@ -146,8 +146,40 @@ html.dark .icon-box-agri {
   color: #A3D89E;
 }
 
-html.dark .bg-white {
+html.dark .bg-white:not(.whatsapp-cta-btn) {
   background-color: var(--bg-card) !important;
+}
+
+/* WhatsApp CTA Button High-Contrast Overrides */
+html.dark .whatsapp-cta-btn,
+.dark .whatsapp-cta-btn,
+.whatsapp-cta-btn {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #0e2e1d !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35) !important;
+}
+
+html.dark .whatsapp-cta-btn span,
+.dark .whatsapp-cta-btn span,
+.whatsapp-cta-btn span {
+  color: #0e2e1d !important;
+  font-weight: 800 !important;
+}
+
+html.dark .whatsapp-cta-btn i,
+.dark .whatsapp-cta-btn i,
+.whatsapp-cta-btn i {
+  color: #25d366 !important;
+}
+
+html.dark .whatsapp-cta-btn:hover,
+.dark .whatsapp-cta-btn:hover,
+.whatsapp-cta-btn:hover {
+  background-color: #f4f7f2 !important;
+  color: #064e3b !important;
+  border-color: #f4f7f2 !important;
 }
 
 html.dark .bg-gray-50,
@@ -202,4 +234,60 @@ html.theme-transition *::before,
 html.theme-transition *::after {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
   transition-delay: 0 !important;
+}
+
+/* Map iframe eye-friendly contrast in dark mode */
+html.dark iframe[title*="AgroRent"] {
+  filter: brightness(0.88) contrast(1.05) saturate(0.9);
+}
+
+/* ==========================================================================
+   THEME & RTL TOGGLE CONTROLS IN DARK MODE
+   ========================================================================== */
+html.dark .theme-toggle-btn,
+.dark .theme-toggle-btn,
+html.dark .rtl-toggle-btn,
+.dark .rtl-toggle-btn {
+  background-color: #1A281E !important;
+  border: 1.5px solid rgba(120, 168, 90, 0.4) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+}
+
+html.dark .theme-toggle-btn i.fa-sun,
+.dark .theme-toggle-btn i.fa-sun {
+  color: #FBBF24 !important; /* Radiant golden yellow sun */
+  filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.5)) !important;
+}
+
+html.dark .theme-toggle-btn i.fa-moon,
+.dark .theme-toggle-btn i.fa-moon {
+  color: #FCD34D !important; /* Luminous warm gold moon */
+}
+
+html.dark .rtl-toggle-btn i,
+.dark .rtl-toggle-btn i {
+  color: #86EFAC !important; /* Fresh bright mint green arrows */
+}
+
+html.dark .theme-toggle-btn:hover,
+.dark .theme-toggle-btn:hover {
+  background-color: #24382A !important;
+  border-color: #FCD34D !important;
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.25) !important;
+  transform: translateY(-1px) !important;
+}
+
+html.dark .rtl-toggle-btn:hover,
+.dark .rtl-toggle-btn:hover {
+  background-color: #24382A !important;
+  border-color: #86EFAC !important;
+  box-shadow: 0 4px 12px rgba(134, 239, 172, 0.25) !important;
+  transform: translateY(-1px) !important;
+}
+
+html.dark .rtl-toggle-btn.rtl-active,
+.dark .rtl-toggle-btn.rtl-active {
+  background-color: rgba(16, 185, 129, 0.25) !important;
+  border-color: #34D399 !important;
+  color: #6EE7B7 !important;
 }

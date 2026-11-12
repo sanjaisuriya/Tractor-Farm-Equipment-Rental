@@ -1,4 +1,4 @@
-/* Farmer Dashboard Custom Styling */
+/* Farmer Dashboard Custom Styling - Evergreen / Command Center Format */
 .dashboard-layout {
   display: flex;
   min-height: calc(100vh - 80px);
@@ -6,43 +6,125 @@
 
 .dashboard-sidebar {
   width: 280px;
-  background-color: var(--bg-card);
+  background-color: #ffffff;
   border-right: 1px solid var(--border-color);
   flex-shrink: 0;
   transition: transform 0.3s ease;
   z-index: 30;
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  align-self: flex-start;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(52, 122, 69, 0.2) transparent;
+}
+
+.dashboard-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dashboard-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dashboard-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(52, 122, 69, 0.2);
+  border-radius: 4px;
+}
+
+html.dark .dashboard-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+html.dark .dashboard-sidebar {
+  background-color: #121813;
+  border-right-color: #1e2922;
 }
 
 .dashboard-main {
   flex: 1;
+  min-width: 0;
   padding: 2rem;
   background-color: var(--bg-secondary);
-  overflow-y: auto;
 }
 
+/* Sidebar Navigation Items Matching Target Format */
 .sidebar-link {
   display: flex;
   align-items: center;
   gap: 0.875rem;
-  padding: 0.875rem 1.25rem;
-  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  border-radius: 0.875rem;
   color: var(--text-muted);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.925rem;
   transition: var(--transition);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
   cursor: pointer;
+  border: 1px solid transparent;
 }
 
-.sidebar-link:hover,
-.sidebar-link.active {
-  background-color: rgba(52, 122, 69, 0.12);
-  color: var(--color-agri);
-  font-weight: 600;
+.sidebar-link:hover {
+  background-color: rgba(52, 122, 69, 0.08);
+  color: var(--color-forest);
 }
 
-.sidebar-link.active .sidebar-icon {
-  color: var(--color-agri);
+html.dark .sidebar-link:hover {
+  background-color: rgba(52, 122, 69, 0.15);
+  color: #8FD19E;
+}
+
+.sidebar-link .sidebar-icon {
+  color: #556B5D;
+  transition: var(--transition);
+}
+
+html.dark .sidebar-link .sidebar-icon {
+  color: #94A3B8;
+}
+
+.sidebar-link.active,
+.sidebar-link.gold-active {
+  background-color: #E8F2EA !important;
+  color: #173D2B !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(52, 122, 69, 0.25) !important;
+  box-shadow: 0 1px 3px rgba(52, 122, 69, 0.08);
+}
+
+html.dark .sidebar-link.active,
+html.dark .sidebar-link.gold-active {
+  background-color: rgba(52, 122, 69, 0.25) !important;
+  color: #8FD19E !important;
+  border-color: rgba(52, 122, 69, 0.4) !important;
+}
+
+.sidebar-link.active .sidebar-icon,
+.sidebar-link.gold-active .sidebar-icon {
+  color: #2D5A3C !important;
+}
+
+html.dark .sidebar-link.active .sidebar-icon,
+html.dark .sidebar-link.gold-active .sidebar-icon {
+  color: #8FD19E !important;
+}
+
+/* Centered Big Number Stat Cards (Matching Target Format) */
+.stat-card-centered {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.stat-card-centered:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.08);
+  border-color: #c59328;
 }
 
 .stat-card {
@@ -135,6 +217,7 @@
     top: 0;
     bottom: 0;
     left: 0;
+    height: 100vh;
     z-index: 50;
     transform: translateX(-100%);
     box-shadow: var(--shadow-xl);

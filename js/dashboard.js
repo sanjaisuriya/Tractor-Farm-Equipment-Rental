@@ -438,19 +438,23 @@ function saveBookings(bookings) {
 }
 
 function loadUserProfile() {
-  const user = window.Auth ? Auth.getUser() : {
-    name: "Rajesh Kumar",
-    email: "farmer@agrorent.in",
+  const isLogged = window.Auth && Auth.isLoggedIn();
+  const user = isLogged ? Auth.getUser() : {
+    name: "Guest",
+    email: "guest@agrorent.in",
     mobile: "+91 98765 43210",
     village: "Rampur, Ludhiana, Punjab",
     farmSize: "12 Acres",
     primaryCrops: "Wheat, Paddy, Mustard"
   };
 
-  document.querySelectorAll('.user-name-display').forEach(el => el.textContent = user.name || "Rajesh Kumar");
-  document.querySelectorAll('.user-email-display').forEach(el => el.textContent = user.email || "farmer@agrorent.in");
+  const displayName = user.name || "Guest";
+  document.querySelectorAll('.user-name-display').forEach(el => el.textContent = displayName);
+  document.querySelectorAll('.user-email-display').forEach(el => el.textContent = user.email || "guest@agrorent.in");
   document.querySelectorAll('.user-village-display').forEach(el => el.textContent = user.village || "Rampur, Punjab");
   document.querySelectorAll('.user-farmsize-display').forEach(el => el.textContent = user.farmSize || "12 Acres");
+  const initial = displayName.trim().charAt(0).toUpperCase();
+  document.querySelectorAll('.user-avatar-initial').forEach(el => el.textContent = initial);
 
   const profName = document.getElementById('profName');
   const profEmail = document.getElementById('profEmail');
@@ -459,8 +463,8 @@ function loadUserProfile() {
   const profFarmSize = document.getElementById('profFarmSize');
   const profCrops = document.getElementById('profCrops');
 
-  if (profName) profName.value = user.name || "Rajesh Kumar";
-  if (profEmail) profEmail.value = user.email || "farmer@agrorent.in";
+  if (profName) profName.value = displayName;
+  if (profEmail) profEmail.value = user.email || "guest@agrorent.in";
   if (profMobile) profMobile.value = user.mobile || "+91 98765 43210";
   if (profVillage) profVillage.value = user.village || "Rampur, Ludhiana, Punjab";
   if (profFarmSize) profFarmSize.value = user.farmSize || "12 Acres";
