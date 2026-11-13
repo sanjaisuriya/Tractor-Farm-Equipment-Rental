@@ -146,8 +146,40 @@ html.dark .icon-box-agri {
   color: #A3D89E;
 }
 
-html.dark .bg-white:not(.whatsapp-cta-btn) {
+html.dark .bg-white:not(.whatsapp-cta-btn):not(.btn-white-solid):not(.site-final-cta a):not(.hero-home-1 a) {
   background-color: var(--bg-card) !important;
+}
+
+/* White Solid Button High-Contrast Overrides in Dark Mode */
+html.dark .btn-white-solid,
+html.dark .site-final-cta a.btn-secondary,
+html.dark .hero-home-1 a.btn-secondary,
+.dark .btn-white-solid,
+.dark .site-final-cta a.btn-secondary,
+.dark .hero-home-1 a.btn-secondary {
+  background-color: #FFFFFF !important;
+  color: #173D2B !important;
+  border: 1px solid #FFFFFF !important;
+}
+
+html.dark .btn-white-solid i,
+html.dark .site-final-cta a.btn-secondary i,
+html.dark .hero-home-1 a.btn-secondary i,
+.dark .btn-white-solid i,
+.dark .site-final-cta a.btn-secondary i,
+.dark .hero-home-1 a.btn-secondary i {
+  color: #347A45 !important;
+}
+
+html.dark .btn-white-solid:hover,
+html.dark .site-final-cta a.btn-secondary:hover,
+html.dark .hero-home-1 a.btn-secondary:hover,
+.dark .btn-white-solid:hover,
+.dark .site-final-cta a.btn-secondary:hover,
+.dark .hero-home-1 a.btn-secondary:hover {
+  background-color: #F5F3E9 !important;
+  color: #173D2B !important;
+  border-color: #F5F3E9 !important;
 }
 
 /* WhatsApp CTA Button High-Contrast Overrides */

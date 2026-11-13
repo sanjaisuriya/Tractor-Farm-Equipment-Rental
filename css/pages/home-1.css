@@ -1,18 +1,28 @@
 /* Home Page 1 Custom Styling */
 .hero-home-1 {
   position: relative;
-  min-height: 480px;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 540px;
+  height: auto !important;
   display: flex;
   align-items: center;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: #FFFFFF;
+  overflow: visible;
+}
+
+@media (min-width: 768px) {
+  .hero-home-1 {
+    min-height: 580px;
+  }
 }
 
 @media (min-width: 1024px) {
   .hero-home-1 {
-    min-height: 520px;
+    min-height: 640px;
   }
 }
 

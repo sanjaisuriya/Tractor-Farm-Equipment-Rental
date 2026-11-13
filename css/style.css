@@ -67,7 +67,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  overflow-x: clip;
   line-height: 1.6;
 }
 
@@ -147,9 +147,9 @@ img {
    ========================================================================== */
 .site-header {
   height: 80px;
-  position: sticky;
-  top: 0;
-  z-index: 50;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
   background-color: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -157,10 +157,26 @@ img {
   transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-.site-header nav {
-  display: flex;
-  align-items: center;
-  white-space: nowrap !important;
+@media (min-width: 1024px) {
+  .site-header nav {
+    display: flex;
+    align-items: center;
+    white-space: nowrap !important;
+    margin-left: auto !important;
+    margin-right: 1.25rem !important;
+  }
+
+  html[dir="rtl"] .site-header nav,
+  [dir="rtl"] .site-header nav {
+    margin-left: 1.25rem !important;
+    margin-right: auto !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .site-header nav {
+    display: none !important;
+  }
 }
 
 .site-header .nav-link,
@@ -252,9 +268,15 @@ html.dark .mobile-nav-drawer nav a[aria-current="page"] {
 }
 
 .site-header .nav-auth-item {
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap !important;
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .site-header .nav-auth-item {
+    display: inline-flex !important;
+    align-items: center;
+    white-space: nowrap !important;
+  }
 }
 
 .site-header .nav-auth-item a {
@@ -677,25 +699,168 @@ textarea {
 }
 
 /* ==========================================================================
-   UNIFIED HERO BANNER ACROSS ALL PAGES (HOME TO CONTACT)
-   Ensures identical height, alignment, and responsive scale across all pages.
+   UNIFIED HERO BANNER ACROSS ALL PAGES (ABOUT TO CONTACT)
+   Ensures identical pixel-perfect equal height across About, Equipment, Rates, Booking, and Contact.
    ========================================================================== */
 .site-hero-banner {
   position: relative;
-  min-height: 480px;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  overflow: hidden;
 }
 
+.site-hero-banner .container-custom {
+  width: 100%;
+}
+
+/* Mobile (< 768px): Exact equal height across all pages */
+@media (max-width: 767px) {
+  .site-hero-banner {
+    min-height: 500px;
+    height: 500px;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+}
+
+/* Tablet / Tab View (768px - 1023px): Exact equal height */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .site-hero-banner {
+    min-height: 480px;
+    height: 480px;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
+/* Laptop / Desktop (>= 1024px): Exact equal height across all pages */
 @media (min-width: 1024px) {
   .site-hero-banner {
-    min-height: 520px;
+    min-height: 500px;
+    height: 500px;
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
   }
+}
+
+/* ==========================================================================
+   UNIFIED FINAL CTA BANNER ACROSS ALL PAGES ("READY TO..." SECTIONS)
+   Ensures identical pixel-perfect equal height and proportions across all pages.
+   ========================================================================== */
+.site-final-cta {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.site-final-cta .container-custom {
+  width: 100%;
+}
+
+/* Mobile (< 768px): Exact equal height */
+@media (max-width: 767px) {
+  .site-final-cta {
+    min-height: 480px;
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+}
+
+/* Tablet / Tab View (768px - 1023px): Exact equal height */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .site-final-cta {
+    min-height: 460px;
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+}
+
+/* Laptop / Desktop (>= 1024px): Exact equal height across all pages */
+@media (min-width: 1024px) {
+  .site-final-cta {
+    min-height: 480px;
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+}
+
+/* Ensure solid white buttons across dark sections (Hero, Final CTA, Forest) have crisp, high-contrast dark forest text and green icons in both Light and Dark mode */
+.site-final-cta .btn-secondary,
+.site-final-cta a.btn-secondary,
+.hero-home-1 .btn-secondary,
+.hero-home-1 a.btn-secondary,
+.bg-forest a.btn-secondary,
+.bg-forest .btn-secondary,
+a.btn-white-solid,
+.btn-white-solid {
+  background-color: #FFFFFF !important;
+  color: #173D2B !important;
+  border: 1px solid #FFFFFF !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
+  text-decoration: none !important;
+}
+
+.site-final-cta .btn-secondary i,
+.site-final-cta a.btn-secondary i,
+.hero-home-1 .btn-secondary i,
+.hero-home-1 a.btn-secondary i,
+.bg-forest a.btn-secondary i,
+.bg-forest .btn-secondary i,
+a.btn-white-solid i,
+.btn-white-solid i {
+  color: #347A45 !important;
+}
+
+.site-final-cta .btn-secondary:hover,
+.site-final-cta a.btn-secondary:hover,
+.hero-home-1 .btn-secondary:hover,
+.hero-home-1 a.btn-secondary:hover,
+.bg-forest a.btn-secondary:hover,
+.bg-forest .btn-secondary:hover,
+a.btn-white-solid:hover,
+.btn-white-solid:hover {
+  background-color: #F5F3E9 !important;
+  color: #173D2B !important;
+  border-color: #F5F3E9 !important;
+  transform: translateY(-2px);
+}
+
+.site-final-cta .btn-secondary:hover i,
+.site-final-cta a.btn-secondary:hover i,
+.hero-home-1 .btn-secondary:hover i,
+.hero-home-1 a.btn-secondary:hover i,
+.bg-forest a.btn-secondary:hover i,
+.bg-forest .btn-secondary:hover i,
+a.btn-white-solid:hover i,
+.btn-white-solid:hover i {
+  color: #173D2B !important;
+}
+
+/* Translucent / outline buttons on dark sections */
+.site-final-cta a.btn-secondary[class*="bg-white/10"],
+.bg-forest a.btn-secondary[class*="bg-white/10"] {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+.site-final-cta a.btn-secondary[class*="bg-white/10"] i,
+.bg-forest a.btn-secondary[class*="bg-white/10"] i {
+  color: #E6AD43 !important;
 }
 
 /* ==========================================================================
